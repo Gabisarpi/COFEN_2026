@@ -1,0 +1,27 @@
+# Windows/WSL junk
+*:Zone.Identifier
+*.Zone.Identifier
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*~
+
+# Local audio binaries (keep fontes NotebookLM .md)
+audio/**/*.mp3
+audio/**/*.wav
+audio/**/*.m4a
+
+# Secrets / env
+.env
+.env.*
+*.pem
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
