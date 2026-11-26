@@ -22,16 +22,16 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 
 - Repo criado com a estrutura espelhada do CGU_2026.
 - Edital resumido em `cargos/tic/resumo-edital.md`; tags em `mapa-edital.md`.
-- **Skills adaptadas (26/11):** 10 skills `cofen-*` em `.agents/skills/` (Quadrix, +1/−1 em tudo, 120 itens 40/30/50, discursiva única de 20–30 linhas, tags `esp.tic.*`) + scripts em `tools/`. Builds testados (caderno, flashcards, folha, editor de redação, correção). Ranking inicial em `acervo/previsao-cofen.md` vem só do perfil, porque o acervo está vazio.
+- **Skills adaptadas (26/11):** 10 skills `cofen-*` em `.agents/skills/` (Quadrix, +1/−1 em tudo, 120 itens 40/30/50, discursiva única de 20–30 linhas, tags `esp.tic.*`) + scripts em `tools/`. Builds testados (caderno, flashcards, folha, editor de redação, correção). 
 - Foco atual ainda é a CGU (prova 13/12/2026). Estudo COFEN começa depois, salvo decisão em contrário.
+
+- **Acervo montado (26/11):** 7 provas Quadrix C/E de TI (840 assertivas, gabarito definitivo, conferidas contra o PDF) em `acervo/`; heatmap e ranking regenerados; amostra de dificuldade em `cargos/tic/amostra/2026-11-26_amostra_quadrix/`. Prova mais aderente: CREF-11 2026 (blocos iguais aos exclusivos do 407).
 
 ## Pendências
 
 - [ ] Fazer a inscrição (26/11/2026 a 11/01/2027, taxa R$ 100).
 - [ ] Colocar o `edital.pdf` oficial (quadrix.org.br) na raiz do repo.
 - [ ] Conferir no item 2 do edital se o 407 tem 1 vaga imediata ou só cadastro de reserva.
-- [ ] Montar acervo de provas Quadrix de TI (conselhos profissionais de preferência).
-- [ ] Na primeira prova Quadrix ingerida, conferir o extrator (`tools/acervo_extract_quadrix.py`) contra o PDF.
-- [ ] Montar a amostra de dificuldade em `cargos/tic/amostra/` (~25 itens reais Quadrix).
+- [ ] Ampliar o acervo nos blocos exclusivos do 407 (gestão, auditoria, contratos, atendimento) e buscar discursivas Quadrix de TI.
 - [ ] Windows: `git config core.symlinks true` no clone local (symlinks `.claude/skills` e `.cursor/skills`).
 - [ ] Montar cronograma 14/12/2026 → 27/02/2027.

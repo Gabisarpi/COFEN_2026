@@ -53,12 +53,15 @@ Reaproveitar do CGU: redes, Linux/Windows, nuvem, segurança, ITIL/COBIT, contra
 
 ## Amostra de dificuldade
 
-- Ainda não existe. Montar em `cargos/tic/amostra/` com ~25 itens reais Quadrix de TI (conselhos profissionais) depois da primeira ingestão do acervo.
-- Até lá: calibrar por 2–3 itens reais Quadrix da tag (quando houver) e pela régua de `cofen-calibrar-itens`.
+- `cargos/tic/amostra/2026-11-26_amostra_quadrix/` — 25 itens reais do P3 (CREF-11 2026, CRP-SP 2025, CRMV-GO 2025) nos blocos exclusivos do 407 e em ITIL/COBIT; gabarito em arquivo separado (13 C × 12 E).
+- Para as demais tags: 2–3 itens reais Quadrix da mesma tag no acervo (`acervo/itens/`).
 
 ## Acervo mais aderente
 
-- Provas Quadrix de analista de TI em conselhos profissionais (Sistema Cofen/Corens, CFM/CRMs, CFO/CROs, CFMV/CRMVs, CAU, CFF/CRFs).
+- **Topo:** `cref11_2026_analista_suporte_ti` (P3 com os mesmos blocos do 407) e `coren_pr_2024_analista_ti` (Sistema Cofen/Corens).
+- Gestão e governança: `crp_sp_2025_especialista_gestao_tic`, `crmv_go_2025_analista_adm_ti`.
+- Legislação (P2): `cro_sp_2025_analista_suporte_ti`, `coffito_2023_analista_ti`, `crmv_go_2025_analista_adm_ti`.
+- Aderência média: `ibict_2024_tecnologista_ti`.
 - Apoio de conteúdo (peso ×1, não molde de estilo): itens Cebraspe de TI do repo CGU_2026.
 
 ## Exemplos de pedidos

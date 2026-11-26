@@ -1,0 +1,201 @@
+atualizado: '2026-11-26'
+descricao: Acervo Quadrix C/E do COFEN 2026 (Cargo 407). Itens em acervo/itens/<id>_bNN.md, um arquivo por bloco de comando.
+cobertura:
+  esp.tic.fundamentos:
+    itens: 66
+    aderencia_alta: 66
+  esp.tic.redes:
+    itens: 32
+    aderencia_alta: 32
+  esp.tic.seguranca:
+    itens: 33
+    aderencia_alta: 33
+  esp.tic.bd:
+    itens: 55
+    aderencia_alta: 35
+  esp.tic.engsw:
+    itens: 88
+    aderencia_alta: 58
+  esp.tic.govti:
+    itens: 33
+    aderencia_alta: 33
+  esp.tic.etica:
+    itens: 24
+    aderencia_alta: 24
+  esp.tic.gestao:
+    itens: 8
+    aderencia_alta: 8
+  esp.tic.auditoria:
+    itens: 2
+    aderencia_alta: 2
+  esp.tic.contratos:
+    itens: 12
+    aderencia_alta: 12
+  esp.tic.atendimento:
+    itens: 4
+    aderencia_alta: 4
+  esp.tic.infra:
+    itens: 53
+    aderencia_alta: 48
+cobertura_basicos:
+  basicos.lp:
+    itens: 126
+    aderencia_alta: 116
+  basicos.rlm:
+    itens: 59
+    aderencia_alta: 59
+  basicos.ingles:
+    itens: 70
+    aderencia_alta: 62
+cobertura_comp:
+  comp.leg.enfermagem:
+    itens: 15
+    aderencia_alta: 15
+  comp.leg.cf:
+    itens: 8
+    aderencia_alta: 8
+  comp.leg.licitacoes:
+    itens: 2
+    aderencia_alta: 2
+  comp.leg.improbidade:
+    itens: 29
+    aderencia_alta: 29
+  comp.leg.lgpd:
+    itens: 8
+    aderencia_alta: 8
+  comp.leg.processo:
+    itens: 17
+    aderencia_alta: 17
+  comp.leg.anticorrupcao:
+    itens: 16
+    aderencia_alta: 16
+  comp.const:
+    itens: 2
+    aderencia_alta: 2
+  comp.adm:
+    itens: 16
+    aderencia_alta: 13
+cobertura_disc:
+  disc.tic:
+    itens: 0
+    aderencia_alta: 0
+fontes:
+- id: coren_pr_2024_analista_ti
+  pasta: acervo/fontes/coren_pr_2024_analista_ti
+  banca: quadrix
+  orgao: COREN-PR
+  ano: 2024
+  cargo: Analista de Tecnologia da Informação
+  codigo: '402'
+  formato: certo_errado
+  itens: 120
+  blocos: 27
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/114663/quadrix-2024-coren-pr-analista-de-tecnologia-da-informacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/114663/quadrix-2024-coren-pr-analista-de-tecnologia-da-informacao-gabarito.pdf
+  nota: Mesmo sistema (Cofen/Corens); P3 cobra Regimento do Coren, Lei 5.905 e Res. COFEN 507/2016 e 564/2017.
+- id: cref11_2026_analista_suporte_ti
+  pasta: acervo/fontes/cref11_2026_analista_suporte_ti
+  banca: quadrix
+  orgao: CREF-11 (MS/MT)
+  ano: 2026
+  cargo: Analista de Suporte em Tecnologia da Informação
+  codigo: '402'
+  formato: certo_errado
+  itens: 120
+  blocos: 34
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/153886/quadrix-2026-cref-11-regiao-ms-mt-analista-de-suporte-em-tecnologia-da-informacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/153886/quadrix-2026-cref-11-regiao-ms-mt-analista-de-suporte-em-tecnologia-da-informacao-gabarito.pdf
+  nota: P3 com blocos idênticos aos exclusivos do 407 (governança, normas e auditorias, contratos, atendimento estratégico, implantação e migração).
+- id: cro_sp_2025_analista_suporte_ti
+  pasta: acervo/fontes/cro_sp_2025_analista_suporte_ti
+  banca: quadrix
+  orgao: CRO-SP
+  ano: 2025
+  cargo: Analista de Suporte de Tecnologia de Informação
+  codigo: '407'
+  formato: certo_errado
+  itens: 120
+  blocos: 19
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/138455/quadrix-2025-cro-sp-analista-de-infraestrutura-de-tecnologia-de-informacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/138455/quadrix-2025-cro-sp-analista-de-infraestrutura-de-tecnologia-de-informacao-gabarito.pdf
+  nota: Arquivo publicado como 'analista de infraestrutura', mas o caderno é do cargo 407 Analista de Suporte (gabarito 2.10).
+- id: coffito_2023_analista_ti
+  pasta: acervo/fontes/coffito_2023_analista_ti
+  banca: quadrix
+  orgao: COFFITO
+  ano: 2023
+  cargo: Analista de Tecnologia da Informação
+  codigo: '403'
+  formato: certo_errado
+  itens: 120
+  blocos: 25
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/96882/quadrix-2023-coffito-analista-de-tecnologia-da-informacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/96882/quadrix-2023-coffito-analista-de-tecnologia-da-informacao-gabarito.pdf
+  nota: Conselho federal; P2 com LAI, LGPD, improbidade e processo administrativo.
+- id: crp_sp_2025_especialista_gestao_tic
+  pasta: acervo/fontes/crp_sp_2025_especialista_gestao_tic
+  banca: quadrix
+  orgao: CRP-SP (6ª Região)
+  ano: 2025
+  cargo: Especialista em Gestão – Tecnologia da Informação e Comunicação
+  codigo: '408'
+  formato: certo_errado
+  itens: 120
+  blocos: 25
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/137155/quadrix-2025-crp-sp-especialista-em-gestao-tecnologia-da-informacao-e-comunicacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/137155/quadrix-2025-crp-sp-especialista-em-gestao-tecnologia-da-informacao-e-comunicacao-gabarito.pdf
+  nota: Cargo de gestão de TIC (ITIL 4, COBIT 2019, indicadores, ISO 27001/27002).
+- id: crmv_go_2025_analista_adm_ti
+  pasta: acervo/fontes/crmv_go_2025_analista_adm_ti
+  banca: quadrix
+  orgao: CRMV-GO
+  ano: 2025
+  cargo: Analista Administrativo – Área de Tecnologia da Informação
+  codigo: '400'
+  formato: certo_errado
+  itens: 120
+  blocos: 30
+  aderencia: alta
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/142435/quadrix-2025-crmv-go-analista-administrativo-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/142435/quadrix-2025-crmv-go-analista-administrativo-gabarito.pdf
+  nota: P2 com Constitucional e Administrativo; P3 com ITIL 4, COBIT 2019 e Lei 14.133.
+- id: ibict_2024_tecnologista_ti
+  pasta: acervo/fontes/ibict_2024_tecnologista_ti
+  banca: quadrix
+  orgao: IBICT
+  ano: 2024
+  cargo: Tecnologista – Tecnologia da Informação
+  codigo: '404'
+  formato: certo_errado
+  itens: 120
+  blocos: 22
+  aderencia: media
+  discursiva: nao_coletada
+  status: extraido_conferido
+  urls:
+    prova: https://arquivos.qconcursos.com/prova/arquivo_prova/108308/quadrix-2024-ibict-tecnologista-tecnologia-da-informacao-prova.pdf
+    gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/108308/quadrix-2024-ibict-tecnologista-tecnologia-da-informacao-gabarito.pdf
+  nota: Não é conselho; P3 voltado a desenvolvimento e ciência da informação (40 básicos + 80 específicos).

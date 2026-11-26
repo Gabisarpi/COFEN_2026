@@ -42,7 +42,7 @@ for f in sorted(glob.glob(os.path.join(a.repo, "acervo/itens/*.md"))):
     except Exception:
         continue
     iid = h.get("id", os.path.basename(f)[:-3])
-    if iid.startswith(RUINS) or iid.startswith(("ancora", "_SCHEMA")):
+    if iid.startswith(RUINS) or iid.startswith(("ancora", "_SCHEMA", "exemplo_")) or os.path.basename(f).startswith("_"):
         continue
     # extrato_retag_infra_* = itens reais de provas completas de TI, classificados item a item;
     # outros extratos (aderência, retag Java do Dev) continuam fora

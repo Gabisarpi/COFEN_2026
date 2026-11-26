@@ -1,0 +1,27 @@
+# Ajustes manuais da extração Quadrix (aplicados por tools/acervo_extract_quadrix.py).
+# Chave = "<id da prova>#<nº do primeiro item do bloco>" (tags, comando) ou "#<nº do item>" (texto).
+# Use quando a regra automática de acervo_tags_407.py errar; o ajuste vale em toda nova extração.
+tags:
+  coffito_2023_analista_ti#101: [esp.tic.engsw]
+  cref11_2026_analista_suporte_ti#98: [esp.tic.gestao, esp.tic.govti]
+  cref11_2026_analista_suporte_ti#82: [esp.tic.seguranca, esp.tic.redes]
+  cref11_2026_analista_suporte_ti#109: [esp.tic.infra]
+  crmv_go_2025_analista_adm_ti#81: [esp.tic.fundamentos, esp.tic.infra]
+  crmv_go_2025_analista_adm_ti#86: [esp.tic.bd]
+  cro_sp_2025_analista_suporte_ti#81: [esp.tic.bd]
+  cro_sp_2025_analista_suporte_ti#86: [esp.tic.govti]
+  cro_sp_2025_analista_suporte_ti#101: [esp.tic.infra, esp.tic.fundamentos]
+  cro_sp_2025_analista_suporte_ti#106: [esp.tic.seguranca]
+  cro_sp_2025_analista_suporte_ti#116: [esp.tic.infra, esp.tic.seguranca]
+  crp_sp_2025_especialista_gestao_tic#96: [esp.tic.engsw]
+  crp_sp_2025_especialista_gestao_tic#116: [esp.tic.engsw, esp.tic.govti]
+  ibict_2024_tecnologista_ti#41: []
+  ibict_2024_tecnologista_ti#51: []
+  ibict_2024_tecnologista_ti#61: []
+  ibict_2024_tecnologista_ti#76: [esp.tic.engsw]
+  ibict_2024_tecnologista_ti#81: [esp.tic.engsw]
+  ibict_2024_tecnologista_ti#91: [esp.tic.infra, esp.tic.engsw]
+  ibict_2024_tecnologista_ti#116: []
+comando:
+  cref11_2026_analista_suporte_ti#24: "Considere a equação do segundo grau x² − 36x + 315 = 0. Considerando essa situação hipotética, julgue os itens seguintes."
+texto: {}

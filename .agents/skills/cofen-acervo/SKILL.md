@@ -36,12 +36,12 @@ Fontes públicas apenas: site da Quadrix (concursos encerrados → provas e gaba
 1. Criar `acervo/fontes/{orgao}_{ano}_{slug}/` (ex.: `coren_sp_2024_analista_ti`).
 2. Baixar: prova objetiva, **gabarito definitivo**, discursiva + padrão (se houver).
 3. Registrar em `acervo/catalogo.yaml` → `fontes` (`banca`, `cargo`, `status`, URLs; `discursiva: nao_aplicavel` quando não houver).
-4. Extrair: `python3 tools/acervo_extract_quadrix.py --prova … --gabarito … --out acervo/itens/<id>.md --id <id> --orgao … --ano … --cargo … --tags …`. O extrator veio do CGU: **na primeira prova, conferir 5–10 itens contra o PDF** (numeração, gabarito, colunas) e ajustar o parse se preciso.
-5. Etiquetar item a item com as tags do mapa (`tags_edital`). Prova inteira com tag única no frontmatter infla o heatmap: em prova mista, etiquetar por item.
+4. Extrair: `python3 tools/acervo_extract_quadrix.py --id <id> --orgao … --ano … --cargo "<título no cabeçalho da prova>" --gab-cargo "<regex do cargo no gabarito>" --dry`. Só gravar (sem `--dry`) com 120/120 itens lidos. Gera um arquivo por bloco de comando (`<id>_bNN.md`), já etiquetado pelas regras de `tools/acervo_tags_407.py`.
+5. Rever as tags e o comando de cada bloco; o que a regra errar vai para `tools/acervo_ajustes_quadrix.yaml` (vale em toda nova extração). Conferir alguns itens contra o PDF.
 6. Rodar `python3 tools/acervo_cobertura.py --write --write-catalogo` e `python3 tools/acervo_previsao.py --write`.
 7. Conferir buracos (`[texto não extraído]`, `[ver PDF]`); não inventar enunciado.
 
-Quirks de PDF 2 colunas: ver docstring de `split_columns` no extrator. Anulados (`X`) → `[item anulado no gabarito oficial]`.
+Layout Quadrix tratado pelo extrator: duas colunas, marca d'água "Prova aplicada", números de linha dos textos (corpo 7), trechos de código em Courier e frações empilhadas (viram `n/d`). Anulados ficam com gabarito `X`.
 
 ### Schema do item
 
