@@ -58,9 +58,11 @@ Reaproveitar do CGU: redes, Linux/Windows, nuvem, segurança, ITIL/COBIT, contra
 
 ## Acervo mais aderente
 
-- **Topo:** `cref11_2026_analista_suporte_ti` (P3 com os mesmos blocos do 407) e `coren_pr_2024_analista_ti` (Sistema Cofen/Corens).
+- **Topo:** `crefito17_2026_analista_ti` (edital no mesmo molde do 407), `cref11_2026_analista_suporte_ti` (P3 com os mesmos blocos do 407), `cfn_2024_pae_ti_suporte` (código 407, suporte) e `coren_pr_2024_analista_ti` (Sistema Cofen/Corens).
+- Infraestrutura e suporte: `cfo_2024_analista_infraestrutura`, `crf_pr_2025_analista_sistemas`, `cro_sp_2025_analista_suporte_ti`.
 - Gestão e governança: `crp_sp_2025_especialista_gestao_tic`, `crmv_go_2025_analista_adm_ti`.
-- Legislação (P2): `cro_sp_2025_analista_suporte_ti`, `coffito_2023_analista_ti`, `crmv_go_2025_analista_adm_ti`.
+- Legislação (P2): `cro_sp_2025_analista_suporte_ti`, `coffito_2023_analista_ti`, `crmv_go_2025_analista_adm_ti`, `crefito17_2026_analista_ti`.
+- **Discursiva:** 11 temas reais com padrão da banca em `acervo/itens/*_disc*.md` (DNS, VLANs, acesso remoto, backup e recovery, segurança em nuvem, monitoramento, indicadores e riscos com ITIL/COBIT, segurança + ITIL + riscos, análise de dados, otimização de consultas, testes de software). O mais próximo do 407: CREFITO-17 2026.
 - Aderência média: `ibict_2024_tecnologista_ti`.
 - Apoio de conteúdo (peso ×1, não molde de estilo): itens Cebraspe de TI do repo CGU_2026.
 

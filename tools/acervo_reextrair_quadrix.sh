@@ -9,3 +9,7 @@ run --id coffito_2023_analista_ti --orgao COFFITO --ano 2023 --cargo "ANALISTA D
 run --id crp_sp_2025_especialista_gestao_tic --orgao CRP-SP --ano 2025 --cargo "Especialista em Gestão – Tecnologia da Informação e Comunicação" --gab-cargo "ESPECIALISTA EM GESTÃO – TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO \(CÓDIGO 408\)" $X
 run --id crmv_go_2025_analista_adm_ti --orgao CRMV-GO --ano 2025 --cargo "Analista Administrativo - Área de Tecnologia da Informação" --gab-cargo "ANALISTA ADMINISTRATIVO - ÁREA DE TECNOLOGIA DA INFORMAÇÃO \(CÓDIGO 400\)" $X
 run --id ibict_2024_tecnologista_ti --orgao IBICT --ano 2024 --cargo "CARGO TECNOLOGISTA – PERFIL: TECNOLOGIA DA INFORMAÇÃO" --gab-cargo "TECNOLOGISTA - TECNOLOGIA DA INFORMAÇÃO \(CÓDIGO 404\)" --aderencia media $X
+run --id cfn_2024_pae_ti_suporte --orgao CFN --ano 2024 --cargo "Profissional de Atividades Estratégicas (PAE) – Ocupação: Tecnologia da Informação – Suporte Técnico" --gab-cargo "TECNOLOGIA DA INFORMAÇÃO – SUPORTE TÉCNICO" $X
+run --id cfo_2024_analista_infraestrutura --orgao CFO --ano 2024 --cargo "Analista de Infraestrutura" --gab-cargo "ANALISTA DE INFRAESTRUTURA \(CÓDIGO 401\)" $X
+run --id crf_pr_2025_analista_sistemas --orgao CRF-PR --ano 2025 --cargo "Analista de Sistemas" --gab-cargo "ANALISTA DE SISTEMAS \(CÓDIGO 400\)" --aderencia media $X
+run --id crefito17_2026_analista_ti --orgao CREFITO-17 --ano 2026 --cargo "Analista de Tecnologia da Informação" --gab-cargo "ANALISTA DE TECNOLOGIA DA INFORMAÇÃO \(CÓDIGO 402\)" $X

@@ -2,51 +2,51 @@ atualizado: '2026-11-26'
 descricao: Acervo Quadrix C/E do COFEN 2026 (Cargo 407). Itens em acervo/itens/<id>_bNN.md, um arquivo por bloco de comando.
 cobertura:
   esp.tic.fundamentos:
-    itens: 66
-    aderencia_alta: 66
+    itens: 85
+    aderencia_alta: 80
   esp.tic.redes:
-    itens: 32
-    aderencia_alta: 32
+    itens: 82
+    aderencia_alta: 67
   esp.tic.seguranca:
-    itens: 33
-    aderencia_alta: 33
+    itens: 106
+    aderencia_alta: 91
   esp.tic.bd:
-    itens: 55
-    aderencia_alta: 35
+    itens: 81
+    aderencia_alta: 56
   esp.tic.engsw:
-    itens: 88
-    aderencia_alta: 58
+    itens: 107
+    aderencia_alta: 66
   esp.tic.govti:
-    itens: 33
-    aderencia_alta: 33
+    itens: 49
+    aderencia_alta: 49
   esp.tic.etica:
-    itens: 24
-    aderencia_alta: 24
+    itens: 45
+    aderencia_alta: 41
   esp.tic.gestao:
-    itens: 8
-    aderencia_alta: 8
+    itens: 20
+    aderencia_alta: 20
   esp.tic.auditoria:
     itens: 2
     aderencia_alta: 2
   esp.tic.contratos:
-    itens: 12
-    aderencia_alta: 12
+    itens: 23
+    aderencia_alta: 23
   esp.tic.atendimento:
-    itens: 4
-    aderencia_alta: 4
+    itens: 20
+    aderencia_alta: 10
   esp.tic.infra:
-    itens: 53
-    aderencia_alta: 48
+    itens: 166
+    aderencia_alta: 131
 cobertura_basicos:
   basicos.lp:
-    itens: 126
-    aderencia_alta: 116
+    itens: 188
+    aderencia_alta: 158
   basicos.rlm:
-    itens: 59
-    aderencia_alta: 59
+    itens: 99
+    aderencia_alta: 89
   basicos.ingles:
-    itens: 70
-    aderencia_alta: 62
+    itens: 110
+    aderencia_alta: 92
 cobertura_comp:
   comp.leg.enfermagem:
     itens: 15
@@ -58,27 +58,27 @@ cobertura_comp:
     itens: 2
     aderencia_alta: 2
   comp.leg.improbidade:
-    itens: 29
-    aderencia_alta: 29
+    itens: 54
+    aderencia_alta: 43
   comp.leg.lgpd:
-    itens: 8
-    aderencia_alta: 8
+    itens: 27
+    aderencia_alta: 24
   comp.leg.processo:
-    itens: 17
-    aderencia_alta: 17
+    itens: 39
+    aderencia_alta: 35
   comp.leg.anticorrupcao:
     itens: 16
     aderencia_alta: 16
   comp.const:
-    itens: 2
+    itens: 7
     aderencia_alta: 2
   comp.adm:
-    itens: 16
-    aderencia_alta: 13
+    itens: 37
+    aderencia_alta: 23
 cobertura_disc:
   disc.tic:
-    itens: 0
-    aderencia_alta: 0
+    itens: 11
+    aderencia_alta: 10
 fontes:
 - id: coren_pr_2024_analista_ti
   pasta: acervo/fontes/coren_pr_2024_analista_ti
@@ -91,11 +91,12 @@ fontes:
   itens: 120
   blocos: 27
   aderencia: alta
-  discursiva: nao_coletada
+  discursiva: coletada_padrao_preliminar
   status: extraido_conferido
   urls:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/114663/quadrix-2024-coren-pr-analista-de-tecnologia-da-informacao-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/114663/quadrix-2024-coren-pr-analista-de-tecnologia-da-informacao-gabarito.pdf
+    padrao_discursiva: https://quadrix.org.br/uploads/861/concursos/1058/anexos/962a427eb8081d677277b3a8519389b3.pdf
   nota: Mesmo sistema (Cofen/Corens); P3 cobra Regimento do Coren, Lei 5.905 e Res. COFEN 507/2016 e 564/2017.
 - id: cref11_2026_analista_suporte_ti
   pasta: acervo/fontes/cref11_2026_analista_suporte_ti
@@ -125,11 +126,12 @@ fontes:
   itens: 120
   blocos: 19
   aderencia: alta
-  discursiva: nao_coletada
+  discursiva: coletada
   status: extraido_conferido
   urls:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/138455/quadrix-2025-cro-sp-analista-de-infraestrutura-de-tecnologia-de-informacao-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/138455/quadrix-2025-cro-sp-analista-de-infraestrutura-de-tecnologia-de-informacao-gabarito.pdf
+    padrao_discursiva: https://anexos.cdn.selecao.net.br/uploads/861/concursos/1028/anexos/7c7583cb-a193-43a7-992d-89e85573758f.pdf
   nota: Arquivo publicado como 'analista de infraestrutura', mas o caderno é do cargo 407 Analista de Suporte (gabarito 2.10).
 - id: coffito_2023_analista_ti
   pasta: acervo/fontes/coffito_2023_analista_ti
@@ -142,12 +144,13 @@ fontes:
   itens: 120
   blocos: 25
   aderencia: alta
-  discursiva: nao_coletada
+  discursiva: fora_do_perfil
   status: extraido_conferido
   urls:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/96882/quadrix-2023-coffito-analista-de-tecnologia-da-informacao-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/96882/quadrix-2023-coffito-analista-de-tecnologia-da-informacao-gabarito.pdf
-  nota: Conselho federal; P2 com LAI, LGPD, improbidade e processo administrativo.
+    padrao_discursiva: https://quadrix.org.br/uploads/861/concursos/1096/anexos/edf43be7abf149c8066a5c43509ddf00.pdf
+  nota: 'Conselho federal; P2 com LAI, LGPD, improbidade e processo administrativo. Discursiva de atualidades (grupo Wagner na Rússia): padrão guardado na pasta, não entra como disc.tic.'
 - id: crp_sp_2025_especialista_gestao_tic
   pasta: acervo/fontes/crp_sp_2025_especialista_gestao_tic
   banca: quadrix
@@ -159,11 +162,12 @@ fontes:
   itens: 120
   blocos: 25
   aderencia: alta
-  discursiva: nao_coletada
+  discursiva: coletada
   status: extraido_conferido
   urls:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/137155/quadrix-2025-crp-sp-especialista-em-gestao-tecnologia-da-informacao-e-comunicacao-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/137155/quadrix-2025-crp-sp-especialista-em-gestao-tecnologia-da-informacao-e-comunicacao-gabarito.pdf
+    padrao_discursiva: https://anexos.cdn.selecao.net.br/uploads/861/concursos/1019/anexos/79bd5863-4bd2-4ad8-9c3a-b3777dc4c9b1.pdf
   nota: Cargo de gestão de TIC (ITIL 4, COBIT 2019, indicadores, ISO 27001/27002).
 - id: crmv_go_2025_analista_adm_ti
   pasta: acervo/fontes/crmv_go_2025_analista_adm_ti
@@ -176,11 +180,12 @@ fontes:
   itens: 120
   blocos: 30
   aderencia: alta
-  discursiva: nao_coletada
+  discursiva: coletada
   status: extraido_conferido
   urls:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/142435/quadrix-2025-crmv-go-analista-administrativo-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/142435/quadrix-2025-crmv-go-analista-administrativo-gabarito.pdf
+    padrao_discursiva: https://anexos.cdn.selecao.net.br/uploads/861/concursos/11/anexos/8fed726b-1162-4736-8195-6ee103cef52c.pdf
   nota: P2 com Constitucional e Administrativo; P3 com ITIL 4, COBIT 2019 e Lei 14.133.
 - id: ibict_2024_tecnologista_ti
   pasta: acervo/fontes/ibict_2024_tecnologista_ti
@@ -199,3 +204,137 @@ fontes:
     prova: https://arquivos.qconcursos.com/prova/arquivo_prova/108308/quadrix-2024-ibict-tecnologista-tecnologia-da-informacao-prova.pdf
     gabarito: https://arquivos.qconcursos.com/prova/arquivo_gabarito/108308/quadrix-2024-ibict-tecnologista-tecnologia-da-informacao-gabarito.pdf
   nota: Não é conselho; P3 voltado a desenvolvimento e ciência da informação (40 básicos + 80 específicos).
+- id: cfn_2024_pae_ti_suporte
+  pasta: acervo/fontes/cfn_2024_pae_ti_suporte
+  banca: quadrix
+  orgao: CFN
+  ano: 2024
+  cargo: PAE – Tecnologia da Informação – Suporte Técnico
+  codigo: '407'
+  formato: certo_errado
+  itens: 120
+  blocos: 22
+  aderencia: alta
+  discursiva: coletada
+  status: extraido_conferido
+  urls:
+    pagina: https://quadrix.org.br/informacoes/1048/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/1048/anexos/c86b7283-3609-4310-a282-c6a083c97d0b.zip
+    gabarito: https://quadrix.org.br/uploads/861/concursos/1048/anexos/d8585ccb57319f06bde3e852e646ce1f.pdf?v163217
+    padrao_discursiva: https://quadrix.org.br/uploads/861/concursos/1048/anexos/5fdb4192a90f9efcebb76ea70716a455.pdf?v163217
+  nota: 'Mesmo código 407 e ocupação de suporte; P3 cobra ITIL, mudanças, base de conhecimento, fiscalização de contratos, backup e manutenção. Discursiva: DNS.'
+- id: cfo_2024_analista_infraestrutura
+  pasta: acervo/fontes/cfo_2024_analista_infraestrutura
+  banca: quadrix
+  orgao: CFO
+  ano: 2024
+  cargo: Analista de Infraestrutura
+  codigo: '401'
+  formato: certo_errado
+  itens: 120
+  blocos: 22
+  aderencia: alta
+  discursiva: coletada
+  status: extraido_conferido
+  urls:
+    pagina: https://quadrix.org.br/informacoes/1049/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/1049/anexos/bc12eac6-98e6-41e3-bf11-87996e6161ca.zip
+    gabarito: https://quadrix.org.br/uploads/861/concursos/1049/anexos/3afdc2f81b49997b3175f1c86e114c57.pdf?v163217
+    padrao_discursiva: https://quadrix.org.br/uploads/861/concursos/1049/anexos/ab0c7946202fa69c2ee4dfe4017037c1.pdf?v163217
+  nota: 'Infraestrutura em blocos de 10 itens com situação-problema. Discursiva: segurança, ITIL, governança e riscos integrados.'
+- id: crf_pr_2025_analista_sistemas
+  pasta: acervo/fontes/crf_pr_2025_analista_sistemas
+  banca: quadrix
+  orgao: CRF-PR
+  ano: 2025
+  cargo: Analista de Sistemas
+  codigo: '400'
+  formato: certo_errado
+  itens: 120
+  blocos: 23
+  aderencia: media
+  discursiva: coletada
+  status: extraido_conferido
+  urls:
+    pagina: https://quadrix.org.br/informacoes/3031/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/3031/anexos/3c8f299b-edfb-4caf-baa7-0adafd0ac6ed.zip
+    gabarito: https://anexos.cdn.selecao.net.br/uploads/861/concursos/3031/anexos/e4fec5c9-406d-43c6-93b0-efb2f153d862.pdf
+    padrao_discursiva: https://anexos.cdn.selecao.net.br/uploads/861/concursos/3031/anexos/87c537f6-cc08-4ddc-a2b3-86213ea30764.pdf
+  nota: 'Perfil de suporte e infraestrutura (Samba, Apache, VoIP, CFTV, AD, GLPI, Zabbix). Discursiva: acesso remoto.'
+- id: crefito17_2026_analista_ti
+  pasta: acervo/fontes/crefito17_2026_analista_ti
+  banca: quadrix
+  orgao: CREFITO-17
+  ano: 2026
+  cargo: Analista de Tecnologia da Informação
+  codigo: '402'
+  formato: certo_errado
+  itens: 120
+  blocos: 25
+  aderencia: alta
+  discursiva: coletada
+  status: extraido_conferido
+  urls:
+    pagina: https://quadrix.org.br/informacoes/3041/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/3041/anexos/fc75420c-9413-4962-94be-4d800eac2df8.zip
+    gabarito: https://anexos.cdn.selecao.net.br/uploads/861/concursos/3041/anexos/56b57efd-7a95-4e53-aac2-c47d87fbb19a.pdf
+    padrao_discursiva: https://anexos-r2.selecao.net.br/uploads/861/concursos/3041/anexos/7ff27792-1335-44ab-a688-d6285ca62816.pdf
+  nota: 'Edital com o mesmo molde do 407 (Sistema Cofen/Corens, governança, auditorias, contratos, atendimento estratégico, gestão de ativos, implantação e migração). A prova mais aderente do acervo. Discursiva:
+    indicadores, riscos, ITIL e COBIT.'
+- id: core_sp_2025_analista_ti
+  pasta: acervo/fontes/core_sp_2025_analista_ti
+  banca: quadrix
+  orgao: CORE-SP
+  ano: 2025
+  cargo: Analista de Tecnologia da Informação
+  codigo: '400'
+  formato: multipla_escolha_A-E
+  itens: 0
+  blocos: 0
+  aderencia: media
+  discursiva: coletada
+  status: so_discursiva
+  urls:
+    pagina: https://quadrix.org.br/informacoes/17/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/17/anexos/7638e14f-9786-4c09-b3f8-4881caf7ca0c.zip
+    gabarito: https://anexos.cdn.selecao.net.br/uploads/861/concursos/17/anexos/181b883d-76c3-4a61-ae9a-74e99dd4d5bd.pdf
+    padrao_discursiva: https://anexos.cdn.selecao.net.br/uploads/861/concursos/17/anexos/fca26bb6-e8e9-47df-a7d7-50e3a48bf4a2.pdf
+  nota: Objetiva de múltipla escolha (A–E), não ingerida; só a discursiva (testes de software) entrou.
+- id: crq_rs_2026_analista_informatica
+  pasta: acervo/fontes/crq_rs_2026_analista_informatica
+  banca: quadrix
+  orgao: CRQ-RS (5ª Região)
+  ano: 2026
+  cargo: Analista de Informática
+  codigo: '401'
+  formato: multipla_escolha_A-E
+  itens: 0
+  blocos: 0
+  aderencia: media
+  discursiva: coletada
+  status: so_discursiva
+  urls:
+    pagina: https://quadrix.org.br/informacoes/3050/
+    provas_zip: https://anexos-r2.selecao.net.br/uploads/861/concursos/3050/anexos/79c13fa8-c782-4e45-95fc-b84a8501beba.zip
+    gabarito: https://anexos-r2.selecao.net.br/uploads/861/concursos/3050/anexos/c7af418a-b502-491b-b129-389c354e0599.pdf
+    padrao_discursiva: https://anexos-r2.selecao.net.br/uploads/861/concursos/3050/anexos/8cf29978-932e-4f52-9c05-e6fe7b00e26f.pdf
+  nota: 'Objetiva de múltipla escolha (A–E), não ingerida. Discursiva em duas partes: a 1 é de atualidades (fora do perfil do 407); a 2, estudo de caso de backup e recovery, entrou.'
+- id: cfp_2024_analista_ti_suporte
+  pasta: acervo/fontes/cfp_2024_analista_ti_suporte
+  banca: quadrix
+  orgao: CFP
+  ano: 2024
+  cargo: Analista Técnico/TI/Suporte
+  codigo: '408'
+  formato: certo_errado
+  itens: 0
+  blocos: 0
+  aderencia: alta
+  discursiva: so_padrao
+  status: so_discursiva
+  urls:
+    pagina: https://quadrix.org.br/informacoes/1051/
+    provas_zip: https://anexos.cdn.selecao.net.br/uploads/861/concursos/1051/anexos/795e83ca-f7c8-4b13-b1f7-45af2ce1460c.zip
+    gabarito: https://quadrix.org.br/uploads/861/concursos/1051/anexos/e2b739dcd161095e4acc7d65d2fe8f95.pdf?v163218
+    padrao_discursiva: https://quadrix.org.br/uploads/861/concursos/1051/anexos/2a6255086ad9da915072702adfe7e9b1.pdf?v163218
+  nota: O ZIP oficial só traz os cadernos de nível médio; o caderno do 408 não foi publicado. Entrou o padrão da discursiva (VLANs), sem enunciado.
