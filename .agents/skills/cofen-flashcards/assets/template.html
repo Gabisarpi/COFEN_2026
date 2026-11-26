@@ -1,0 +1,255 @@
+<title>__TITULO__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: um cartão por vez no centro, baralho escolhido no topo, placar, refação e exportação YAML no rodapé.
+   Gerado por .agents/skills/cofen-flashcards/scripts/build.py a partir de deck.json: não editar à mão. */
+:root{
+  --bg:#EEF2F5; --card:#FFFFFF; --sunk:#E2E8EE; --ink:#16212C; --muted:#5A6776; --line:#CFD8E1;
+  --t1:#0F6B66; --t1s:#DDF0EE; --t2:#9A4F0C; --t2s:#F8EBDD; --t3:#2346C8; --t3s:#E3E9FB; --t4:#7A3FB0; --t4s:#EFE4F8;
+  --ok:#1D7546; --ok-soft:#E1F2E8; --bad:#B0302B; --bad-soft:#F9E3E1;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F151B; --card:#17202A; --sunk:#1E2934; --ink:#E3E9EF; --muted:#9AA6B3; --line:#2C3946;
+  --t1:#5CC9BF; --t1s:#14302E; --t2:#EBA45E; --t2s:#36261A; --t3:#93A8FF; --t3s:#1F2A4D; --t4:#C39AF0; --t4s:#2E2140;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F151B; --card:#17202A; --sunk:#1E2934; --ink:#E3E9EF; --muted:#9AA6B3; --line:#2C3946;
+  --t1:#5CC9BF; --t1s:#14302E; --t2:#EBA45E; --t2s:#36261A; --t3:#93A8FF; --t3s:#1F2A4D; --t4:#C39AF0; --t4s:#2E2140;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:grid;gap:18px}
+h1,h2{font-family:var(--f-display);margin:0;text-wrap:balance}
+h1{font-size:clamp(26px,5vw,34px);font-weight:800;line-height:1.1}
+p{margin:0}
+.eyebrow{font:700 12px/1.2 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:62ch}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.decks{display:flex;flex-wrap:wrap;gap:8px}
+.deck{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.deck b{font:600 12px var(--f-mono);color:var(--muted);margin-left:4px}
+.deck[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--card)}
+.deck[aria-pressed="true"] b{color:var(--card)}
+.status{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{flex:1 1 120px;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .25s}
+article.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:16px;min-width:0;border-top:5px solid var(--tone)}
+.c1{--tone:var(--t1);--tone-soft:var(--t1s)} .c2{--tone:var(--t2);--tone-soft:var(--t2s)}
+.c3{--tone:var(--t3);--tone-soft:var(--t3s)} .c4{--tone:var(--t4);--tone-soft:var(--t4s)}
+.top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.chip{font:600 12px/1 var(--f-display);letter-spacing:.04em;padding:4px 8px;border-radius:999px;background:var(--tone-soft);color:var(--tone)}
+.chip.k{background:var(--sunk);color:var(--muted)}
+.front{font-size:19px;line-height:1.5;font-weight:600}
+.front code,.back code{font:600 .88em var(--f-mono);background:var(--sunk);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;font:14px/1.4 var(--f-mono);font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
+th{font-family:var(--f-display);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:7px;padding:10px 16px;font-weight:600;font-size:15px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.main{background:var(--tone,var(--ink));border-color:var(--tone,var(--ink));color:var(--card)}
+.btn.ce{min-width:56px;font-family:var(--f-display);font-size:18px;font-weight:800}
+.btn.okb{border-color:var(--ok);color:var(--ok)}
+.btn.badb{border-color:var(--bad);color:var(--bad)}
+.back{display:grid;gap:10px;border-top:1px dashed var(--line);padding-top:14px;min-width:0}
+.verdict{font:800 15px var(--f-display)}
+.verdict.ok{color:var(--ok)} .verdict.bad{color:var(--bad)}
+dl.termos{margin:0;display:grid;gap:4px}dl.termos dt{font-weight:700}dl.termos dd{margin:0 0 4px}
+.lbl{font:700 12px/1.2 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.viz{background:var(--sunk);border-radius:7px;padding:9px 12px}
+.hook{background:var(--tone-soft);border-radius:7px;padding:9px 12px;font-weight:600}
+.src{font-size:13px;color:var(--muted)}
+.src a{color:var(--tone)}
+.nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cell{background:var(--sunk);border-radius:8px;padding:10px 12px}
+.cell strong{display:block;font:800 24px var(--f-display);font-variant-numeric:tabular-nums}
+.cell span{font-size:13px;color:var(--muted)}
+.miss{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px}
+.mono{font-family:var(--f-mono);font-size:.9em;overflow-wrap:anywhere}
+.note{background:var(--sunk);border-radius:7px;padding:9px 12px;font-size:14px}
+.toast{font-size:13px;color:var(--ok);font-weight:600}
+textarea{width:100%;min-height:120px;font:12px/1.45 var(--f-mono);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="h1"></h1>
+    <p class="lede" id="lede"></p>
+  </header>
+
+  <div class="decks" role="group" aria-label="Baralho" id="decks"></div>
+
+  <div class="status">
+    <span id="pos"></span>
+    <div class="bar" aria-hidden="true"><i id="prog"></i></div>
+    <span id="score"></span>
+  </div>
+
+  <main id="stage"></main>
+
+  <div class="nav">
+    <button class="btn" id="prev">← Anterior</button>
+    <button class="btn" id="next">Próximo →</button>
+  </div>
+
+  <section class="summary" aria-labelledby="sum-t">
+    <h2 id="sum-t" style="font-size:20px">Placar</h2>
+    <div class="grid3">
+      <div class="cell"><strong id="c-ok">0</strong><span>Sei</span></div>
+      <div class="cell"><strong id="c-bad">0</strong><span>Revisar</span></div>
+      <div class="cell"><strong id="c-left">0</strong><span>Sem marcar</span></div>
+    </div>
+    <ol class="miss" id="miss"></ol>
+    <div class="actions">
+      <button class="btn" id="redo">Refazer só os que marquei "revisar"</button>
+      <button class="btn" id="reset">Zerar as marcações</button>
+    </div>
+    <div id="confirm" class="note" hidden>Isso apaga as marcações e as respostas C/E desta página. <button class="btn" id="reset-yes">Apagar</button> <button class="btn" id="reset-no">Cancelar</button></div>
+  </section>
+
+  <section class="summary" aria-labelledby="exp-t">
+    <h2 id="exp-t" style="font-size:20px">Exportar para o ledger</h2>
+    <p style="font-size:14px;color:var(--muted)">Salve em <span class="mono" id="exp-path"></span>. No artifact, o download pode sair com <span class="mono">.txt</span> no fim; tire na janela de salvar ou deixe que o Claude renomeia. Aberto do disco, o arquivo já sai em <span class="mono">.yaml</span>. Vale a primeira resposta de cada cartão C/E; a refação não muda o arquivo.</p>
+    <div class="actions">
+      <button class="btn main" id="dl" hidden>Baixar arquivo</button>
+      <button class="btn main" id="copy">Copiar resultado</button>
+      <span class="toast" id="toast" hidden></span>
+    </div>
+    <textarea id="yaml" readonly aria-label="Resultado em YAML"></textarea>
+  </section>
+</div>
+
+<script id="deck" type="application/json">__DECK__</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById("deck").textContent);
+var CARDS=D.cartoes, DECKS=D.baralhos, KEY=D.key+":";
+var tone={}; DECKS.forEach(function(b,i){tone[b.id]="c"+(i%4+1)});
+var dname={}; DECKS.forEach(function(b){dname[b.id]=b.nome});
+function ler(k){try{return JSON.parse(localStorage.getItem(KEY+k)||"null")}catch(e){return null}}
+function gravar(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch(e){}}
+var marks=ler("marks")||{}, first=ler("first")||{}, deck=ler("deck")||"all", only=null, idx=0, open={}, chosen={};
+var $=function(id){return document.getElementById(id)};
+function fonte(s){return (D.fontes&&D.fontes[s])||s}
+function txt(h){var d=document.createElement("div");d.innerHTML=h;return d.textContent.replace(/\s+/g," ").trim()}
+$("eyebrow").textContent=D.eyebrow; $("h1").textContent=D.h1; $("lede").textContent=D.lede; $("exp-path").textContent=D.export;
+var dk=[{id:"all",nome:"Todos"}].concat(DECKS);
+$("decks").innerHTML=dk.map(function(b){
+  var n=CARDS.filter(function(c){return b.id==="all"||c.d===b.id}).length;
+  return '<button class="deck" data-deck="'+b.id+'" aria-pressed="false">'+b.nome+'<b>'+n+'</b></button>'}).join("");
+if(dk.length<=2){$("decks").hidden=true; deck="all"}
+function lista(){
+  var l=CARDS.filter(function(c){return deck==="all"||c.d===deck});
+  if(only) l=l.filter(function(c){return only.indexOf(c.id)>=0});
+  return l;
+}
+function render(){
+  var l=lista(); if(idx>=l.length) idx=Math.max(0,l.length-1);
+  var c=l[idx], st=$("stage");
+  document.querySelectorAll(".deck").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-deck")===deck))});
+  if(!c){st.innerHTML='<article class="card c1"><p>Nenhum cartão marcado como "revisar" neste baralho.</p></article>';placar();return}
+  var isCE=c.k==="ce", shown=!!open[c.id], ch=chosen[c.id];
+  var h='<article class="card '+tone[c.d]+'"><div class="top"><span class="chip">'+dname[c.d]+'</span><span class="chip k">'+(isCE?"Julgue: C ou E":"Responda de cabeça")+'</span></div>';
+  h+='<p class="front">'+c.f+'</p>';
+  if(!shown){
+    h+='<div class="actions">'+(isCE?'<button class="btn ce" data-ce="C">C</button><button class="btn ce" data-ce="E">E</button>':'<button class="btn main" id="flip">Mostrar resposta</button>')+'</div>';
+  }else{
+    h+='<div class="back">';
+    if(isCE){var ok=ch===c.g;h+='<p class="verdict '+(ok?"ok":"bad")+'">Você marcou '+ch+' · gabarito '+c.g+(ok?" · acertou":" · errou")+'</p>'}
+    if(c.termos) h+='<div><div class="lbl">O que é</div><dl class="termos">'+c.termos.split(" || ").map(function(x){var p=x.split(" :: ");return "<dt>"+p[0]+"</dt><dd>"+p.slice(1).join(" :: ")+"</dd>"}).join("")+'</dl></div>';
+    h+='<div>'+c.a+'</div>';
+    if(c.viz) h+='<div><div class="lbl">Vizinho</div><div class="viz">'+c.viz+'</div></div>';
+    h+='<p class="hook">'+c.h+'</p><p class="src">Fonte: '+fonte(c.s)+'</p>';
+    h+='<div class="actions"><button class="btn okb" data-m="sei">Sei</button><button class="btn badb" data-m="revisar">Revisar</button></div></div>';
+  }
+  st.innerHTML=h+'</article>';
+  var f=$("flip"); if(f) f.onclick=function(){open[c.id]=1;render()};
+  st.querySelectorAll("[data-ce]").forEach(function(b){b.onclick=function(){
+    var v=b.getAttribute("data-ce"); chosen[c.id]=v; open[c.id]=1;
+    if(!first[c.id]){first[c.id]=v;gravar("first",first)}
+    if(v!==c.g){marks[c.id]="revisar";gravar("marks",marks)}
+    render()}});
+  st.querySelectorAll("[data-m]").forEach(function(b){b.onclick=function(){marks[c.id]=b.getAttribute("data-m");gravar("marks",marks);
+    if(idx<l.length-1){idx++} render()}});
+  $("pos").textContent="Cartão "+(idx+1)+" de "+l.length+(only?" (refação)":"");
+  $("prog").style.width=((idx+1)/l.length*100)+"%";
+  $("prev").disabled=idx===0; $("next").disabled=idx>=l.length-1;
+  placar();
+}
+function placar(){
+  var base=CARDS.filter(function(c){return deck==="all"||c.d===deck});
+  var ok=0,bad=0,miss=[];
+  base.forEach(function(c){if(marks[c.id]==="sei")ok++;else if(marks[c.id]==="revisar"){bad++;miss.push(c)}});
+  $("c-ok").textContent=ok;$("c-bad").textContent=bad;$("c-left").textContent=base.length-ok-bad;
+  $("score").textContent=ok+" sei · "+bad+" revisar";
+  $("miss").innerHTML=miss.map(function(c){return "<li>"+c.h+"</li>"}).join("");
+  $("redo").disabled=!bad;
+  $("yaml").value=yaml();
+}
+function q(s){return '"'+String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"')+'"'}
+function hoje(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function yaml(){
+  var o=["material: "+q(D.material),"tipo: flashcards","pessoa: "+D.pessoa,"cargo: "+D.cargo,"gerado: "+q(D.data),"data: "+q(hoje()),"itens:"];
+  CARDS.forEach(function(c){
+    var r=first[c.id], m=marks[c.id]||"sem_marcar";
+    o.push("  - id: "+c.id,"    baralho: "+c.d,"    lacuna: "+(c.lacuna||"null"),"    tipo: "+c.k);
+    if(c.k==="ce"){o.push("    resposta: "+(r||"na"),"    gabarito: "+c.g,"    resultado: "+(!r?"na":r===c.g?"acerto":"erro"))}
+    o.push("    autoavaliacao: "+m,"    gatilho: "+q(txt(c.h)));
+  });
+  return o.join("\n")+"\n";
+}
+document.querySelectorAll(".deck").forEach(function(b){b.onclick=function(){deck=b.getAttribute("data-deck");gravar("deck",deck);only=null;idx=0;render()}});
+$("prev").onclick=function(){if(idx>0){idx--;render()}};
+$("next").onclick=function(){idx++;render()};
+$("redo").onclick=function(){
+  only=CARDS.filter(function(c){return (deck==="all"||c.d===deck)&&marks[c.id]==="revisar"}).map(function(c){return c.id});
+  only.forEach(function(id){delete open[id];delete chosen[id]}); idx=0; render(); window.scrollTo(0,0);
+};
+$("reset").onclick=function(){$("confirm").hidden=false};
+$("reset-no").onclick=function(){$("confirm").hidden=true};
+$("reset-yes").onclick=function(){marks={};first={};gravar("marks",marks);gravar("first",first);open={};chosen={};only=null;idx=0;$("confirm").hidden=true;render()};
+function aviso(t){var e=$("toast");e.textContent=t;e.hidden=false;setTimeout(function(){e.hidden=true},3500)}
+$("copy").onclick=function(){
+  var t=$("yaml").value;
+  navigator.clipboard.writeText(t).then(function(){aviso("Resultado copiado.")},function(){var a=$("yaml");a.focus();a.select();aviso("Texto selecionado: use Ctrl+C.")});
+};
+(async function(){
+  try{
+    if(!window.claude||!claude.use){
+      /* Modo HTML local (aberto do disco, sem runtime do Claude): download direto por Blob. */
+      var arqL=D.export.split("/").pop(), bL=$("dl"); bL.hidden=false;
+      bL.onclick=function(){
+        try{var u=URL.createObjectURL(new Blob([yaml()],{type:"text/yaml"})),a=document.createElement("a");
+          a.href=u;a.download=arqL;document.body.appendChild(a);a.click();a.remove();
+          setTimeout(function(){URL.revokeObjectURL(u)},1000);aviso("Arquivo salvo: "+arqL)}
+        catch(e){bL.hidden=true;aviso("Download indisponível aqui: use Copiar resultado.")}
+      };
+      return;
+    }
+    var dl=await claude.use("downloads"); if(!dl) return;
+    var arq=D.export.split("/").pop()+".txt", b=$("dl"); b.hidden=false;
+    b.onclick=async function(){
+      b.disabled=true;
+      try{await dl.save({filename:arq,data:yaml()});aviso("Arquivo pronto: "+arq)}
+      catch(e){var c=e&&e.code;aviso(c==="declined"?"Download cancelado.":c==="rate_limited"?"Já há uma confirmação aberta.":"Download indisponível aqui: use Copiar resultado.");
+        if(c!=="declined"&&c!=="rate_limited") b.hidden=true}
+      b.disabled=false;
+    };
+  }catch(e){}
+})();
+if(deck!=="all"&&!DECKS.some(function(b){return b.id===deck})) deck="all";
+render();
+})();
+</script>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{{TITLE}}</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --paper: #1a222c;
+    --ink: #e7ecf1;
+    --muted: #9aa7b5;
+    --line: #2c3846;
+    --accent: #6eb6ff;
+    --warn: #ffb086;
+    --ok: #7dcea0;
+    --bar: #151c24;
+    --folha: #121820;
+    --row: #243040;
+    --over: #3a2418;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Source Serif 4", "Libre Baskerville", Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--bar);
+    border-bottom: 1px solid var(--line);
+    padding: .65rem 1rem;
+    display: flex; flex-wrap: wrap; gap: .75rem 1.25rem;
+    align-items: center; justify-content: space-between;
+  }
+  header .meta { font-size: .85rem; color: var(--muted); }
+  header h1 { font-size: 1rem; margin: 0; font-weight: 650; color: var(--accent); }
+  .tl-box {
+    font-family: "IBM Plex Mono", "Cascadia Mono", ui-monospace, monospace;
+    font-size: .95rem;
+    display: flex; align-items: baseline; gap: .5rem;
+  }
+  .tl-box strong { font-size: 1.35rem; color: var(--accent); }
+  .tl-box.over strong { color: var(--warn); }
+  .tl-box .hint { font-size: .75rem; color: var(--muted); }
+  .bar {
+    height: 6px; background: #2a3542; border-radius: 3px;
+    width: min(220px, 40vw); overflow: hidden;
+  }
+  .bar > i { display:block; height:100%; background: var(--accent); width:0%; }
+  .bar.over > i { background: var(--warn); }
+  .actions { display:flex; flex-wrap:wrap; gap:.4rem; }
+  button {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: .8rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    padding: .35rem .7rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button.primary { background: #2a6fad; color: #fff; border-color: #2a6fad; }
+  button:hover { filter: brightness(1.08); }
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1rem 1rem 3rem;
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 900px) {
+    main { grid-template-columns: 1fr 1fr; align-items: start; }
+    .enunciado { grid-column: 1 / -1; }
+  }
+  section {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+  }
+  section h2 {
+    margin: 0 0 .6rem;
+    font-size: .95rem;
+    color: var(--accent);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .enunciado {
+    font-size: .92rem;
+    max-height: 42vh;
+    overflow: auto;
+  }
+  .enunciado code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .88em;
+    background: #0f1419;
+    padding: .05em .3em;
+    border-radius: 3px;
+    color: #c5d6e8;
+  }
+  .enunciado ol { padding-left: 1.2rem; }
+  .enunciado li { margin: .35rem 0; }
+  .enunciado .quesitos { margin-top: .8rem; padding-top: .6rem; border-top: 1px dashed var(--line); }
+  .enunciado .pts { color: var(--muted); font-size: .85em; }
+  .calib {
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: .78rem;
+    color: var(--muted);
+    margin: 0 0 .5rem;
+  }
+  #editor {
+    width: 100%;
+    min-height: 420px;
+    resize: vertical;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: .75rem .85rem;
+    font-family: "IBM Plex Mono", "Cascadia Mono", ui-monospace, monospace;
+    font-size: 13.5px;
+    line-height: 1.5;
+    max-width: 100%;
+    background: #0f1419;
+    color: var(--ink);
+    caret-color: var(--accent);
+    tab-size: 2;
+  }
+  #editor::placeholder { color: #667788; }
+  #editor:focus { outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+  .folha {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    line-height: 1.45;
+    max-height: 520px;
+    overflow: auto;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    padding: .5rem .4rem .5rem .2rem;
+    background: var(--folha);
+  }
+  .folha .row {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: .25rem;
+    border-bottom: 1px solid var(--row);
+    min-height: 1.45em;
+  }
+  .folha .n { color: #6b7a8a; text-align: right; user-select: none; }
+  .folha .t { white-space: pre-wrap; word-break: break-word; }
+  .folha .blank .t { color: #4a5866; }
+  .folha .overshoot { background: var(--over); }
+  .status { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+  .status.saved { color: var(--ok); }
+  /* Pedidos do enunciado + Antes de entregar (opcionais; recolhidos quando vazios) */
+  .checks { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: .88rem; display: grid; gap: .6rem; }
+  @media (min-width: 900px) { .checks { grid-column: 1 / -1; } }
+  .checks details > summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+  .checks ul { list-style: none; padding: 0; margin: .5rem 0 0; display: grid; gap: .3rem; }
+  .checks label { display: flex; gap: .5rem; align-items: flex-start; cursor: pointer; }
+  .checks li.ok label span { color: var(--ok); }
+  .checks .add { display: flex; gap: .4rem; margin-top: .5rem; }
+  .checks .add input { flex: 1; background: #0f1419; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: .3rem .5rem; font: inherit; }
+  .checks .lp li { color: var(--muted); }
+  .checks .hint { color: var(--muted); font-size: .78rem; margin: .3rem 0 0; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>{{H1}}</h1>
+    <div class="meta">{{SUBTITLE}}</div>
+  </div>
+  <div class="tl-box" id="tlBox">
+    <span>TL</span>
+    <strong id="tlNum">0</strong>
+    <span>/ {{MIN}}–{{MAX}}</span>
+    <span class="hint" id="tlHint">· 0 chars</span>
+  </div>
+  <div class="bar" id="tlBar"><i id="tlFill"></i></div>
+  <div class="actions">
+    <button type="button" class="primary" id="btnMd">Baixar resposta.md</button>
+    <button type="button" id="btnCopy">Copiar MD</button>
+    <button type="button" id="btnClear">Limpar</button>
+  </div>
+</header>
+
+<main>
+  <section class="enunciado">
+    <h2>Enunciado</h2>
+    {{ENUNCIADO}}
+
+  </section>
+
+  <section class="checks" id="checks">
+    <details id="pedBox">
+      <summary>Pedidos do enunciado <span id="pedCount"></span></summary>
+      <ul id="pedList"></ul>
+      <div class="add">
+        <input id="pedNovo" type="text" placeholder="Acrescentar pedido (ex.: c) avaliar a proposta ii)"/>
+        <button type="button" id="pedAdd">Acrescentar</button>
+      </div>
+      <p class="hint">Marque cada pedido quando o texto já o responder. Ao exportar com pedido desmarcado, o editor pergunta antes.</p>
+    </details>
+    <details id="lpBox" hidden>
+      <summary>Antes de entregar · meus erros de LP</summary>
+      <ul class="lp" id="lpList"></ul>
+    </details>
+  </section>
+
+  <section>
+    <h2>Escrever</h2>
+    <p class="calib"><strong>Enter</strong> = nova linha na folha (ex.: <code>1- …</code> Enter <code>2- …</code> → TL 2). Se a linha passar de <strong>60</strong> caracteres, quebra por palavra e conta o excedente.</p>
+    <textarea id="editor" spellcheck="true" placeholder="1- primeiro trecho&#10;2- segundo trecho"></textarea>
+    <div class="status" id="status">Rascunho salvo no navegador (localStorage).</div>
+  </section>
+
+  <section>
+    <h2>Folha (linhas contadas)</h2>
+    <div class="folha" id="folha" aria-live="polite"></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  const MAX = {{MAX}};
+  const MIN = {{MIN}};
+  const WIDTH = {{WIDTH}};
+  const KEY = "{{KEY}}";
+  const OUT_PATH = "{{OUT_PATH}}";
+  const PEDIDOS = {{PEDIDOS}};   // opcional: pedidos explícitos do enunciado (gerador)
+  const LP_ERROS = {{LP_ERROS}}; // opcional: âncoras "errado → certo" de $P/revisao/lp-erros.md
+  const PKEY = KEY + ":pedidos";  // chave separada: o rascunho em KEY não muda
+
+  const editor = document.getElementById("editor");
+  const folha = document.getElementById("folha");
+  const tlNum = document.getElementById("tlNum");
+  const tlHint = document.getElementById("tlHint");
+  const tlBox = document.getElementById("tlBox");
+  const tlBar = document.getElementById("tlBar");
+  const tlFill = document.getElementById("tlFill");
+  const status = document.getElementById("status");
+
+  function wrapLine(text, width) {
+    // preserva espaços internos; não trim no meio — só para wrap de linha física
+    if (text.length === 0) return [""];
+    const words = text.split(/(\s+)/); // mantém separadores
+    const lines = [];
+    let cur = "";
+    for (const part of words) {
+      if (!part) continue;
+      // part pode ser palavra ou whitespace
+      if (/^\s+$/.test(part)) {
+        if (!cur) continue; // ignora espaço no início da linha contada
+        const trial = cur + part;
+        if (trial.length <= width) cur = trial;
+        else {
+          lines.push(cur.replace(/\s+$/, ""));
+          cur = "";
+        }
+        continue;
+      }
+      const trial = cur + part;
+      if (trial.length <= width) {
+        cur = trial;
+      } else {
+        if (cur) lines.push(cur.replace(/\s+$/, ""));
+        if (part.length > width) {
+          let rest = part;
+          while (rest.length > width) {
+            lines.push(rest.slice(0, width));
+            rest = rest.slice(width);
+          }
+          cur = rest;
+        } else {
+          cur = part;
+        }
+      }
+    }
+    if (cur) lines.push(cur.replace(/\s+$/, ""));
+    return lines.length ? lines : [""];
+  }
+
+  /** Cada Enter (\n) começa uma nova linha na folha. Linha longa wrapa em WIDTH. */
+  function sheetLines(raw) {
+    const normalized = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    // Não contar o "" fantasma só do \n final do textarea
+    let physical = normalized.split("\n");
+    while (physical.length > 1 && physical[physical.length - 1] === "") {
+      physical.pop();
+    }
+    if (physical.length === 1 && physical[0] === "") return [];
+
+    const rows = [];
+    for (const line of physical) {
+      if (line.length === 0) {
+        rows.push({ text: "", blank: true });
+      } else {
+        wrapLine(line, WIDTH).forEach((t) => {
+          rows.push({ text: t, blank: false });
+        });
+      }
+    }
+    return rows;
+  }
+
+  function render() {
+    const raw = editor.value;
+    const rows = sheetLines(raw);
+    const tl = rows.length;
+    const chars = raw.replace(/\s+/g, " ").trim().length;
+    tlNum.textContent = String(tl);
+    const under = tl > 0 && tl < MIN;
+    tlHint.textContent = "· " + chars + " chars · Enter=linha · wrap " + WIDTH + (under ? " · abaixo do mínimo de " + MIN + " linhas" : "");
+    const over = tl > MAX || under;
+    tlBox.classList.toggle("over", over);
+    tlBar.classList.toggle("over", over);
+    tlFill.style.width = Math.min(100, (tl / MAX) * 100) + "%";
+
+    folha.innerHTML = "";
+    if (!rows.length) {
+      folha.innerHTML = '<div class="row blank"><span class="n">—</span><span class="t">(vazio)</span></div>';
+      return rows;
+    }
+    rows.forEach((r, i) => {
+      const div = document.createElement("div");
+      div.className = "row" + (r.blank ? " blank" : "") + (i >= MAX ? " overshoot" : "");
+      div.innerHTML =
+        '<span class="n">' + (i + 1) + "</span>" +
+        '<span class="t">' + (r.blank ? "· · ·" : escapeHtml(r.text)) + "</span>";
+      folha.appendChild(div);
+    });
+    return rows;
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[c]);
+  }
+
+  // ---- Pedidos do enunciado (estado: [{t, ok, user}]) ----
+  const pedBox = document.getElementById("pedBox");
+  const pedList = document.getElementById("pedList");
+  const pedCount = document.getElementById("pedCount");
+  let ped = PEDIDOS.map((t) => ({ t: String(t), ok: false, user: false }));
+  try {
+    const sv = JSON.parse(localStorage.getItem(PKEY) || "null");
+    if (sv && Array.isArray(sv)) {
+      ped.forEach((p) => { const o = sv.find((x) => !x.user && x.t === p.t); if (o) p.ok = !!o.ok; });
+      sv.filter((x) => x.user && x.t).forEach((x) => ped.push({ t: String(x.t), ok: !!x.ok, user: true }));
+    }
+  } catch (e) {}
+  if (PEDIDOS.length) pedBox.open = true;
+  function label(p, i) {
+    return /^\s*[a-z0-9ivx]{1,4}[).]/i.test(p.t) ? p.t : String.fromCharCode(97 + i) + ") " + p.t;
+  }
+  function savePed() { try { localStorage.setItem(PKEY, JSON.stringify(ped)); } catch (e) {} }
+  function renderPed() {
+    pedList.innerHTML = "";
+    ped.forEach((p, i) => {
+      const li = document.createElement("li");
+      li.className = p.ok ? "ok" : "";
+      li.innerHTML = '<label><input type="checkbox"' + (p.ok ? " checked" : "") + '/> <span>' +
+        escapeHtml(label(p, i)) + (p.ok ? " · respondido" : "") + "</span></label>" +
+        (p.user ? ' <button type="button" data-del="' + i + '" title="Remover">×</button>' : "");
+      li.querySelector("input").addEventListener("change", (ev) => { p.ok = ev.target.checked; savePed(); renderPed(); });
+      const del = li.querySelector("button[data-del]");
+      if (del) del.addEventListener("click", () => { ped.splice(i, 1); savePed(); renderPed(); });
+      pedList.appendChild(li);
+    });
+    const ok = ped.filter((p) => p.ok).length;
+    pedCount.textContent = ped.length ? "(" + ok + "/" + ped.length + ")" : "";
+  }
+  document.getElementById("pedAdd").addEventListener("click", () => {
+    const inp = document.getElementById("pedNovo");
+    const t = inp.value.trim();
+    if (!t) return;
+    ped.push({ t: t, ok: false, user: true });
+    inp.value = "";
+    savePed(); renderPed();
+  });
+  document.getElementById("pedNovo").addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") { ev.preventDefault(); document.getElementById("pedAdd").click(); }
+  });
+  if (LP_ERROS.length) {
+    document.getElementById("lpBox").hidden = false;
+    document.getElementById("lpList").innerHTML = LP_ERROS.map((t) => "<li>" + escapeHtml(String(t)) + "</li>").join("");
+  }
+  /** true = pode exportar (nenhum pedido pendente, ou a pessoa confirmou). Não bloqueia. */
+  function confirmaPedidos() {
+    const falta = ped.map((p, i) => [p, i]).filter(([p]) => !p.ok);
+    if (!falta.length) return true;
+    return confirm("Pedidos ainda não marcados como respondidos:\n" +
+      falta.map(([p, i]) => "- " + label(p, i)).join("\n") + "\n\nExportar mesmo assim?");
+  }
+  function rodapePedidos() {
+    if (!ped.length) return [];
+    // "<" + "!--": evita a sequência de comentário HTML literal dentro do <script>
+    return ["", "<" + "!-- Pedidos do enunciado (marcação da pessoa; não conta no TL)"]
+      .concat(ped.map((p, i) => "[" + (p.ok ? "x" : " ") + "] " + label(p, i).replace(/--/g, "–")))
+      .concat(["-->", ""]);
+  }
+
+  function buildMd(rows) {
+    const tl = rows.length;
+    const body = editor.value.replace(/\r\n/g, "\n").replace(/\s+$/, "") + "\n";
+    return [
+      "{{MD_TITLE}}",
+      "",
+      "**TL:** " + tl + " linhas (limite " + MIN + "–" + MAX + " · Enter = linha · wrap " + WIDTH + ")",
+      "**Caderno:** `{{CADERNO}}`",
+      "**Editor:** `…/redacao.html`",
+      "**Destino:** `" + OUT_PATH + "`",
+      "",
+      "---",
+      "",
+      body,
+      ""
+    ].concat(rodapePedidos()).join("\n");
+  }
+
+  function saveLocal() {
+    try {
+      localStorage.setItem(KEY, editor.value);
+      status.textContent = "Rascunho salvo no navegador · " + new Date().toLocaleTimeString("pt-BR");
+      status.classList.add("saved");
+    } catch (e) {
+      status.textContent = "Não foi possível salvar no navegador.";
+      status.classList.remove("saved");
+    }
+  }
+
+  function downloadMd() {
+    if (!confirmaPedidos()) return;
+    const rows = sheetLines(editor.value);
+    const md = buildMd(rows);
+    const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "resposta.md";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    status.textContent = "Baixou resposta.md — mova para " + OUT_PATH + " (ou cole no chat).";
+    status.classList.add("saved");
+  }
+
+  async function copyMd() {
+    if (!confirmaPedidos()) return;
+    const rows = sheetLines(editor.value);
+    const md = buildMd(rows);
+    try {
+      await navigator.clipboard.writeText(md);
+      status.textContent = "MD copiado. Cole em " + OUT_PATH + " ou no chat para corrigir.";
+      status.classList.add("saved");
+    } catch (e) {
+      status.textContent = "Falha ao copiar — use Baixar resposta.md.";
+      status.classList.remove("saved");
+    }
+  }
+
+  let t = null;
+  editor.addEventListener("input", () => {
+    render();
+    clearTimeout(t);
+    t = setTimeout(saveLocal, 400);
+  });
+
+  document.getElementById("btnMd").addEventListener("click", downloadMd);
+  document.getElementById("btnCopy").addEventListener("click", copyMd);
+  document.getElementById("btnClear").addEventListener("click", () => {
+    if (!confirm("Limpar o texto da redação?")) return;
+    editor.value = "";
+    localStorage.removeItem(KEY);
+    ped.forEach((p) => { p.ok = false; }); savePed(); renderPed();
+    render();
+    status.textContent = "Limpo.";
+    status.classList.remove("saved");
+  });
+
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) editor.value = saved;
+  } catch (e) {}
+  renderPed();
+  render();
+})();
+</script>
+</body>
+</html>

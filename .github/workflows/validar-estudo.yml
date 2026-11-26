@@ -1,0 +1,24 @@
+name: validar-estudo
+on:
+  push:
+    paths:
+      - 'pessoal/*/cronograma/**'
+      - 'cargos/*/mapa-edital.md'
+      - 'tools/**'
+      - '.github/workflows/validar-estudo.yml'
+  pull_request:
+    paths:
+      - 'pessoal/*/cronograma/**'
+      - 'cargos/*/mapa-edital.md'
+      - 'tools/**'
+      - '.github/workflows/validar-estudo.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+      - run: pip install pyyaml
+      - run: python tools/validar_estudo.py --check

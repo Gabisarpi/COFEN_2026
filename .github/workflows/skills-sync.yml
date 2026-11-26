@@ -1,0 +1,25 @@
+name: skills-sync
+on:
+  push:
+    paths:
+      - '.agents/skills/**'
+      - '.cursor/skills'
+      - '.claude/skills'
+      - 'cargos/*/perfil.md'
+      - 'tools/sync_skills.py'
+  pull_request:
+    paths:
+      - '.agents/skills/**'
+      - '.cursor/skills'
+      - '.claude/skills'
+      - 'cargos/*/perfil.md'
+      - 'tools/sync_skills.py'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+      - run: python tools/sync_skills.py --check

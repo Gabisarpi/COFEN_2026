@@ -1,0 +1,79 @@
+{
+ "ordem": 1,
+ "dia": "Qua 11/11",
+ "tema": "Segredos e ambientes no pipeline",
+ "porque": "Prepara o Modelo Q2 do dia (segregação de ambientes e segredos no pipeline). No t002 você escreveu \"telemetria e observabilidade\" e \"VLAN\" sem dizer o mecanismo; aqui o texto diz exatamente onde o segredo mora, quem o lê e por onde ele vaza.",
+ "fonte": "Microsoft Learn · Azure Pipelines (pt-BR, ~1.200 palavras)",
+ "titulo": "Segredos em pipelines",
+ "url": "https://learn.microsoft.com/pt-br/azure/devops/pipelines/security/secrets",
+ "secao": "O artigo inteiro. Pule só a tabela de pré-requisitos e o trecho de YAML do fim.",
+ "minutos": 12,
+ "extra": {
+  "titulo": "AWS · Sobre as estratégias de migração (7 Rs)",
+  "url": "https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html",
+  "nota": "Para o bloco de Migração do dia: leia só Reter, Redefinir a hospedagem, Redefinir a plataforma e Refatore."
+ },
+ "perguntas": [
+  "Por que o texto diz que o melhor é não usar segredo, e o que entra no lugar dele?",
+  "Onde o segredo deve ficar guardado e como se limita quem consegue lê-lo?",
+  "Por quais caminhos um segredo vaza mesmo quando o pipeline tenta mascará-lo nos logs?"
+ ],
+ "ancoras": [
+  {
+   "termo": "conexão de serviço / identidade gerenciada",
+   "sentido": "o pipeline se autentica no serviço sem credencial explícita; é a primeira opção, antes de qualquer segredo"
+  },
+  {
+   "termo": "variável secreta",
+   "sentido": "valor criptografado, nunca em texto claro no arquivo do pipeline"
+  },
+  {
+   "termo": "cofre de segredos (Azure Key Vault) com RBAC",
+   "sentido": "o segredo sai do código e o acesso é controlado por papel, limitado a quem precisa"
+  },
+  {
+   "termo": "grupo de variáveis com permissão",
+   "sentido": "só pipelines autorizados leem o grupo; combinado com política de branch, o segredo de produção só chega ao branch principal"
+  },
+  {
+   "termo": "redação nos logs não é infalível",
+   "sentido": "a plataforma tenta mascarar, mas eco, linha de comando e mensagens de erro vazam; passar por variável de ambiente"
+  },
+  {
+   "termo": "rotação e PAT curto com permissão mínima",
+   "sentido": "limita o tempo em que um segredo comprometido serve ao atacante"
+  },
+  {
+   "termo": "segregação de ambientes",
+   "sentido": "credencial e conexão próprias por ambiente; comprometer homologação não pode alcançar produção (conceito, não está neste artigo)"
+  }
+ ],
+ "frases": [
+  {
+   "texto": "Os segredos apresentam riscos inerentes à segurança, portanto, é melhor não usá-los.",
+   "onde": "Usar outro método"
+  },
+  {
+   "texto": "Nunca armazene valores confidenciais como texto sem formatação em um arquivo azure-pipelines.yml.",
+   "onde": "Usar variáveis de segredo"
+  },
+  {
+   "texto": "Azure Pipelines tenta remover informações confidenciais dos logs sempre que possível, mas não é infalível.",
+   "onde": "Não escreva segredos em logs"
+  },
+  {
+   "texto": "Nunca ecoe segredos como saída e não passe segredos na linha de comando. Em vez disso, é melhor mapear seus segredos em variáveis de ambiente.",
+   "onde": "Usar variáveis de segredo"
+  },
+  {
+   "texto": "Roteie regularmente os segredos para minimizar a quantidade de tempo de modo que um segredo comprometido possa ser usado.",
+   "onde": "Auditar e girar segredos (tradução automática da Microsoft, literal)"
+  }
+ ],
+ "na_q2": "Numa Q2 de IaC ou CI/CD, abra o aspecto de segredos julgando o caso (\"armazenar a credencial no repositório expõe...\") e só depois proponha a sequência eliminar → cofre → menor privilégio → rotação. Essa ordem, do controle mais forte ao mais fraco, mostra critério ao avaliador. Feche citando a credencial já exposta, que precisa ser revogada: é o ponto que costuma faltar.",
+ "treino": {
+  "nome": "Treino curto t005 · senha no repositório e deploy manual",
+  "url": "https://claude.ai/artifact/PU34qzMwuh4B9iS14SvdEx",
+  "nota": "Use os termos anotados no 3º quesito (gestão segura das credenciais) e na segregação de ambientes do 2º."
+ }
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Discursiva · fiscalização de contrato de TIC · redação · 15/12/2026",
+  "h1": "Discursiva · Fiscalização de contrato de TIC · 15/12/2026",
+  "subtitle": "COFEN 2026 · Cargo 407 · 20 a 30 linhas · Enter = nova linha",
+  "pessoa": "gaby",
+  "cargo": "tic",
+  "questao": "Discursiva",
+  "min": 20,
+  "max": 30,
+  "width": 60,
+  "key": "cofen-gaby-disc-fiscalizacao-2026-12-15",
+  "out_path": "pessoal/gaby/respostas/2026-12-15_discursiva_fiscalizacao/resposta.md",
+  "md_title": "# Resposta da candidata — Discursiva 407 · 15/12/2026 (fiscalização de contrato)",
+  "caderno": "pessoal/gaby/simulados/gerados/2026-12-15_discursiva_fiscalizacao/discursiva.md",
+  "pedidos": [
+    "Distinguir as atribuições do fiscal técnico e do fiscal administrativo",
+    "Explicar como o nível mínimo de serviço (NMS) vincula o pagamento",
+    "Indicar a providência diante do descumprimento reiterado do SLA"
+  ]
+}

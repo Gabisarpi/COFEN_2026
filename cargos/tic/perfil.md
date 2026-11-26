@@ -35,3 +35,36 @@ Reaproveitar do CGU: redes, Linux/Windows, nuvem, segurança, ITIL/COBIT, contra
 
 - Cenários de conselho profissional (Cofen/Corens), autarquia federal, regime CLT.
 - Comandos com trecho de norma (ISO, Lei 14.133, resoluções COFEN), tabela de SLA, trecho de config/log, consulta SQL simples.
+
+## Especificidade técnica (anti-dedução)
+
+- Blocos técnicos (1–4, 12): porta, camada, protocolo, comando, nível de RAID, tipo de backup — detalhe concreto e verificável.
+- Contratos (10): papéis (gestor, fiscal técnico, administrativo, requisitante), artefatos (DFD, ETP, TR, plano de fiscalização), glosa × sanção, recebimento provisório × definitivo.
+- Governança e auditoria (6, 8, 9): práticas ITIL 4 × processos ITIL v3, objetivos COBIT 2019 (EDM/APO/BAI/DSS/MEA), três linhas, controle preventivo × detectivo × corretivo.
+- Legislação: prazo, competência, “deverá” × “poderá”, regra × exceção — sempre do texto vigente.
+
+## Fontes técnicas primárias
+
+- Legislação: Planalto (Leis 5.905/1973, 8.429/1992, 9.784/1999, 12.527/2011, 12.846/2013, 13.709/2018, 14.133/2021; Decreto 94.406/1987); resoluções no site do Cofen.
+- Contratações de TIC: IN SGD/ME 94/2022 e modelos/guias da SGD (gov.br/governodigital).
+- Segurança: ABNT NBR ISO/IEC 27001:2022 e 27002:2022; CERT.br; NIST CSF 2.0.
+- Serviços e governança: ITIL 4; COBIT 2019 (ISACA).
+- SO, redes e BD: Microsoft Learn (pt-br), documentação Red Hat, RFCs, documentação do PostgreSQL.
+
+## Amostra de dificuldade
+
+- Ainda não existe. Montar em `cargos/tic/amostra/` com ~25 itens reais Quadrix de TI (conselhos profissionais) depois da primeira ingestão do acervo.
+- Até lá: calibrar por 2–3 itens reais Quadrix da tag (quando houver) e pela régua de `cofen-calibrar-itens`.
+
+## Acervo mais aderente
+
+- Provas Quadrix de analista de TI em conselhos profissionais (Sistema Cofen/Corens, CFM/CRMs, CFO/CROs, CFMV/CRMVs, CAU, CFF/CRFs).
+- Apoio de conteúdo (peso ×1, não molde de estilo): itens Cebraspe de TI do repo CGU_2026.
+
+## Exemplos de pedidos
+
+- “bloco de 15 itens de contratos de TIC” (`esp.tic.contratos`)
+- “material de núcleos de governança e auditoria” (`esp.tic.gestao`, `esp.tic.auditoria`)
+- “discursiva sobre fiscalização de contrato com SLA”
+- “flashcards da Lei 5.905 e do Decreto 94.406” (`comp.leg.enfermagem`)
+- “simulado completo”
