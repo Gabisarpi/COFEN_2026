@@ -23,11 +23,13 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 - Repo criado com a estrutura espelhada do CGU_2026.
 - Edital resumido em `cargos/tic/resumo-edital.md`; tags em `mapa-edital.md`.
 - **Skills adaptadas (26/11):** 10 skills `cofen-*` em `.agents/skills/` (Quadrix, +1/−1 em tudo, 120 itens 40/30/50, discursiva única de 20–30 linhas, tags `esp.tic.*`) + scripts em `tools/`. Builds testados (caderno, flashcards, folha, editor de redação, correção). 
-- Foco atual ainda é a CGU (prova 13/12/2026). Estudo COFEN começa depois, salvo decisão em contrário.
+- **27/11: foco só no COFEN** (a inscrição da CGU foi perdida).
 
 - **Acervo montado (26/11):** 7 provas Quadrix C/E de TI (840 assertivas, gabarito definitivo, conferidas contra o PDF) em `acervo/`; heatmap e ranking regenerados; amostra de dificuldade em `cargos/tic/amostra/2026-11-26_amostra_quadrix/`. Prova mais aderente: CREF-11 2026 (blocos iguais aos exclusivos do 407).
 
 - **Acervo ampliado (26/11):** busca no site oficial da Quadrix (23 editais de conselhos triados). Entraram CREFITO-17 2026 (edital no molde do 407, agora a prova mais aderente), CFN 2024 (código 407), CFO 2024 e CRF-PR 2025: 1.320 assertivas em 11 provas. Discursivas: 11 temas reais de TI com o padrão de resposta da banca (`disc.tic` saiu do zero). Detalhes e fontes em `acervo/README.md`.
+
+- **Cronograma (27/11):** `cronograma/plano.py` → `plano.md` + `cronograma.html`, de 27/11 a 27/02, todos os dias: 2 h até 14/12, 5 h de 15/12 a 03/01, 2 h depois (~245 h). Fase 1: P2 e exclusivos do 407; fase 2: simulado diagnóstico em 15/12 e todo o P3 técnico + P1; fase 3: rotação semanal com simulados em dois dias.
 
 ## Pendências
 
@@ -38,4 +40,3 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 - [ ] Próximas provas a buscar no site oficial (vistas no PCI e no Gran, lista em `acervo/README.md`): CREFITO-18 2024, CFP 2024 TI (cadernos 407/408), CRQ-IV 2023, CREF-3 2023, CFO 2022, CRMV-SP 2022, CORE-PR 2021.
 - [ ] Usar as 11 discursivas reais no treino (editor `cofen-redacao-discursiva`), começando pela do CREFITO-17.
 - [ ] Windows: `git config core.symlinks true` no clone local (symlinks `.claude/skills` e `.cursor/skills`).
-- [ ] Montar cronograma 14/12/2026 → 27/02/2027.
