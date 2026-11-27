@@ -117,7 +117,9 @@ DIAS = [
  ('28/02', 'prova', 'PROVA COFEN (tarde)', 'Objetiva 120 itens + discursiva · chegar cedo · levar o que o edital exige (documento e caneta)', '', None),
 ]
 
-MATERIAIS = {}
+MATERIAIS = {
+ "27/11": [("Caderno: Lei 5.905 + ITIL", "https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv")],
+}
 
 FERIADOS = {
  "25/12": "Natal",

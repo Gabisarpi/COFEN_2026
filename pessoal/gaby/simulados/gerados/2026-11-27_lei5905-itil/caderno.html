@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>27/11 · Lei 5.905/1973 + ITIL (incidente × problema × requisição)</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: folha de respostas Quadrix — coluna única de itens com bolhas C/E, barra de placar fixa no topo, resumo e calibração no fim */
+:root{
+  --bg:#F1F4F7; --surface:#FFFFFF; --sunk:#E7ECF1; --ink:#15202B; --muted:#596675; --line:#D3DBE3;
+  --accent:#2346C8; --accent-soft:#E3E9FB;
+  --ok:#1D7546; --ok-soft:#E1F2E8; --bad:#B0302B; --bad-soft:#F9E3E1; --warn:#8F5E00; --warn-soft:#FBF0D9;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F141A; --surface:#161D26; --sunk:#1C2530; --ink:#E3E8EE; --muted:#97A3B0; --line:#2B3642;
+  --accent:#93A8FF; --accent-soft:#1F2A4D;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; --warn:#E3B354; --warn-soft:#352A12;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F141A; --surface:#161D26; --sunk:#1C2530; --ink:#E3E8EE; --muted:#97A3B0; --line:#2B3642;
+  --accent:#93A8FF; --accent-soft:#1F2A4D;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; --warn:#E3B354; --warn-soft:#352A12;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.01em;line-height:1.1}
+h2{font-size:24px;font-weight:700;line-height:1.2}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.92em}
+.label{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* topo */
+header.intro{display:grid;gap:14px;padding-block:36px 24px}
+header.intro .lede{color:var(--muted);max-width:62ch}
+.howto{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.howto div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px}
+.howto b{display:block;font-family:var(--f-display);font-size:13px;margin-bottom:2px}
+
+/* barra de placar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .in{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.stat{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.stat strong{font-family:var(--f-display);font-size:20px}
+.prog{flex:1 1 140px;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;min-width:100px}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{background:transparent;border:0;padding:6px 10px;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.btn{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:13px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* método */
+details.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-block:20px 0}
+details.box>summary{padding:14px 16px;font-family:var(--f-display);font-weight:700;cursor:pointer}
+details.box>.body{padding:0 16px 16px;display:grid;gap:12px;font-size:15px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.n{text-align:right}
+
+/* núcleo */
+section.nuc{margin-top:44px;display:grid;gap:14px}
+.nuc-head{display:grid;gap:6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.nuc-head .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.chip.real{background:var(--accent-soft);color:var(--accent)}
+.chip.var{background:var(--warn-soft);color:var(--warn)}
+
+/* item */
+article.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:14px;min-width:0}
+article.item.c-ok{box-shadow:inset 4px 0 0 var(--ok)}
+article.item.c-bad{box-shadow:inset 4px 0 0 var(--bad)}
+article.item.c-blank{box-shadow:inset 4px 0 0 var(--muted)}
+.item-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.item-top .num{font-family:var(--f-mono);font-weight:600;color:var(--ink)}
+.cmd{font-size:15px;line-height:1.5;color:var(--muted);margin:0}
+.code-box{border:1px solid var(--line);border-radius:8px;background:var(--sunk);overflow:hidden}
+.code-box>summary{list-style:none;cursor:pointer;padding:8px 12px;font:600 13px/1.3 var(--f-display);color:var(--accent);display:flex;align-items:center;gap:8px;user-select:none}
+.code-box>summary::-webkit-details-marker{display:none}
+.code-box>summary::before{content:"▸";font-size:11px;transition:transform .15s}
+.code-box[open]>summary::before{transform:rotate(90deg)}
+.code-box>summary .lang{font:600 11px/1 var(--f-mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.code{margin:0;padding:0 12px 12px;overflow-x:auto;font:13px/1.45 var(--f-mono);color:var(--ink);white-space:pre;border:0;background:transparent;border-radius:0}
+.code code{font:inherit;background:none;padding:0}
+.stmt{font-size:17px;line-height:1.6}
+.sheet{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.bubbles{display:flex;gap:8px;align-items:center}
+.bub{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-family:var(--f-display);font-weight:800;font-size:17px;display:grid;place-items:center}
+.bub[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.bub.blank{width:auto;border-radius:22px;padding:0 14px;font-size:13px;font-weight:700}
+.conf{display:flex;gap:6px;flex-wrap:wrap}
+.conf button{border:1px solid var(--line);background:transparent;border-radius:6px;padding:6px 10px;font-size:13px}
+.conf button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.conf[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.verdict{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-weight:600}
+.verdict .tag{padding:3px 10px;border-radius:6px;font-family:var(--f-display);font-size:14px}
+.tag.ok{background:var(--ok-soft);color:var(--ok)} .tag.bad{background:var(--bad-soft);color:var(--bad)} .tag.blank{background:var(--sunk);color:var(--muted)}
+.res{display:grid;gap:10px;border-top:1px dashed var(--line);padding-top:12px;font-size:15px}
+.res .row{display:grid;grid-template-columns:118px 1fr;gap:4px 12px}
+.res .row>span:first-child{font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.res .row>*{min-width:0}
+mark{background:var(--warn-soft);color:var(--ink);padding:0 2px;border-radius:2px}
+/* "Decide o item": verde se acertou, vermelho se errou, neutro se em branco */
+mark.gat{padding:1px 4px;border-radius:3px;font-weight:600}
+mark.gat.ok{background:var(--ok-soft);color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+mark.gat.bad{background:var(--bad-soft);color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad)}
+mark.gat.blank{background:var(--sunk);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+/* Interface opcional: manter o modelo e suavizar somente o destaque decisivo. */
+:root[data-interface="numerica"] .bub{font-size:13px}
+:root[data-interface="numerica"] mark.gat.ok{
+  background:var(--ok-soft);background:color-mix(in srgb,var(--ok) 12%,var(--surface));
+  color:var(--ok);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ok) 30%,var(--line))}
+:root[data-interface="numerica"] mark.gat.bad{
+  background:var(--bad-soft);background:color-mix(in srgb,var(--bad) 12%,var(--surface));
+  color:var(--bad);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--bad) 30%,var(--line))}
+.res ol.passos{margin:0;padding-left:20px;display:grid;gap:4px}
+.res .ex{background:var(--sunk);border-radius:6px;padding:8px 10px}
+/* resolução detalhada (opção individual resolucao-detalhada): termos do item e conceito vizinho */
+dl.termos{margin:0;display:grid;gap:6px}
+dl.termos dt{font-weight:700}
+dl.termos dd{margin:0 0 4px;color:var(--ink)}
+.res .viz{background:var(--sunk);border-radius:6px;padding:8px 10px}
+#glossario dl.termos{grid-template-columns:minmax(0,1fr)}
+.res .lembre{background:var(--accent-soft);color:var(--ink);border-radius:6px;padding:8px 10px;font-weight:600}
+details.aula{background:var(--accent-soft);border-radius:8px;margin:6px 0 4px}
+details.aula>summary{padding:12px 14px;cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--accent)}
+details.aula>div{padding:0 14px 14px;display:grid;gap:10px;font-size:15px;line-height:1.6}
+details.aula table{border-collapse:collapse;font-size:14px;width:100%}
+details.aula th,details.aula td{border:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+details.aula .hint{font-size:13px;color:var(--muted);font-weight:400}
+.note{background:var(--warn-soft);color:var(--ink);border-radius:6px;padding:8px 10px;font-size:14px}
+.quote{border-left:3px solid var(--accent);padding-left:10px;font-style:italic;color:var(--ink)}
+@media (max-width:520px){.res .row{grid-template-columns:1fr}}
+
+/* cartão do núcleo */
+details.card{background:var(--sunk);border-radius:8px}
+details.card>summary{padding:12px 14px;cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:15px}
+details.card>div{padding:0 14px 14px;display:grid;gap:8px;font-size:15px}
+details.card ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* revisão: filtros, núcleos e refação */
+section.review{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-top:20px;display:grid;gap:12px;scroll-margin-top:64px}
+.review .row2{display:grid;gap:6px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 11px;font-size:13px;display:inline-flex;gap:6px;align-items:baseline}
+.pill b{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--muted)}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.pill[aria-pressed="true"] b{color:var(--surface)}
+.pill.hot{border-color:var(--bad)}
+.pill:disabled{opacity:.4;cursor:not-allowed}
+.review .act{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px;color:var(--muted)}
+.chip.try{background:var(--accent-soft);color:var(--accent)}
+.before{font-size:14px;font-weight:400;color:var(--muted)}
+.flat-head{margin-top:36px;display:grid;gap:4px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.flat-head p{font-size:14px;color:var(--muted)}
+section.flat{display:grid;gap:14px;margin-top:14px}
+
+/* resumo */
+section.sum{margin-top:56px;display:grid;gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cell{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+.cell strong{font-family:var(--f-display);font-size:26px;display:block;font-variant-numeric:tabular-nums}
+.cell span{font-size:13px;color:var(--muted)}
+.cell.warn{border-color:var(--bad)}
+textarea{width:100%;min-height:140px;font-family:var(--f-mono);font-size:12px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px}
+.toast{font-size:13px;color:var(--ok);font-weight:600}
+/* Teclado: item ativo e quadro de atalhos */
+.item.kb-active{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
+.kb-help{position:fixed;right:16px;bottom:16px;z-index:50;max-width:min(360px,calc(100vw - 32px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:0 8px 28px rgba(0,0,0,.25);font-size:14px}
+.kb-help h3{margin:0 0 8px;font-size:15px}
+.kb-help table{border-collapse:collapse;width:100%}
+.kb-help td{padding:3px 6px;vertical-align:top;border:0}
+kbd{font:600 12px/1 var(--f-mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:2px 5px;background:var(--sunk)}
+/* Modo prova (meta.modo = "prova"): correção, mini-aulas e cartões só depois de "Entregar prova" */
+.prova-note{display:grid;gap:8px;margin-top:20px}
+.prova-note .act{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.prova-note[hidden],section.review[hidden]{display:none}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="bar" role="region" aria-label="Placar">
+  <div class="in">
+    <div class="stat"><strong id="s-done">0</strong><span>/ <span id="s-total">0</span> corrigidos</span></div>
+    <div class="prog" aria-hidden="true"><i id="s-prog"></i></div>
+    <div class="stat"><span>Líquido (±1)</span><strong id="s-net">0</strong><span id="s-max" style="margin-left:4px"></span></div>
+    <button type="button" class="btn primary" id="entregar" hidden>Entregar prova</button>
+    <div class="seg" role="group" aria-label="Ordem dos itens">
+      <button id="m-block" aria-pressed="true">Por núcleo</button>
+      <button id="m-mix" aria-pressed="false">Intercalado</button>
+    </div>
+    <button type="button" class="btn" id="m-code" aria-pressed="true" title="Mostrar ou ocultar trechos de código">Código</button>
+    <a class="btn" href="#revisar" id="f-ind">Revisar</a>
+    <a class="btn" href="#resumo">Resumo</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="intro">
+    <div class="label">COFEN 2026 · Cargo 407 Analista de TIC · Material do dia 27/11</div>
+    <h1>Lei 5.905/1973 e, no P3 do dia, incidente × problema × requisição</h1>
+    <p class="lede">25 itens em 5 núcleos: 7 reais do acervo e 18 variações inéditas que mudam um detalhe e invertem o gabarito. A resolução de cada item só abre depois que você marca a resposta e a confiança.</p>
+    <div class="howto">
+      <div id="howto-choice"><b>1. Marque</b>C, E ou "deixaria em branco", como na folha.</div>
+      <div id="howto-confidence"><b>2. Diga a confiança</b>Certeza ou dúvida. Acerto na dúvida ainda é lacuna.</div>
+      <div id="howto-grade"><b>3. Corrija</b>Veja a palavra que decide o item, o conceito e como a banca inverte.</div>
+      <div><b>4. Exporte</b>No fim, baixe (ou copie) o resultado para <span class="mono">pessoal/gaby/respostas/</span>.</div>
+      <div><b>Teclado</b><kbd>?</kbd> mostra os atalhos: <kbd>↓</kbd>/<kbd>↑</kbd> navegam, <kbd>1</kbd>–<kbd>4</kbd> e <kbd>0</kbd> respondem, <kbd>Enter</kbd> confirma.</div>
+      <div><b>Código</b>Botão <b>Código</b> no topo mostra ou oculta todos os trechos. Em cada item, o cabeçalho do bloco abre/fecha só aquele trecho.</div>
+    </div>
+  </header>
+
+  <details class="box">
+    <summary>Como estes núcleos foram escolhidos e validados</summary>
+    <div class="body">
+<p><b>Edital.</b> Conhecimentos complementares do Cargo 407: Lei nº 5.905/1973 (Sistema Cofen/Corens). No P3, bloco 6 (ITIL, gestão de serviços), comum aos cargos de TI.</p>
+<p><b>Tamanho.</b> Caderno do dia (cronograma de 27/11: 2 h): 18 itens da lei + 7 do P3 do dia, abaixo dos 35–45 de um material de bloco inteiro.</p>
+<p><b>Calibração (perfil).</b> Os 7 reais são todos Quadrix de conselhos (COREN-PR 2024, CRO-SP 2025, CRP-SP 2025). Na Lei 5.905, o acervo só tem 3 itens no escopo (COREN-PR 2024, itens 107, 113 e 115); os demais itens do COREN-PR sobre o Sistema Cofen são do Regimento Interno do Coren-PR, que não está no edital do COFEN, e ficaram de fora. Por isso a lei leva 15 variações inéditas, montadas sobre os artigos com uma palavra trocada, como a Quadrix faz.</p>
+<div class="tbl"><table><thead><tr><th>Núcleo</th><th>Edital</th><th class="n">Provas</th><th class="n">Itens no acervo</th></tr></thead><tbody id="rank"></tbody></table></div>
+<p><b>Ficaram de fora.</b> Regimento Interno do Coren-PR (itens 106, 108–112) e processo ético (itens 114, 116–120): não estão na Lei 5.905. O processo ético entra no dia das resoluções.</p>
+<p><b>Literalidade.</b> Os itens reais copiam os arts. 5º e 11 da lei. As variações seguem a redação dos artigos indicados em cada resolução; confira o texto no Planalto (link na fonte).</p>
+<p><b>Gabaritos.</b> Anuidade: a competência é do Coren pela Lei 5.905; os tetos vêm da Lei 12.514/2011 (nota no item).</p>
+    </div>
+  </details>
+
+  <section class="review" id="revisar" aria-labelledby="rev-t">
+    <div class="label" id="rev-t">Revisar</div>
+    <div class="row2">
+      <span style="font-size:14px;color:var(--muted)">Mostrar, pelo resultado da última tentativa:</span>
+      <div class="pills" id="f-pills" role="group" aria-label="Filtro por resultado"></div>
+    </div>
+    <div class="row2">
+      <span style="font-size:14px;color:var(--muted)">Núcleos (nenhum marcado = todos):</span>
+      <div class="pills" id="n-pills" role="group" aria-label="Filtro por núcleo"></div>
+    </div>
+    <div class="act" id="redo-box" hidden>
+      <button class="btn primary" id="redo">Refazer estes itens</button>
+      <span id="redo-txt">Os itens voltam sem resposta e sem resolução. A tentativa anterior fica guardada e entra no resumo.</span>
+      <span class="toast" id="redo-toast" hidden></span>
+    </div>
+  </section>
+
+  <section class="note prova-note" id="prova-note" hidden aria-live="polite"></section>
+
+  <main id="items"></main>
+
+  <section class="sum" id="glossario" hidden>
+    <div class="label">Glossário</div>
+    <h2>Termos dos itens que você já corrigiu</h2>
+    <p style="font-size:14px;color:var(--muted)">Cresce conforme você corrige: termos de itens ainda não respondidos não aparecem, para não entregar a resposta.</p>
+    <dl class="termos" id="glos-list"></dl>
+  </section>
+
+  <section class="sum" id="resumo">
+    <div class="label">Resumo da sessão</div>
+    <h2>Desempenho e calibração</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Núcleo</th><th class="n">Certos</th><th class="n">Errados</th><th class="n">Branco</th><th class="n">Líquido</th></tr></thead>
+      <tbody id="sum-body"></tbody>
+    </table></div>
+    <div>
+      <h3 style="margin-bottom:8px">Calibração da confiança</h3>
+      <div class="grid2">
+        <div class="cell"><strong id="k-ss">0</strong><span>Certeza e acertou: domínio</span></div>
+        <div class="cell warn"><strong id="k-se">0</strong><span>Certeza e errou: conceito errado fixado, revisar primeiro</span></div>
+        <div class="cell"><strong id="k-ds">0</strong><span>Dúvida e acertou: sorte ou intuição, ainda é lacuna</span></div>
+        <div class="cell"><strong id="k-de">0</strong><span>Dúvida e errou: lacuna conhecida</span></div>
+      </div>
+    </div>
+    <div id="redo-sum" hidden>
+      <h3 style="margin-bottom:8px">Refação</h3>
+      <div class="grid2">
+        <div class="cell"><strong id="r-up">0</strong><span>Errou ou deixou em branco antes e agora acertou</span></div>
+        <div class="cell warn"><strong id="r-still">0</strong><span>Continua errando ou em branco: revisar a resolução de novo</span></div>
+        <div class="cell"><strong id="r-keep">0</strong><span>Acertou antes e de novo (confirma o domínio se foi com certeza)</span></div>
+        <div class="cell warn"><strong id="r-down">0</strong><span>Acertou antes e agora errou: o acerto anterior era sorte</span></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">Desempenho e calibração contam só a primeira tentativa de cada item, que é a medida honesta. As refações aparecem à parte.</p>
+    <p id="advice" class="note">Corrija alguns itens para ver a recomendação sobre chutar ou deixar em branco.</p>
+    <div style="display:grid;gap:8px">
+      <h3>Exportar resultado</h3>
+      <p style="font-size:14px;color:var(--muted)">Salve em <span class="mono">pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml</span>. O download sai com <span class="mono">.txt</span> no fim (o navegador não aceita <span class="mono">.yaml</span>): tire na janela de salvar ou deixe que o Claude renomeia. A skill de diagnóstico de gaps usa esse arquivo para preencher <span class="mono">lacunas.yaml</span>.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button class="btn primary" id="dl" hidden>Baixar arquivo</button>
+        <button class="btn primary" id="copy">Copiar resultado</button>
+        <button class="btn" id="reset">Recomeçar do zero</button>
+        <span class="toast" id="toast" hidden></span>
+      </div>
+      <div id="confirm" class="note" hidden>Isso apaga todas as respostas desta página. <button class="btn" id="reset-yes">Apagar respostas</button> <button class="btn" id="reset-no">Cancelar</button></div>
+      <textarea id="yaml" readonly aria-label="Resultado em YAML"></textarea>
+    </div>
+  </section>
+</div>
+
+<script>
+const LEI="<a href=\"https://www.planalto.gov.br/ccivil_03/leis/l5905.htm\">Lei nº 5.905/1973 (Planalto)</a>";
+const ITIL="AXELOS, ITIL 4 Foundation, práticas de gerenciamento de incidente, problema e requisição de serviço";
+const NUC = [
+ {id:"L1", t:"Natureza e estrutura do Sistema Cofen/Corens (arts. 1º a 4º)", ed:"Complementares · Lei 5.905/1973", provas:1, itens:2,
+  card:["Cofen + Corens = em conjunto, UMA autarquia, vinculada (na letra da lei) ao Ministério do Trabalho e Previdência Social, não ao da Saúde.","Cofen: jurisdição nacional, sede na Capital da República; os Corens são subordinados a ele.","Um Coren por estado/território (sede na capital) e no DF; menos de 50 profissionais → o Cofen pode agrupar unidades em regiões."],
+  inv:"Trocam o ministério (Saúde no lugar de Trabalho), dão jurisdição nacional ao Coren ou mudam o número 50.",
+  aula:"<p>Pense no Sistema Cofen/Corens como uma <b>matriz com filiais</b>: o <b>Cofen</b> (Conselho Federal de Enfermagem) é a matriz, com jurisdição em todo o território nacional e sede na Capital da República; os <b>Corens</b> (Conselhos Regionais) são as filiais, um em cada estado e território, com sede na capital, e um no Distrito Federal. Juntos, formam <b>uma única autarquia</b>: o art. 1º diz que os conselhos constituem, \"em seu conjunto\", uma autarquia.</p><p>O que cada artigo fixa:</p><table><thead><tr><th>Artigo</th><th>Regra</th></tr></thead><tbody><tr><td>1º</td><td>Cria Cofen e Corens; em conjunto, uma autarquia vinculada ao Ministério do Trabalho e Previdência Social</td></tr><tr><td>2º</td><td>São órgãos disciplinadores do exercício da enfermagem</td></tr><tr><td>3º</td><td>Cofen: jurisdição nacional, sede na Capital; os Regionais ficam subordinados a ele</td></tr><tr><td>4º</td><td>Um Coren por estado/território e no DF; com menos de 50 profissionais, o Cofen pode formar regiões com mais de uma unidade</td></tr></tbody></table><p><b>Onde a banca pega:</b> (1) o ministério: o senso comum diz Saúde, a lei diz Trabalho; (2) quem tem jurisdição nacional é só o Cofen; (3) o número 50 do parágrafo único do art. 4º.</p>"},
+ {id:"L2", t:"Composição e eleição dos conselhos (arts. 5º a 7º e 11 a 13)", ed:"Complementares · Lei 5.905/1973", provas:1, itens:2,
+  card:["Cofen: 9 efetivos + 9 suplentes, brasileiros, com diploma de enfermagem de nível superior.","Coren: 5 a 21 membros (sempre ímpar, número fixado pelo Cofen), 3/5 enfermeiros e 2/5 das demais categorias.","Cofen é eleito na Assembleia dos Delegados Regionais; Coren, por voto pessoal, secreto e obrigatório (quem falta sem justa causa paga multa = anuidade)."],
+  inv:"Exigem nível superior de todos os membros do Coren, deixam o próprio Coren fixar seu número de membros ou trocam a forma de eleição do Cofen pela do Coren.",
+  aula:"<p>A lei separa bem a <b>composição</b> dos dois níveis, e a banca adora misturá-las.</p><table><thead><tr><th></th><th>Cofen (federal)</th><th>Coren (regional)</th></tr></thead><tbody><tr><td>Tamanho</td><td>9 efetivos + 9 suplentes</td><td>5 a 21 membros + outros tantos suplentes; número <b>sempre ímpar</b>, fixado pelo Cofen conforme o número de inscritos</td></tr><tr><td>Quem pode</td><td>Brasileiros com diploma de enfermagem de <b>nível superior</b></td><td>Brasileiros: <b>3/5 enfermeiros</b> e <b>2/5</b> das demais categorias de enfermagem</td></tr><tr><td>Eleição</td><td>Maioria de votos, escrutínio secreto, na <b>Assembleia dos Delegados Regionais</b></td><td>Voto <b>pessoal, secreto e obrigatório</b>, em assembleia geral; chapas separadas (enfermeiros × demais)</td></tr><tr><td>Diretoria</td><td>Presidente, vice, 1º e 2º secretários, 1º e 2º tesoureiros</td><td>Presidente, secretário, tesoureiro; mais de 12 membros → pode criar vice, 2º secretário e 2º tesoureiro</td></tr></tbody></table><p><b>Onde a banca pega:</b> o \"nível superior\" vale para todo o Cofen, mas no Coren só para os 3/5 de enfermeiros; e a multa de quem não vota (valor da anuidade) é da eleição regional.</p>"},
+ {id:"L3", t:"Competências: o que é do Cofen e o que é do Coren (arts. 8º e 15)", ed:"Complementares · Lei 5.905/1973", provas:0, itens:0,
+  card:["Cofen: regimentos, instalar Corens, Código de Deontologia (ouvidos os Corens), recursos contra decisões dos Corens, homologar/suprir/anular atos deles.","Coren: inscrição, fiscalização, ética com penalidades, carteira profissional (fé pública em TODO o território nacional), anuidade.","Coren presta contas ao Cofen até 28 de fevereiro de cada ano."],
+  inv:"Dão ao Coren o que é do Cofen (Código de Deontologia, recurso), limitam a fé pública da carteira à região ou passam a anuidade para o Cofen.",
+  aula:"<p>Regra de bolso: o <b>Cofen normatiza e revisa</b>; o <b>Coren executa no dia a dia</b>. É como um tribunal superior (revê decisões, uniformiza regras) e as varas locais (atendem o profissional).</p><table><thead><tr><th>Cofen (art. 8º)</th><th>Coren (art. 15)</th></tr></thead><tbody><tr><td>Aprovar o próprio regimento e o dos Corens; instalar os Corens</td><td>Deliberar sobre inscrição e cancelamento</td></tr><tr><td>Elaborar e alterar o Código de Deontologia, ouvidos os Corens</td><td>Disciplinar e fiscalizar o exercício profissional, seguindo as diretrizes do Cofen</td></tr><tr><td>Baixar provimentos e instruções; dirimir dúvidas dos Corens</td><td>Conhecer e decidir os assuntos de ética, impondo as penalidades cabíveis</td></tr><tr><td>Apreciar, em grau de recurso, as decisões dos Corens; homologar, suprir ou anular seus atos</td><td>Expedir a carteira profissional, com fé pública em todo o território nacional e valor de documento de identidade</td></tr><tr><td>Instituir o modelo da carteira e as insígnias; aprovar contas e orçamento da autarquia</td><td>Fixar o valor da anuidade; prestar contas ao Cofen até 28 de fevereiro</td></tr></tbody></table><p><b>Onde a banca pega:</b> inverter quem faz o quê (Código de Deontologia, recurso, anuidade) e restringir a fé pública da carteira à jurisdição do Coren que a emitiu.</p>"},
+ {id:"L4", t:"Mandatos, reuniões e penalidades (arts. 9º, 14, 17 e 18)", ed:"Complementares · Lei 5.905/1973", provas:0, itens:0,
+  card:["Mandato no Cofen e no Coren: honorífico (sem remuneração), 3 anos, uma reeleição.","Reunião pelo menos mensal; 5 faltas no ano sem licença prévia → perde o mandato.","Penas: advertência verbal, multa, censura, suspensão (Coren) e cassação (Cofen, ouvido o Coren interessado)."],
+  inv:"Tornam o mandato remunerado, mudam o número de faltas ou passam a cassação para o Coren.",
+  aula:"<p>Esta parte da lei é cheia de <b>números e de quem decide</b>, o terreno preferido da Quadrix.</p><ul><li><b>Mandato</b> (arts. 9º e 14): honorífico, isto é, sem remuneração; dura <b>3 anos</b>; admite <b>uma</b> reeleição. Vale para o Cofen e para os Corens.</li><li><b>Reuniões</b> (art. 17): pelo menos <b>uma vez por mês</b>. O conselheiro que faltar a <b>5 reuniões</b> no ano, sem licença prévia do seu Conselho, perde o mandato.</li><li><b>Penalidades</b> (art. 18), em ordem de gravidade: I advertência verbal; II multa; III censura; IV suspensão do exercício profissional; V cassação do direito ao exercício profissional.</li></ul><p>Quem aplica: as quatro primeiras são da alçada dos <b>Corens</b>; a cassação é do <b>Cofen</b>, <b>ouvido o Coren interessado</b>. O valor das multas e quais infrações levam a cada pena ficam para os regimentos.</p><p><b>Onde a banca pega:</b> \"remunerado\" no lugar de honorífico; trocar 5 faltas por outro número; inverter quem cassa e quem é ouvido.</p>"},
+ {id:"T1", t:"P3 do dia — incidente × problema × requisição (ITIL)", ed:"Específicos 6 · ITIL, gestão de serviços", provas:3, itens:4,
+  card:["Incidente: interrupção não planejada ou queda de qualidade do serviço → objetivo é restaurar rápido; sempre registrado.","Problema: a causa (ou causa potencial) de um ou mais incidentes; o gerenciamento de problemas tem lado reativo e proativo.","Requisição: pedido normal do usuário (acesso, informação, equipamento), sem falha → não é incidente."],
+  inv:"Tratam requisição como incidente, dizem que contorno resolve a causa raiz ou que incidente dispensa registro.",
+  aula:"<p>Use a analogia de um carro: o <b>pneu furou</b> na estrada (incidente) e você põe o estepe para seguir viagem (solução de contorno); depois, o mecânico descobre que <b>um prego solto na garagem</b> fura os pneus (problema) e o remove (solução definitiva). Pedir para <b>calibrar os pneus</b> não é falha nenhuma: é uma requisição.</p><table><thead><tr><th></th><th>Incidente</th><th>Problema</th><th>Requisição de serviço</th></tr></thead><tbody><tr><td>O que é</td><td>Interrupção não planejada ou redução da qualidade de um serviço</td><td>Causa, ou causa potencial, de um ou mais incidentes</td><td>Pedido do usuário por algo previsto no serviço</td></tr><tr><td>Objetivo</td><td>Restaurar a operação normal o mais rápido possível</td><td>Achar e eliminar a causa; reduzir a chance e o impacto de incidentes</td><td>Atender o pedido de forma padronizada</td></tr><tr><td>Exemplo</td><td>Sistema de inscrição fora do ar</td><td>Disco do servidor que falha toda semana</td><td>Criar conta de rede para servidor novo</td></tr></tbody></table><p>Termos de apoio: <b>solução de contorno</b> (workaround) reduz ou elimina o impacto enquanto não há solução definitiva, mas não remove a causa; <b>erro conhecido</b> é o problema já analisado e ainda não resolvido. A <b>central de serviços</b> (service desk) é o ponto único de contato e também atua de forma proativa (avisos, comunicação de mudanças).</p><p><b>Onde a banca pega:</b> troca os três conceitos entre si e mexe no objetivo de cada prática (restaurar rápido × achar a causa).</p>"},
+];
+const ITENS = [
+{n:"L1", src:"COREN-PR 2024 · Analista de TI (402) · item 107", real:1, gab:"E",
+ txt:"O COREN-PR tem jurisdição e competência nacional, com sede administrativa em Brasília. Além disso, esse órgão apresenta autonomia administrativa e financeira, sendo vinculado ao Ministério da Saúde.",
+ gat:"jurisdição e competência nacional · Ministério da Saúde",
+ exp:"Quem tem jurisdição em todo o território nacional e sede na Capital da República é o Cofen (art. 3º), não um Conselho Regional. O Coren-PR tem jurisdição no Paraná, com sede em Curitiba. Além disso, a Lei 5.905 vincula a autarquia ao Ministério do Trabalho e Previdência Social (art. 1º), e não ao da Saúde. Por isso o item é E: tem dois erros, a jurisdição nacional e o ministério.",
+ lembre:"Nacional é o Cofen; ministério, na letra da lei, é o do Trabalho.",
+ peg:"Inversão (dá ao regional a jurisdição do federal) + troca de conceito vizinho (Saúde × Trabalho, porque a área é a saúde).",
+ inv:"'O COFEN tem jurisdição em todo o território nacional e sede na Capital da República.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+LEI+", arts. 1º e 3º."},
+{n:"L1", src:"Variação inédita", real:0, gab:"E",
+ txt:"O Conselho Federal de Enfermagem poderá determinar a formação de regiões, compreendendo mais de uma unidade da federação, quando o número de profissionais habilitados na unidade for inferior a cem.",
+ gat:"inferior a cem",
+ passo:"Regra geral: um Coren por estado/território e no DF (art. 4º) | Exceção: poucas pessoas inscritas não justificam um conselho próprio | O limite da lei é cinquenta profissionais habilitados | O item diz cem → E",
+ exp:"O parágrafo único do art. 4º permite ao Cofen juntar unidades da federação numa só região quando houver poucos profissionais. O número da lei é cinquenta, não cem. Todo o resto do item está correto, e é exatamente esse o desenho de uma meia-verdade. Por isso o item é E.",
+ lembre:"Menos de 50 → pode virar região.",
+ peg:"Detalhe numérico (meia-verdade: regra certa, número trocado).",
+ inv:"'... quando o número de profissionais habilitados na unidade for inferior a cinquenta.' (C)",
+ fonte:LEI+", art. 4º, parágrafo único."},
+{n:"L1", src:"Variação inédita", real:0, gab:"C",
+ txt:"O Conselho Federal e os Conselhos Regionais de Enfermagem constituem, em seu conjunto, uma única autarquia.",
+ gat:"em seu conjunto, uma única autarquia",
+ exp:"A lei não cria uma autarquia para cada conselho: o art. 1º diz que o Cofen e os Corens constituem, em seu conjunto, uma autarquia. Cada regional tem sua sede e suas competências, mas todos fazem parte da mesma pessoa jurídica de direito público. Por isso o item é C.",
+ peg:"C contraintuitivo: parece que cada Coren seria uma autarquia separada.",
+ inv:"'Cada Conselho Regional de Enfermagem constitui autarquia autônoma, sem vínculo com o Conselho Federal.' (E)",
+ fonte:LEI+", art. 1º."},
+{n:"L1", src:"Variação inédita", real:0, gab:"C",
+ txt:"Os Conselhos Regionais de Enfermagem são subordinados ao Conselho Federal, que tem jurisdição em todo o território nacional.",
+ gat:"subordinados ao Conselho Federal",
+ exp:"O art. 3º diz que ao Conselho Federal \"ficam subordinados os Conselhos Regionais\" e lhe dá jurisdição em todo o território nacional. A subordinação aparece também nas competências: o Cofen aprova o regimento dos Corens, revê suas decisões em recurso e pode homologar, suprir ou anular seus atos. Por isso o item é C.",
+ peg:"C de leitura atenta: 'subordinados' soa forte demais, mas é a palavra da lei.",
+ inv:"'Os Conselhos Regionais de Enfermagem não se subordinam ao Conselho Federal, que apenas os coordena.' (E)",
+ fonte:LEI+", art. 3º."},
+{n:"L2", src:"COREN-PR 2024 · Analista de TI (402) · item 115", real:1, gab:"C",
+ txt:"O COFEN terá nove membros efetivos e igual número de suplentes, de nacionalidade brasileira, e portadores de diploma de curso de enfermagem de nível superior.",
+ gat:"nove membros efetivos · nível superior",
+ exp:"É a reprodução do art. 5º: nove efetivos, nove suplentes, todos brasileiros e com diploma de enfermagem de nível superior. A Quadrix cobra o artigo quase palavra por palavra. Por isso o item é C.",
+ lembre:"Cofen = 9 + 9, todos de nível superior.",
+ peg:"Literalidade da lei (item C copiado do artigo).",
+ inv:"'O COFEN terá nove membros efetivos e igual número de suplentes, dos quais três quintos serão enfermeiros.' (E)",
+ par:"L2-2",
+ fonte:"Gabarito definitivo da Quadrix; "+LEI+", art. 5º."},
+{n:"L2", src:"COREN-PR 2024 · Analista de TI (402) · item 113", real:1, gab:"E",
+ txt:"Os Conselhos Regionais serão instalados em suas respectivas sedes, compostos de 5 a 21 membros e de outros tantos suplentes, todos eles de nacionalidade brasileira, e portadores de diploma de curso de enfermagem de nível superior.",
+ gat:"todos eles ... portadores de diploma de curso de enfermagem de nível superior",
+ exp:"A primeira parte está certa: cada Coren tem de 5 a 21 membros e outros tantos suplentes, brasileiros (art. 11). O erro está no fim: no Coren a lei manda a proporção de três quintos de enfermeiros e dois quintos das demais categorias de enfermagem (técnicos e auxiliares), que não têm nível superior. A exigência de nível superior para todos é do Cofen (art. 5º). Por isso o item é E.",
+ ex:"Um Coren com 15 membros tem 9 enfermeiros (3/5) e 6 técnicos ou auxiliares de enfermagem (2/5).",
+ lembre:"Coren = 3/5 enfermeiros + 2/5 demais categorias.",
+ peg:"Meia-verdade + generalização: aplica ao regional a regra do federal.",
+ inv:"'... na proporção de três quintos de enfermeiros e dois quintos de profissionais das demais categorias do pessoal de enfermagem.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+LEI+", arts. 5º e 11."},
+{n:"L2", src:"Variação inédita", real:0, gab:"C",
+ txt:"O número de membros de cada Conselho Regional será sempre ímpar, e sua fixação cabe ao Conselho Federal, em proporção ao número de profissionais inscritos.",
+ gat:"sempre ímpar · cabe ao Conselho Federal",
+ exp:"O parágrafo único do art. 11 diz que o número de membros dos Corens será sempre ímpar e que a fixação é feita pelo Conselho Federal, em proporção ao número de profissionais inscritos. O ímpar evita empate nas votações do plenário. O 'sempre' aqui é da própria lei. Por isso o item é C.",
+ lembre:"Ímpar para não empatar; quem fixa é o Cofen.",
+ peg:"C com absoluto ('sempre'): quem marca E por reflexo diante de absolutos erra.",
+ inv:"'O número de membros de cada Conselho Regional é fixado pelo próprio Conselho Regional, em proporção ao número de inscritos.' (E)",
+ fonte:LEI+", art. 11, parágrafo único."},
+{n:"L2", src:"Variação inédita", real:0, gab:"C",
+ txt:"Ao eleitor que, sem causa justa, deixar de votar nas eleições do Conselho Regional será aplicada multa em importância correspondente ao valor da anuidade.",
+ gat:"multa ... correspondente ao valor da anuidade",
+ exp:"Como o voto para o Coren é obrigatório, a lei prevê sanção para quem falta sem justificativa: o Conselho Regional aplica multa no valor da anuidade (art. 12, § 2º). É a consequência prática de o voto ser obrigatório. Por isso o item é C.",
+ ex:"Uma técnica de enfermagem inscrita no Coren que não vota e não justifica a ausência recebe cobrança de multa igual à anuidade daquele ano.",
+ peg:"C de detalhe (valor da multa), que costuma ser trocado por 'metade da anuidade' ou 'um salário mínimo'.",
+ inv:"'... será aplicada multa correspondente à metade do valor da anuidade.' (E)",
+ fonte:LEI+", art. 12, § 2º."},
+{n:"L2", src:"Variação inédita", real:0, gab:"E",
+ txt:"Os membros do Conselho Federal de Enfermagem são eleitos por voto pessoal, secreto e obrigatório de todos os profissionais inscritos, em assembleia geral convocada pelos Conselhos Regionais.",
+ gat:"voto pessoal, secreto e obrigatório de todos os profissionais inscritos",
+ exp:"A eleição do Cofen é indireta: seus membros são eleitos por maioria de votos, em escrutínio secreto, na Assembleia dos Delegados Regionais (art. 6º). O voto pessoal, secreto e obrigatório dos inscritos, em assembleia geral, é a forma de eleger os Conselhos Regionais (art. 12). O item junta a regra do regional com o órgão federal. Por isso o item é E.",
+ lembre:"Coren: os profissionais votam. Cofen: os delegados regionais votam.",
+ peg:"Troca de conceito vizinho (forma de eleição do Coren aplicada ao Cofen).",
+ inv:"'Os membros do Conselho Federal de Enfermagem são eleitos por maioria de votos, em escrutínio secreto, na Assembleia dos Delegados Regionais.' (C)",
+ fonte:LEI+", arts. 6º e 12."},
+{n:"L3", src:"Variação inédita", real:0, gab:"E",
+ txt:"Compete aos Conselhos Regionais de Enfermagem elaborar o Código de Deontologia de Enfermagem e alterá-lo, quando necessário, ouvido o Conselho Federal.",
+ gat:"Compete aos Conselhos Regionais · ouvido o Conselho Federal",
+ exp:"O Código de Deontologia (o código de ética da profissão) tem de ser único para o país, por isso é competência do Cofen elaborá-lo e alterá-lo, ouvidos os Conselhos Regionais (art. 8º, III). O item inverte os papéis: põe o regional como autor e o federal como ouvido. Por isso o item é E.",
+ lembre:"Regra nacional (código, regimentos, modelo de carteira) = Cofen.",
+ peg:"Inversão (quem faz o quê e quem é ouvido).",
+ inv:"'Compete ao Conselho Federal de Enfermagem elaborar o Código de Deontologia de Enfermagem e alterá-lo, quando necessário, ouvidos os Conselhos Regionais.' (C)",
+ fonte:LEI+", art. 8º, III."},
+{n:"L3", src:"Variação inédita", real:0, gab:"E",
+ txt:"A carteira profissional expedida pelo Conselho Regional, indispensável ao exercício da profissão, tem fé pública apenas na área de jurisdição do Conselho que a expediu.",
+ gat:"apenas na área de jurisdição do Conselho que a expediu",
+ exp:"A carteira é emitida pelo Coren (art. 15, VII), mas a lei lhe dá fé pública em todo o território nacional e valor de documento de identidade. Emitir é regional; valer é nacional. A restrição 'apenas na área de jurisdição' não existe. Por isso o item é E.",
+ lembre:"Quem emite é o Coren; onde vale é no Brasil todo.",
+ peg:"Absolutização ('apenas') + meia-verdade (o começo está certo).",
+ inv:"'... tem fé pública em todo o território nacional e serve de documento de identidade.' (C)",
+ fonte:LEI+", art. 15, VII."},
+{n:"L3", src:"Variação inédita", real:0, gab:"C",
+ txt:"Compete ao Conselho Federal apreciar, em grau de recurso, as decisões dos Conselhos Regionais, bem como homologar, suprir ou anular atos destes.",
+ gat:"em grau de recurso · homologar, suprir ou anular",
+ exp:"O Cofen funciona como instância revisora: aprecia em grau de recurso as decisões dos Corens (art. 8º, VI) e pode homologar, suprir ou anular os atos deles (art. 8º, VIII). Isso decorre da subordinação dos regionais prevista no art. 3º. Por isso o item é C.",
+ ex:"Um enfermeiro punido com censura pelo Coren pode recorrer ao Cofen, que aprecia o recurso.",
+ peg:"C de juntar dois incisos: parece excesso de poder, mas os dois estão na lei.",
+ inv:"'Compete à Assembleia Geral dos profissionais inscritos apreciar, em grau de recurso, as decisões dos Conselhos Regionais.' (E)",
+ fonte:LEI+", art. 8º, VI e VIII."},
+{n:"L3", src:"Variação inédita", real:0, gab:"C",
+ txt:"Cabe a cada Conselho Regional de Enfermagem apresentar sua prestação de contas ao Conselho Federal até o dia 28 de fevereiro de cada ano.",
+ gat:"até o dia 28 de fevereiro",
+ exp:"Entre as competências do Coren, o art. 15 inclui apresentar a prestação de contas ao Conselho Federal até 28 de fevereiro de cada ano. É o fechamento das contas do exercício anterior, que o Cofen consolida ao aprovar as contas da autarquia. Por isso o item é C.",
+ lembre:"Contas do Coren ao Cofen: até 28/02 (o dia da sua prova!).",
+ peg:"Detalhe numérico em item C (a banca troca por 31 de março ou 30 de abril).",
+ inv:"'... até o dia 31 de março de cada ano.' (E)",
+ fonte:LEI+", art. 15."},
+{n:"L3", src:"Variação inédita", real:0, gab:"E",
+ txt:"Compete ao Conselho Federal de Enfermagem fixar o valor da anuidade devida pelos profissionais inscritos nos Conselhos Regionais.",
+ gat:"Compete ao Conselho Federal",
+ exp:"Na Lei 5.905, fixar o valor da anuidade é competência do Conselho Regional (art. 15). O Cofen recebe uma parte do que os regionais arrecadam (um quarto das anuidades, art. 10), mas não fixa o valor. Por isso, à luz da Lei 5.905, o item é E.",
+ nota:"Hoje a Lei 12.514/2011 estabelece tetos para as anuidades dos conselhos profissionais. Um comando 'à luz da Lei 5.905' cobra a competência do art. 15; um comando genérico pode trazer a Lei 12.514.",
+ peg:"Inversão de competência (arrecadar parte × fixar o valor).",
+ inv:"'Compete aos Conselhos Regionais de Enfermagem fixar o valor da anuidade.' (C)",
+ fonte:LEI+", arts. 10 e 15."},
+{n:"L4", src:"Variação inédita", real:0, gab:"E",
+ txt:"O mandato dos membros do Conselho Federal de Enfermagem será remunerado e terá a duração de três anos, admitida uma reeleição.",
+ gat:"remunerado",
+ exp:"O art. 9º diz que o mandato no Cofen é honorífico, ou seja, exercido sem remuneração, com duração de três anos e uma reeleição (o art. 14 repete a regra para os Corens). Duração e reeleição estão certas; o adjetivo está trocado. Por isso o item é E.",
+ lembre:"Honorífico, 3 anos, 1 reeleição: vale para Cofen e Coren.",
+ peg:"Meia-verdade (números certos, natureza do mandato trocada).",
+ inv:"'O mandato dos membros do Conselho Federal de Enfermagem será honorífico e terá a duração de três anos, admitida uma reeleição.' (C)",
+ fonte:LEI+", arts. 9º e 14."},
+{n:"L4", src:"Variação inédita", real:0, gab:"C",
+ txt:"Perderá o mandato o conselheiro que faltar, durante o ano, sem licença prévia do respectivo Conselho, a cinco reuniões.",
+ gat:"cinco reuniões · sem licença prévia",
+ exp:"O art. 17 obriga o Cofen e os Corens a se reunirem pelo menos uma vez por mês e, no parágrafo único, tira o mandato de quem falta a cinco reuniões no ano sem licença prévia. Com doze reuniões mínimas, cinco faltas são quase metade delas. Por isso o item é C.",
+ lembre:"Reunião mensal; 5 faltas sem licença = perde o mandato.",
+ peg:"C de detalhe numérico.",
+ inv:"'Perderá o mandato o conselheiro que faltar, durante o ano, ainda que com licença prévia, a três reuniões.' (E)",
+ fonte:LEI+", art. 17."},
+{n:"L4", src:"Variação inédita", real:0, gab:"C",
+ txt:"Das penalidades previstas na Lei nº 5.905/1973, somente a cassação do direito ao exercício profissional é da alçada do Conselho Federal; as demais cabem aos Conselhos Regionais.",
+ gat:"somente a cassação ... é da alçada do Conselho Federal",
+ exp:"O art. 18 lista cinco penas e, no § 1º, divide a competência: advertência verbal, multa, censura e suspensão do exercício profissional são da alçada dos Corens; a cassação, do Cofen, ouvido o Coren interessado. Então é verdade que só a cassação fica com o federal. Por isso o item é C, mesmo com o 'somente'.",
+ passo:"Lista do art. 18: I advertência verbal | II multa | III censura | IV suspensão | V cassação | I a IV → Conselhos Regionais | V → Conselho Federal, ouvido o Regional",
+ peg:"C com absoluto ('somente'), contraintuitivo para quem desconfia de toda restrição.",
+ inv:"'Das penalidades previstas na lei, a suspensão e a cassação do exercício profissional são da alçada exclusiva do Conselho Federal.' (E)",
+ par:"L4-4",
+ fonte:LEI+", art. 18, § 1º."},
+{n:"L4", src:"Variação inédita", real:0, gab:"E",
+ txt:"A pena de cassação do direito ao exercício profissional é aplicada pelo Conselho Regional, ouvido o Conselho Federal.",
+ gat:"aplicada pelo Conselho Regional, ouvido o Conselho Federal",
+ exp:"A cassação é a pena mais grave e por isso fica com o órgão de cúpula: o Cofen a aplica, ouvido o Conselho Regional interessado (art. 18, § 1º). O item inverte quem aplica e quem é ouvido. Por isso o item é E.",
+ lembre:"A pena mais grave sobe para o Cofen; o Coren só é ouvido.",
+ peg:"Inversão (quem aplica × quem é ouvido).",
+ inv:"'A pena de cassação do direito ao exercício profissional é aplicada pelo Conselho Federal, ouvido o Conselho Regional interessado.' (C)",
+ fonte:LEI+", art. 18, § 1º."},
+{n:"T1", src:"COREN-PR 2024 · Analista de TI (402) · item 91", real:1, gab:"C",
+ txt:"O gerenciamento de incidentes é um processo da fase de operação de serviço na ITIL 2011, cujo objetivo consiste em restaurar a operação normal do serviço o mais rapidamente possível e minimizar o impacto negativo nas operações de negócio.",
+ gat:"restaurar a operação normal do serviço o mais rapidamente possível",
+ exp:"Incidente é uma interrupção não planejada ou uma queda de qualidade de um serviço. O foco do gerenciamento de incidentes é devolver o serviço ao usuário rápido, mesmo sem saber ainda a causa. Na ITIL 2011, esse processo fica na fase de Operação de Serviço (Service Operation). Por isso o item é C.",
+ ex:"O portal de inscrição do Coren cai às 9h; a equipe reinicia o serviço às 9h15 e só depois investiga por que caiu.",
+ peg:"C de definição: a banca troca 'restaurar o serviço' por 'eliminar a causa raiz', que é do gerenciamento de problemas.",
+ inv:"'... cujo objetivo consiste em identificar e eliminar a causa raiz das falhas, ainda que isso prolongue a indisponibilidade do serviço.' (E)",
+ fonte:"Gabarito definitivo da Quadrix; "+ITIL+"."},
+{n:"T1", src:"CRO-SP 2025 · Analista de Suporte de TI (407) · item 97", real:1, gab:"E",
+ txt:"O gerenciamento de incidentes, conforme o ITIL 4, pode ser conduzido sem a necessidade de registro formal do incidente, desde que o serviço seja restaurado com sucesso.",
+ gat:"sem a necessidade de registro formal",
+ exp:"No ITIL 4, todo incidente deve ser registrado e gerenciado, mesmo os resolvidos rápido. O registro serve para medir o serviço, achar padrões e alimentar o gerenciamento de problemas (dez incidentes iguais apontam um problema). Restaurar o serviço não dispensa o registro. Por isso o item é E.",
+ lembre:"Sem registro não há histórico, e sem histórico não se acha o problema.",
+ peg:"Justificativa falsa ('desde que o serviço seja restaurado').",
+ inv:"'... o incidente deve ser registrado, ainda que o serviço seja restaurado rapidamente.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+ITIL+"."},
+{n:"T1", src:"Variação inédita", real:0, gab:"C",
+ txt:"No ITIL 4, problema é definido como a causa, ou a causa potencial, de um ou mais incidentes.",
+ gat:"causa, ou a causa potencial, de um ou mais incidentes",
+ exp:"É a definição do ITIL 4 para problema. A expressão 'causa potencial' importa: um problema pode existir antes de qualquer incidente acontecer, por exemplo uma falha de projeto descoberta numa análise. Por isso o item é C.",
+ ex:"A equipe percebe que o certificado do servidor de e-mail vence em 10 dias: ainda não houve incidente, mas já há um problema (causa potencial).",
+ peg:"C de literalidade de manual; a armadilha comum é ler 'problema = incidente grave'.",
+ inv:"'No ITIL 4, problema é definido como um incidente de alto impacto que afeta vários usuários.' (E)",
+ fonte:ITIL+"."},
+{n:"T1", src:"CRO-SP 2025 · Analista de Suporte de TI (407) · item 96", real:1, gab:"C",
+ txt:"O gerenciamento de problemas pode ser acionado sem a existência de incidentes registrados, como forma preventiva para antecipar falhas potenciais no ambiente de TI.",
+ gat:"sem a existência de incidentes registrados, como forma preventiva",
+ exp:"O gerenciamento de problemas tem um lado reativo (investigar incidentes que já aconteceram) e um lado proativo (identificar causas potenciais antes que gerem incidentes, por tendências, alertas ou avisos de fabricantes). Por isso o gerenciamento de problemas pode começar sem nenhum incidente registrado. Por isso o item é C.",
+ lembre:"Problema pode vir antes do incidente: é a 'causa potencial'.",
+ peg:"C contraintuitivo: parece que problema sempre nasce de incidente.",
+ inv:"'O gerenciamento de problemas só pode ser acionado a partir de incidentes já registrados.' (E)",
+ fonte:"Gabarito definitivo da Quadrix; "+ITIL+"."},
+{n:"T1", src:"Variação inédita", real:0, gab:"E",
+ txt:"Uma solicitação de acesso a uma pasta de rede feita por um servidor recém-admitido deve ser registrada como incidente de baixa prioridade, pois envolve atendimento da central de serviços.",
+ gat:"deve ser registrada como incidente",
+ exp:"Incidente pressupõe interrupção ou queda de qualidade de um serviço. Um pedido de acesso não é falha: é uma requisição de serviço, um pedido previsto e padronizado, tratado pela prática de gerenciamento de requisição de serviço. Passar pela central de serviços não transforma o pedido em incidente. Por isso o item é E.",
+ ex:"Pedidos de conta de e-mail, troca de senha agendada, instalação de software homologado: todos requisições.",
+ lembre:"Algo quebrou → incidente. Alguém pediu algo previsto → requisição.",
+ peg:"Justificativa falsa ('pois envolve atendimento da central') + troca de conceito vizinho.",
+ inv:"'... deve ser tratada como requisição de serviço, por se tratar de pedido padronizado que não decorre de falha.' (C)",
+ fonte:ITIL+"."},
+{n:"T1", src:"CRP-SP 2025 · Especialista em Gestão de TIC (408) · item 105", real:1, gab:"E",
+ txt:"A central de serviços atua apenas de forma reativa, atendendo chamados de incidentes, e não participa de atividades proativas como comunicação de mudanças ou sugestões de melhoria.",
+ gat:"apenas de forma reativa",
+ exp:"A central de serviços (service desk) é o ponto único de contato entre o provedor e os usuários. Além de receber incidentes e requisições, ela comunica mudanças e indisponibilidades programadas, divulga avisos e coleta sugestões de melhoria, ou seja, também é proativa. O 'apenas' torna o item falso. Por isso o item é E.",
+ peg:"Absolutização ('apenas').",
+ inv:"'A central de serviços, além de atender incidentes e requisições, participa de atividades proativas, como a comunicação de mudanças aos usuários.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+ITIL+"."},
+{n:"T1", src:"Variação inédita", real:0, gab:"E",
+ txt:"A solução de contorno elimina a causa raiz do problema, razão pela qual sua aplicação dispensa o registro do erro conhecido.",
+ gat:"elimina a causa raiz",
+ exp:"Solução de contorno (workaround) é o 'estepe': reduz ou elimina o impacto de um incidente ou problema enquanto não há solução definitiva, mas a causa continua lá. Por isso o ITIL recomenda documentá-la no registro do erro conhecido, que é o problema já analisado e ainda não resolvido. O item afirma o contrário nas duas partes. Por isso o item é E.",
+ ex:"O servidor de arquivos trava quando a fila de impressão enche; reiniciar o spooler toda manhã é contorno, e trocar o driver defeituoso é a solução definitiva.",
+ lembre:"Contorno tira a dor, não a doença.",
+ peg:"Troca de conceito vizinho (contorno × solução definitiva) + conclusão falsa.",
+ inv:"'A solução de contorno reduz o impacto do problema enquanto não há solução definitiva e deve ser documentada no registro do erro conhecido.' (C)",
+ fonte:ITIL+"."},
+];
+
+ITENS.forEach((it,i)=>{ const k=ITENS.slice(0,i+1).filter(x=>x.n===it.n).length; it.id=it.n+"-"+k; });
+
+const KEY="cofen-gaby-2026-11-27-lei5905-itil-v1";
+const PESO=1;
+const INTERFACE="classica";
+// MODO "prova" (meta.modo): sem correção item a item; correção, mini-aulas e cartões abrem só em "Entregar prova".
+// INICIO (meta.numero_inicial): número do primeiro item na folha, para a numeração contínua do simulado (P2 41, P3 81).
+const MODO="estudo";
+const INICIO=1;
+document.documentElement.dataset.interface=INTERFACE;
+if(INTERFACE==="numerica"){
+  document.getElementById("howto-choice").innerHTML=`<b>1. Escolha</b>${PESO}++ = C com certeza · ${PESO}+ = C com dúvida · ${PESO}-- = E com certeza · ${PESO}- = E com dúvida · 0 = branco.`;
+  document.getElementById("howto-confidence").innerHTML=MODO==="prova"?"<b>2. Revise</b>Até a entrega, você pode mudar a seleção quantas vezes quiser."
+    :"<b>2. Confirme</b>O botão &gt;&gt;&gt; confirma e abre a correção. Antes disso, você pode mudar a seleção.";
+}
+if(MODO==="prova") document.getElementById("howto-grade").innerHTML="<b>3. Entregue</b>Responda tudo e clique em <b>Entregar prova</b>, no topo. Só então abrem a correção, as mini-aulas e os cartões; itens sem resposta contam como branco.";
+// S.a[id] = {r, c, done, prev:[{r,c}]}: tentativa atual + anteriores (refação). S.f = filtro, S.nucs = núcleos marcados,
+// S.snap = ids da lista filtrada, congelada até a pessoa trocar o filtro (senão o item some ao ser corrigido).
+let S={a:{},mode:"block",f:"all",nucs:[],snap:null,showCode:false};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+if(S.showCode===undefined) S.showCode=false;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+// modo prova ainda não entregue (S.entregue fica salvo com as respostas)
+const provaAtiva=()=>MODO==="prova"&&!S.entregue;
+// número fixo de cada item na ordem "por núcleo", a partir de INICIO (usado no modo prova)
+const NUM={};
+(()=>{let k=INICIO-1; NUC.forEach(n=>ITENS.filter(i=>i.n===n.id).forEach(i=>{NUM[i.id]=++k;}));})();
+function applyCodeVisibility(){
+  const b=$("#m-code"); if(!b) return;
+  b.setAttribute("aria-pressed",String(!!S.showCode));
+  b.textContent=S.showCode?"Código: expandido":"Código: recolhido";
+  document.querySelectorAll("details.code-box").forEach(d=>{d.open=!!S.showCode;});
+}
+
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const nucOf=id=>NUC.find(n=>n.id===id);
+const pts=ok=>ok?PESO:-PESO;
+
+// tentativas corrigidas, da primeira à última
+function att(id){const st=S.a[id]||{}; const a=(st.prev||[]).slice(); if(st.done) a.push({r:st.r,c:st.c}); return a;}
+function cat(it,t){ if(!t) return "n"; if(t.r==="B") return "b"; const ok=t.r===it.gab; return ok?(t.c==="s"?"ss":"ds"):(t.c==="s"?"se":"de"); }
+const lastCat=it=>{const a=att(it.id); return cat(it,a[a.length-1]);};
+const res=(it,t)=>t.r==="B"?"branco":(t.r===it.gab?"acerto":"erro");
+const FILTROS=[["all","Todos"],["rev","Para revisar"],["se","Errei com certeza"],["de","Errei na dúvida"],["ds","Acertei na dúvida"],["b","Em branco"],["n","Não respondidos"]];
+const PRI={se:0,de:1,ds:2,b:3,ss:4,n:5};
+const inNuc=it=>!S.nucs.length||S.nucs.includes(it.n);
+const naFiltro=(it,f)=>f==="all"||(f==="rev"?["se","de","ds","b"].includes(lastCat(it)):lastCat(it)===f);
+
+function rankTable(){
+  $("#rank").innerHTML=NUC.map(n=>`<tr><td><b>${n.id}</b> ${n.t}</td><td>${n.ed}</td><td class="n">${n.provas}</td><td class="n">${n.itens}</td></tr>`).join("");
+}
+
+function codeBox(code, lang){
+  if(!code) return "";
+  const open=S.showCode?" open":"";
+  const lab=lang?` <span class="lang">${esc(lang)}</span>`:"";
+  return `<details class="code-box"${open}><summary>Trecho de código${lab}</summary><pre class="code"><code>${esc(code)}</code></pre></details>`;
+}
+// Código sempre no item (próprio ou herdado do núcleo), para o toggle existir antes de marcar C/E.
+// No modo "por núcleo", o cmd compartilhado fica só no cabeçalho do núcleo (sharedCmd).
+function itemCtx(it, opts={}){
+  const n=nucOf(it.n)||{};
+  let h="";
+  if(it.cmd) h+=`<p class="cmd">${esc(it.cmd)}</p>`;
+  else if(!opts.sharedCmd && n.cmd) h+=`<p class="cmd">${esc(n.cmd)}</p>`;
+  h+=codeBox(it.code||n.code||"", it.lang||n.lang||"");
+  return h;
+}
+function nucCtx(n){
+  if(!n.cmd) return "";
+  return `<div class="nuc-ctx" style="display:grid;gap:10px;margin:4px 0 8px"><p class="cmd">${esc(n.cmd)}</p></div>`;
+}
+function itemHTML(it,idx,opts={}){
+  const st=S.a[it.id]||{};
+  const done=!!st.done;
+  const prev=st.prev||[];
+  const cls=done?(st.r==="B"?"c-blank":(st.r===it.gab?"c-ok":"c-bad")):"";
+  const pr=(v)=>st.r===v?"true":"false";
+  const cf=(v)=>st.c===v?"true":"false";
+  const canGrade=st.r&&(st.r==="B"||st.c);
+  const sharedCmd=!!opts.sharedCmd;
+  let verdict="",res_="";
+  if(done){
+    const t=st.r==="B"?`<span class="tag blank">Em branco · 0</span>`:(st.r===it.gab?`<span class="tag ok">Acertou · +${PESO}</span>`:`<span class="tag bad">Errou · −${PESO}</span>`);
+    // a tentativa anterior só aparece depois de corrigir a atual, para não entregar o gabarito
+    const antes=prev.length?`<span class="before">Antes: ${prev.map(p=>({acerto:"acertou",erro:"errou",branco:"em branco"})[res(it,p)]+(p.c?` (${p.c==="s"?"certeza":"dúvida"})`:"")).join(" → ")}</span>`:"";
+    verdict=`<div class="verdict">${t}<span>Gabarito: <b>${it.gab==="C"?"Certo":"Errado"}</b></span>${st.c?`<span class="chip">${st.c==="s"?"com certeza":"na dúvida"}</span>`:""}${antes}</div>`;
+    res_=`<div class="res">
+      <div class="row"><span>Decide o item</span><div><mark class="gat ${st.r==="B"?"blank":(st.r===it.gab?"ok":"bad")}">${it.gat}</mark></div></div>
+      ${it.termos?`<div class="row"><span>O que é</span><div>${termosHTML(it.termos)}</div></div>`:""}
+      <div class="row"><span>Conceito</span><div>${it.exp}</div></div>
+      ${it.viz?`<div class="row"><span>Vizinho</span><div class="viz">${it.viz}</div></div>`:""}
+      ${it.passo?`<div class="row"><span>Passo a passo</span><div><ol class="passos">${it.passo.split(" | ").map(x=>`<li>${x}</li>`).join("")}</ol></div></div>`:""}
+      ${it.ex?`<div class="row"><span>Exemplo</span><div class="ex">${it.ex}</div></div>`:""}
+      ${it.quote?`<div class="row"><span>Texto do provedor</span><div class="quote">${it.quote}</div></div>`:""}
+      <div class="row"><span>Pegadinha</span><div>${it.peg}</div></div>
+      <div class="row"><span>Como inverte</span><div>${it.inv}</div></div>
+      ${it.lembre?`<div class="row"><span>Para lembrar</span><div class="lembre">${it.lembre}</div></div>`:""}
+      ${parHTML(it)}
+      ${it.nota?`<div class="note"><b>Atenção ao gabarito.</b> ${it.nota}</div>`:""}
+      <div class="row"><span>Fonte</span><div style="font-size:14px">${it.fonte}</div></div>
+    </div>`;
+  }
+  const tent=prev.length?`<span class="chip try">${prev.length+1}ª tentativa</span>`:"";
+  const ctx=itemCtx(it,{sharedCmd});
+  return `<article class="item ${cls}" id="it-${it.id}" data-shared-cmd="${sharedCmd?"1":"0"}">
+    <div class="item-top"><span class="num">${idx}</span><span class="chip">${it.n}</span><span class="chip ${it.real?"real":"var"}">${it.real?"Real":"Variação"}</span>${tent}<span>${it.real?it.src:it.src.replace("Variação inédita","Inédita")}</span></div>
+    ${ctx}
+    <p class="stmt">${esc(it.txt)}</p>
+    ${done?verdict:`<div class="sheet">
+      ${INTERFACE==="numerica"?`<div class="bubbles" role="group" aria-label="Resposta e confiança">
+        <button class="bub" data-id="${it.id}" data-r="C" data-c="s" aria-pressed="${st.r==="C"&&st.c==="s"}" aria-label="Certo, com certeza" title="Certo, com certeza">${PESO}++</button>
+        <button class="bub" data-id="${it.id}" data-r="C" data-c="d" aria-pressed="${st.r==="C"&&st.c==="d"}" aria-label="Certo, com dúvida" title="Certo, com dúvida">${PESO}+</button>
+        <button class="bub" data-id="${it.id}" data-r="E" data-c="s" aria-pressed="${st.r==="E"&&st.c==="s"}" aria-label="Errado, com certeza" title="Errado, com certeza">${PESO}--</button>
+        <button class="bub" data-id="${it.id}" data-r="E" data-c="d" aria-pressed="${st.r==="E"&&st.c==="d"}" aria-label="Errado, com dúvida" title="Errado, com dúvida">${PESO}-</button>
+        <button class="bub" data-id="${it.id}" data-r="B" aria-pressed="${pr("B")}" aria-label="Deixaria em branco" title="Deixaria em branco">0</button>
+      </div>
+      ${provaAtiva()?"":`<button class="btn primary" data-grade="${it.id}" aria-label="Confirmar resposta e abrir correção" title="Confirmar resposta e abrir correção" ${canGrade?"":"disabled"}>&gt;&gt;&gt;</button>`}`:`
+      <div class="bubbles" role="group" aria-label="Resposta">
+        <button class="bub" data-id="${it.id}" data-r="C" aria-pressed="${pr("C")}" aria-label="Certo">C</button>
+        <button class="bub" data-id="${it.id}" data-r="E" aria-pressed="${pr("E")}" aria-label="Errado">E</button>
+        <button class="bub blank" data-id="${it.id}" data-r="B" aria-pressed="${pr("B")}">Em branco</button>
+      </div>
+      <div class="conf" role="group" aria-label="Confiança" aria-disabled="${st.r==="B"?"true":"false"}">
+        <button data-id="${it.id}" data-c="s" aria-pressed="${cf("s")}">Tenho certeza</button>
+        <button data-id="${it.id}" data-c="d" aria-pressed="${cf("d")}">Estou em dúvida</button>
+      </div>
+      ${provaAtiva()?"":`<button class="btn primary" data-grade="${it.id}" ${canGrade?"":"disabled"}>Corrigir</button>`}`}
+    </div>`}
+    ${res_}
+  </article>`;
+}
+
+// Par mínimo: só aparece quando os DOIS itens já foram corrigidos, para não entregar o gabarito do outro.
+const parOf=it=>it.par||(ITENS.find(x=>x.par===it.id)||{}).id;
+function parHTML(it){
+  const pid=parOf(it); if(!pid) return "";
+  const o=ITENS.find(x=>x.id===pid); const so=S.a[pid];
+  if(!o||!so||!so.done) return "";
+  return `<div class="row"><span>Par mínimo</span><div>Item ${o.id} (${o.gab==="C"?"Certo":"Errado"}): “${esc(o.txt)}” · muda <mark>${o.gat}</mark></div></div>`;
+}
+
+function aulaHTML(n,dica){
+  if(!n.aula||provaAtiva()) return "";
+  return `<details class="aula"><summary>Entenda o assunto · ${n.id}${dica?` <span class="hint">(se ainda não estudou o tema, leia antes; se já estudou, responda primeiro para medir)</span>`:""}</summary><div>${n.aula}</div></details>`;
+}
+function cardHTML(n,comAula=true){
+  if(provaAtiva()) return "";
+  return `${comAula?aulaHTML(n,false):""}<details class="card"><summary>Cartão de revisão · ${n.id}</summary><div>
+    <ul>${n.card.map(c=>`<li>${c}</li>`).join("")}</ul>
+    <p><b>Como a banca inverte:</b> ${n.inv}</p></div></details>`;
+}
+
+function shuffled(){
+  // intercala por núcleo com ordem fixa (semente), para que a ordem não mude a cada visita
+  let seed=7; const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+  const a=ITENS.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+// lista filtrada, em ordem de prioridade: errou com certeza, errou na dúvida, acertou na dúvida, branco
+function snapshot(){
+  if(S.f==="all"){S.snap=null;return;}
+  S.snap=ITENS.filter(it=>inNuc(it)&&naFiltro(it,S.f))
+    .sort((a,b)=>PRI[lastCat(a)]-PRI[lastCat(b)]||ITENS.indexOf(a)-ITENS.indexOf(b)).map(it=>it.id);
+}
+
+function render(){
+  if(provaAtiva()){S.mode="block";S.f="all";S.snap=null;S.nucs=[];}
+  const box=$("#items"); let h=""; let k=0;
+  if(S.f!=="all"&&S.snap){
+    const lista=S.snap.map(id=>ITENS.find(x=>x.id===id)).filter(Boolean);
+    const nome=FILTROS.find(f=>f[0]===S.f)[1];
+    h+=`<div class="flat-head"><div class="label">Revisão${S.nucs.length?" · "+S.nucs.join(", "):""}</div><h2>${nome}: ${lista.length} ${lista.length===1?"item":"itens"}</h2>
+      <p>${S.f==="rev"?"Ordem: primeiro os erros com certeza, depois os erros na dúvida, os acertos na dúvida e os brancos.":"Na ordem do material."} A lista fica fixa enquanto você revisa; clique de novo no filtro para atualizá-la.</p></div><section class="flat">`;
+    if(!lista.length) h+=`<p class="note">Nenhum item neste filtro.</p>`;
+    lista.forEach(it=>{k++;h+=itemHTML(it,k);});
+    const ns=NUC.filter(n=>lista.some(it=>it.n===n.id));
+    if(ns.length) h+=`<h3 style="margin-top:12px">Cartões de revisão</h3>`+ns.map(n=>cardHTML(n)).join("");
+    h+=`</section>`;
+  }else if(S.mode==="block"){
+    NUC.filter(n=>!S.nucs.length||S.nucs.includes(n.id)).forEach(n=>{
+      const sharedCmd=!!n.cmd;
+      h+=`<section class="nuc" id="${n.id}"><div class="nuc-head"><div class="label">${n.id} · edital ${n.ed}</div><h2>${n.t}</h2>
+        <div class="meta"><span>Aparece em <b>${n.provas}</b> provas</span><span><b>${n.itens}</b> itens no acervo</span></div></div>${aulaHTML(n,true)}${nucCtx(n)}`;
+      ITENS.filter(i=>i.n===n.id).forEach(it=>{k++;h+=itemHTML(it,MODO==="prova"?NUM[it.id]:k,{sharedCmd});});
+      h+=cardHTML(n,false)+`</section>`;
+    });
+  }else{
+    h+=`<section class="nuc"><div class="nuc-head"><div class="label">Modo intercalado</div><h2>Todos os núcleos misturados</h2>
+      <div class="meta"><span>Como na prova: o assunto muda a cada item. Use depois de passar uma vez por núcleo.</span></div></div>`;
+    shuffled().filter(inNuc).forEach(it=>{k++;h+=itemHTML(it,k);});
+    h+=`<h3 style="margin-top:12px">Cartões de revisão</h3>`+NUC.filter(n=>!S.nucs.length||S.nucs.includes(n.id)).map(n=>cardHTML(n)).join("")+`</section>`;
+  }
+  box.innerHTML=h;
+  const flat=S.f!=="all";
+  $("#m-block").setAttribute("aria-pressed",!flat&&S.mode==="block");
+  $("#m-mix").setAttribute("aria-pressed",!flat&&S.mode==="mix");
+  applyCodeVisibility();
+  stats();
+}
+
+function pills(){
+  const cnt={}; FILTROS.forEach(f=>cnt[f[0]]=ITENS.filter(it=>inNuc(it)&&naFiltro(it,f[0])).length);
+  $("#f-pills").innerHTML=FILTROS.map(([v,l])=>`<button class="pill${(v==="se"&&cnt.se)?" hot":""}" data-f="${v}" aria-pressed="${S.f===v}">${l} <b>${cnt[v]}</b></button>`).join("");
+  $("#n-pills").innerHTML=NUC.map(n=>{const e=ITENS.filter(it=>it.n===n.id&&["se","de"].includes(lastCat(it))).length;
+    return `<button class="pill" data-nuc="${n.id}" aria-pressed="${S.nucs.includes(n.id)}" title="${n.t.replace(/"/g,"&quot;")}">${n.id}${e?` <b>${e} erro${e>1?"s":""}</b>`:""}</button>`;}).join("");
+  const vis=S.snap||[]; const refaz=vis.filter(id=>S.a[id]&&S.a[id].done).length;
+  $("#redo-box").hidden=S.f==="all";
+  $("#redo").disabled=!refaz;
+  $("#redo").textContent=refaz?`Refazer ${refaz} ${refaz===1?"item":"itens"}`:"Nada para refazer";
+  const ind=$("#f-ind"); ind.textContent=S.f==="all"&&!S.nucs.length?"Revisar":`Filtro: ${FILTROS.find(f=>f[0]===S.f)[1]}${S.nucs.length?" · "+S.nucs.join(", "):""}`;
+}
+
+function termosHTML(t){
+  return `<dl class="termos">${String(t).split(" || ").map(x=>{const p=x.split(" :: ");return `<dt>${p[0]}</dt><dd>${p.slice(1).join(" :: ")}</dd>`;}).join("")}</dl>`;
+}
+function glossario(){
+  const box=document.getElementById("glossario"); if(!box) return;
+  const vistos=new Map();
+  ITENS.forEach(it=>{ if(!it.termos||!(S.a[it.id]&&S.a[it.id].done)) return;
+    String(it.termos).split(" || ").forEach(x=>{const p=x.split(" :: "); const k=p[0].replace(/<[^>]+>/g,"").trim().toLowerCase(); if(!vistos.has(k)) vistos.set(k,[p[0],p.slice(1).join(" :: ")]);});
+  });
+  const arr=[...vistos.values()].sort((a,b)=>a[0].replace(/<[^>]+>/g,"").localeCompare(b[0].replace(/<[^>]+>/g,""),"pt"));
+  box.hidden=!arr.length;
+  document.getElementById("glos-list").innerHTML=arr.map(([t,d])=>`<dt>${t}</dt><dd>${d}</dd>`).join("");
+}
+function stats(){glossario();
+  // desempenho e calibração: só a PRIMEIRA tentativa de cada item
+  let done=0,net=0; const per={}; const cal={ss:0,se:0,ds:0,de:0}; const rf={up:0,still:0,keep:0,down:0};
+  NUC.forEach(n=>per[n.id]={c:0,e:0,b:0});
+  ITENS.forEach(it=>{const a=att(it.id); if(!a.length) return; done++;
+    const f=a[0];
+    if(f.r==="B") per[it.n].b++;
+    else{const ok=f.r===it.gab; net+=pts(ok); per[it.n][ok?"c":"e"]++; cal[(f.c==="s"?"s":"d")+(ok?"s":"e")]++;}
+    if(a.length>1){const r0=res(it,a[0])==="acerto", r1=res(it,a[a.length-1])==="acerto";
+      rf[r0?(r1?"keep":"down"):(r1?"up":"still")]++;}
+  });
+  const max=ITENS.length*PESO;
+  $("#s-done").textContent=done; $("#s-total").textContent=ITENS.length; $("#s-net").textContent=(net>0?"+":"")+net;
+  $("#s-max").textContent=`/ ${max}`;
+  $("#s-prog").style.width=(done/ITENS.length*100)+"%";
+  $("#sum-body").innerHTML=NUC.map(n=>{const p=per[n.id];const l=(p.c-p.e)*PESO;return `<tr><td><b>${n.id}</b> ${n.t}</td><td class="n">${p.c}</td><td class="n">${p.e}</td><td class="n">${p.b}</td><td class="n"><b>${l>0?"+":""}${l}</b></td></tr>`}).join("");
+  $("#k-ss").textContent=cal.ss; $("#k-se").textContent=cal.se; $("#k-ds").textContent=cal.ds; $("#k-de").textContent=cal.de;
+  const nr=rf.up+rf.still+rf.keep+rf.down; $("#redo-sum").hidden=!nr;
+  $("#r-up").textContent=rf.up; $("#r-still").textContent=rf.still; $("#r-keep").textContent=rf.keep; $("#r-down").textContent=rf.down;
+  const dt=cal.ds+cal.de;
+  let adv;
+  if(done<8) adv="Corrija pelo menos 8 itens para a recomendação sobre chutar ou deixar em branco.";
+  else if(dt<4) adv=`Poucos itens respondidos na dúvida (${dt}) para medir. Continue registrando a confiança.`;
+  else{const p=cal.ds/dt; const pct=Math.round(p*100);
+    adv=p>0.5?`Na dúvida você acertou ${pct}% (${cal.ds} de ${dt}). Acima de 50%, responder ainda dá saldo positivo, porque cada erro anula um acerto. Mesmo assim, revise esses núcleos.`
+      :`Na dúvida você acertou ${pct}% (${cal.ds} de ${dt}). Com 50% ou menos, chutar dá saldo zero ou negativo: nesses núcleos, deixe em branco até revisar.`;}
+  if(cal.se>0) adv+=` Você errou ${cal.se} item(ns) com certeza: são conceitos fixados errado, o ponto mais caro na prova. Revise esses primeiro (filtro "Errei com certeza").`;
+  $("#advice").textContent=adv;
+  $("#yaml").value=yaml();
+  pills();
+  provaUI();
+}
+
+function yaml(){
+  const d=new Date().toISOString().slice(0,10);
+  const conf=t=>t.r==="B"?"na":(t.c==="s"?"certeza":"duvida");
+  let y=`material: pessoal/gaby/simulados/gerados/2026-11-27_lei5905-itil/caderno.html\npessoa: gaby\ncargo: tic\ndata: "${d}"\neixo: comp.leg.enfermagem\nitens:\n`;
+  ITENS.forEach(it=>{const a=att(it.id); if(!a.length) return; const f=a[0];
+    y+=`  - id: ${it.id}\n    origem: "${it.real?it.src:"variacao_inedita"}"\n    resposta: ${f.r}\n    gabarito: ${it.gab}\n    confianca: ${conf(f)}\n    resultado: ${res(it,f)}\n    gatilho: "${it.gat.replace(/"/g,"'")}"\n`;
+    if(a.length>1){y+=`    refacao:\n`; a.slice(1).forEach(t=>{y+=`      - {resposta: ${t.r}, confianca: ${conf(t)}, resultado: ${res(it,t)}}\n`;});}
+  });
+  return y;
+}
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.id==="entregar"){provaConfirm(true);return;}
+  if(b.id==="entregar-sim"){entregar();return;}
+  if(b.id==="entregar-nao"){provaConfirm(false);return;}
+  if(b.dataset.r){const id=b.dataset.id; S.a[id]=S.a[id]||{}; S.a[id].r=b.dataset.r; if(b.dataset.r==="B") delete S.a[id].c; else if(INTERFACE==="numerica"&&b.dataset.c) S.a[id].c=b.dataset.c; save(); rerenderItem(id);}
+  else if(b.dataset.c){const id=b.dataset.id; S.a[id]=S.a[id]||{}; S.a[id].c=b.dataset.c; save(); rerenderItem(id);}
+  else if(b.dataset.grade){const id=b.dataset.grade; S.a[id].done=true; save(); rerenderItem(id);
+    const pid=parOf(ITENS.find(x=>x.id===id)); if(pid&&S.a[pid]&&S.a[pid].done) rerenderItem(pid);
+    stats();}
+  else if(b.dataset.f){S.f=b.dataset.f; snapshot(); save(); render(); $("#items").scrollIntoView({block:"start"});}
+  else if(b.dataset.nuc){const n=b.dataset.nuc; S.nucs=S.nucs.includes(n)?S.nucs.filter(x=>x!==n):S.nucs.concat(n); snapshot(); save(); render();}
+});
+function rerenderItem(id){
+  const el=document.getElementById("it-"+id); if(!el) return;
+  const it=ITENS.find(x=>x.id===id);
+  const idx=el.querySelector(".num").textContent;
+  const sharedCmd=el.dataset.sharedCmd==="1";
+  el.outerHTML=itemHTML(it,idx,{sharedCmd});
+  applyCodeVisibility();
+  provaUI();
+}
+$("#m-block").onclick=()=>{S.mode="block";S.f="all";S.snap=null;save();render();};
+$("#m-mix").onclick=()=>{S.mode="mix";S.f="all";S.snap=null;save();render();};
+$("#m-code").onclick=()=>{
+  S.showCode=!S.showCode; save();
+  applyCodeVisibility();
+};
+$("#redo").onclick=()=>{
+  let n=0;
+  (S.snap||[]).forEach(id=>{const st=S.a[id]; if(!st||!st.done) return;
+    S.a[id]={prev:(st.prev||[]).concat({r:st.r,c:st.c})}; n++;});
+  save(); render();
+  const t=$("#redo-toast"); t.textContent=`${n} ${n===1?"item pronto":"itens prontos"} para refazer.`; t.hidden=false; setTimeout(()=>t.hidden=true,3000);
+  $("#items").scrollIntoView({block:"start"});
+};
+$("#copy").onclick=()=>{
+  const t=$("#yaml").value; const toast=$("#toast");
+  navigator.clipboard.writeText(t).then(()=>{toast.textContent="Resultado copiado.";toast.hidden=false;setTimeout(()=>toast.hidden=true,2500);})
+  .catch(()=>{const ta=$("#yaml");ta.focus();ta.select();toast.textContent="Texto selecionado: use Ctrl+C.";toast.hidden=false;});
+};
+// Baixar arquivo: só no artifact publicado com capabilities {downloads:true}; aberto do disco, o botão fica oculto.
+(async()=>{
+  try{
+    if(!window.claude||!claude.use) return;
+    const dl=await claude.use("downloads"); if(!dl) return;
+    const arq="pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml".split("/").pop()+".txt";
+    const b=$("#dl"); b.hidden=false;
+    b.onclick=async()=>{
+      const toast=$("#toast"); b.disabled=true;
+      try{ await dl.save({filename:arq,data:yaml()}); toast.textContent="Arquivo pronto: "+arq; }
+      catch(e){ const c=e&&e.code;
+        toast.textContent=c==="declined"?"Download cancelado.":c==="rate_limited"?"Já há uma confirmação aberta.":"Download indisponível aqui: use Copiar resultado.";
+        if(c!=="declined"&&c!=="rate_limited") b.hidden=true; }
+      b.disabled=false; toast.hidden=false; setTimeout(()=>toast.hidden=true,3500);
+    };
+  }catch(e){}
+})();
+$("#reset").onclick=()=>{$("#confirm").hidden=false;};
+$("#reset-no").onclick=()=>{$("#confirm").hidden=true;};
+$("#reset-yes").onclick=()=>{S.a={};S.f="all";S.snap=null;S.entregue=false;PROVA_CONF=false;save();$("#confirm").hidden=true;render();};
+
+// ===== Modo prova =====
+// Antes da entrega: sem botão de corrigir, sem mini-aula e sem cartão; filtros e modo intercalado fechados.
+// "Entregar prova" confirma tudo de uma vez: sem resposta = branco; C/E sem confiança (interface clássica) = dúvida.
+let PROVA_CONF=false;
+function provaUI(){
+  const note=$("#prova-note"), btn=$("#entregar"); if(!note||!btn) return;
+  const ativa=provaAtiva();
+  $("#revisar").hidden=ativa; $("#f-ind").hidden=ativa; $("#m-mix").disabled=ativa;
+  if(MODO!=="prova"){note.hidden=true; btn.hidden=true; return;}
+  const tot=ITENS.length, resp=ITENS.filter(it=>S.a[it.id]&&S.a[it.id].r).length;
+  btn.hidden=!ativa; btn.textContent=`Entregar prova (${resp}/${tot})`;
+  note.hidden=false;
+  if(!ativa){
+    note.innerHTML=`<p><b>Prova entregue.</b> A correção, as mini-aulas e os cartões estão abertos. Placar, calibração e export usam as respostas da entrega; refações aparecem à parte.</p>`;
+    return;
+  }
+  let h=`<p><b>Modo prova.</b> Itens ${INICIO} a ${INICIO+tot-1}. Respondidos: <b>${resp}</b> de ${tot}. A correção, as mini-aulas e os cartões só abrem depois da entrega; até lá, dá para mudar qualquer resposta.</p>`;
+  if(PROVA_CONF){
+    const vazio=tot-resp;
+    const semConf=ITENS.filter(it=>{const st=S.a[it.id]; return st&&st.r&&st.r!=="B"&&!st.c;}).length;
+    h+=`<p>Entregar agora? ${vazio?`<b>${vazio}</b> ${vazio===1?"item sem resposta conta":"itens sem resposta contam"} como branco. `:""}${semConf?`<b>${semConf}</b> ${semConf===1?"item sem confiança marcada fica registrado":"itens sem confiança marcada ficam registrados"} como dúvida. `:""}Depois da entrega, as respostas não mudam.</p>
+      <div class="act"><button class="btn primary" id="entregar-sim">Confirmar entrega</button><button class="btn" id="entregar-nao">Continuar respondendo</button></div>`;
+  }
+  note.innerHTML=h;
+}
+function provaConfirm(on){
+  PROVA_CONF=on; provaUI();
+  if(on) $("#prova-note").scrollIntoView({block:"center"});
+}
+function entregar(){
+  ITENS.forEach(it=>{
+    const st=S.a[it.id]=S.a[it.id]||{}; if(st.done) return;
+    if(!st.r){st.r="B"; delete st.c;}
+    else if(st.r!=="B"&&!st.c) st.c="d";
+    st.done=true;
+  });
+  S.entregue=true; PROVA_CONF=false; save(); render();
+  $("#prova-note").scrollIntoView({block:"start"});
+}
+
+// ===== Teclado =====
+// ↓/j ↑/k: item seguinte/anterior · 1 2 3 4: C certeza, C dúvida, E certeza, E dúvida · 0: branco
+// Enter: confirma e abre a correção, sem sair do item · n: próximo não respondido · ?: atalhos · Esc: fecha o quadro.
+// Não age em campos de texto, com Ctrl/Alt/Meta, nem em item já corrigido (respostas não mudam depois de confirmar).
+let KB=null;
+const kbItems=()=>[...document.querySelectorAll("article.item")];
+const kbId=el=>el.id.slice(3);
+function kbMark(scroll){
+  document.querySelectorAll("article.item.kb-active").forEach(el=>el.classList.remove("kb-active"));
+  if(!KB) return; const el=document.getElementById("it-"+KB); if(!el){KB=null;return;}
+  el.classList.add("kb-active");
+  if(scroll){const rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({block:"center",behavior:rm?"auto":"smooth"});}
+}
+function kbGo(el){ if(!el) return; KB=kbId(el); kbMark(true); }
+function kbStep(d){
+  const l=kbItems(); if(!l.length) return;
+  const i=l.findIndex(el=>kbId(el)===KB);
+  kbGo(i<0?l[d>0?0:l.length-1]:l[Math.min(l.length-1,Math.max(0,i+d))]);
+}
+function kbNextOpen(){
+  const l=kbItems(); if(!l.length) return;
+  const i=Math.max(-1,l.findIndex(el=>kbId(el)===KB));
+  const ord=l.slice(i+1).concat(l.slice(0,i+1));
+  // no modo prova, "não respondido" = ainda sem marcação (nada fica corrigido antes da entrega)
+  const el=ord.find(el=>{const st=S.a[kbId(el)]; return provaAtiva()?!(st&&st.r):!(st&&st.done);});
+  if(el) kbGo(el);
+}
+function kbHelp(show){
+  let box=document.getElementById("kb-help");
+  if(!box){
+    box=document.createElement("div"); box.id="kb-help"; box.className="kb-help"; box.hidden=true;
+    box.setAttribute("role","dialog"); box.setAttribute("aria-label","Atalhos de teclado");
+    const r1=INTERFACE==="numerica"?[`${PESO}++`,`${PESO}+`,`${PESO}--`,`${PESO}-`]:["C com certeza","C com dúvida","E com certeza","E com dúvida"];
+    box.innerHTML=`<h3>Atalhos de teclado</h3><table>
+      <tr><td><kbd>↓</kbd> <kbd>j</kbd></td><td>próximo item</td></tr>
+      <tr><td><kbd>↑</kbd> <kbd>k</kbd></td><td>item anterior</td></tr>
+      <tr><td><kbd>1</kbd></td><td>${r1[0]}</td></tr><tr><td><kbd>2</kbd></td><td>${r1[1]}</td></tr>
+      <tr><td><kbd>3</kbd></td><td>${r1[2]}</td></tr><tr><td><kbd>4</kbd></td><td>${r1[3]}</td></tr>
+      <tr><td><kbd>0</kbd></td><td>em branco</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>confirmar e abrir a correção (o item continua ativo)</td></tr>
+      <tr><td><kbd>n</kbd></td><td>ir ao próximo não respondido</td></tr>
+      <tr><td><kbd>?</kbd> <kbd>Esc</kbd></td><td>mostrar/ocultar este quadro</td></tr></table>`;
+    document.body.appendChild(box);
+  }
+  box.hidden=show===undefined?!box.hidden:!show;
+}
+const KB_R={"1":["C","s"],"2":["C","d"],"3":["E","s"],"4":["E","d"],"0":["B",null]};
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey||e.altKey||e.metaKey||e.isComposing) return;
+  const t=e.target, tag=(t.tagName||"").toLowerCase();
+  if(tag==="input"||tag==="textarea"||tag==="select"||t.isContentEditable) return;
+  const k=e.key;
+  if(k==="?"){e.preventDefault(); kbHelp(); return;}
+  if(k==="Escape"){const b=document.getElementById("kb-help"); if(b&&!b.hidden){e.preventDefault(); kbHelp(false);} return;}
+  if(k==="ArrowDown"||k==="j"){e.preventDefault(); kbStep(1); return;}
+  if(k==="ArrowUp"||k==="k"){e.preventDefault(); kbStep(-1); return;}
+  if(k==="n"){e.preventDefault(); kbNextOpen(); return;}
+  if(KB_R[k]){
+    if(!KB||!document.getElementById("it-"+KB)) return;
+    const st=S.a[KB]=S.a[KB]||{}; if(st.done) return;
+    e.preventDefault();
+    const [r,c]=KB_R[k]; st.r=r; if(c) st.c=c; else delete st.c;
+    save(); rerenderItem(KB); kbMark(false); return;
+  }
+  if(k==="Enter"){
+    // Enter num botão ou link focado mantém o comportamento nativo (clicar nele)
+    if(tag==="button"||tag==="a"||tag==="summary") return;
+    if(!KB) return; const el=document.getElementById("it-"+KB); if(!el) return;
+    const g=el.querySelector("button[data-grade]");
+    if(!g||g.disabled) return;
+    e.preventDefault(); g.click(); kbMark(false);
+    const rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const a=document.getElementById("it-"+KB); if(a) a.scrollIntoView({block:"start",behavior:rm?"auto":"smooth"});
+  }
+});
+// clique dentro de um item o torna ativo; depois de qualquer clique, refaz o destaque (o item pode ter sido redesenhado)
+document.addEventListener("click",e=>{
+  const el=e.target.closest&&e.target.closest("article.item"); if(el) KB=kbId(el);
+  setTimeout(()=>kbMark(false),0);
+});
+
+if(S.f!=="all"&&!S.snap) snapshot();
+rankTable(); render();
+</script>

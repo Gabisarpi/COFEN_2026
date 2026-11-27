@@ -1,0 +1,16 @@
+{
+ "title": "27/11 · Lei 5.905/1973 + ITIL (incidente × problema × requisição)",
+ "eyebrow": "COFEN 2026 · Cargo 407 Analista de TIC · Material do dia 27/11",
+ "h1": "Lei 5.905/1973 e, no P3 do dia, incidente × problema × requisição",
+ "lede": "{N} itens em {NUC} núcleos: {REAIS} reais do acervo e {VAR} variações inéditas que mudam um detalhe e invertem o gabarito. A resolução de cada item só abre depois que você marca a resposta e a confiança.",
+ "method_html": "<p><b>Edital.</b> Conhecimentos complementares do Cargo 407: Lei nº 5.905/1973 (Sistema Cofen/Corens). No P3, bloco 6 (ITIL, gestão de serviços), comum aos cargos de TI.</p>\n<p><b>Tamanho.</b> Caderno do dia (cronograma de 27/11: 2 h): 18 itens da lei + 7 do P3 do dia, abaixo dos 35–45 de um material de bloco inteiro.</p>\n<p><b>Calibração (perfil).</b> Os 7 reais são todos Quadrix de conselhos (COREN-PR 2024, CRO-SP 2025, CRP-SP 2025). Na Lei 5.905, o acervo só tem 3 itens no escopo (COREN-PR 2024, itens 107, 113 e 115); os demais itens do COREN-PR sobre o Sistema Cofen são do Regimento Interno do Coren-PR, que não está no edital do COFEN, e ficaram de fora. Por isso a lei leva 15 variações inéditas, montadas sobre os artigos com uma palavra trocada, como a Quadrix faz.</p>\n<div class=\"tbl\"><table><thead><tr><th>Núcleo</th><th>Edital</th><th class=\"n\">Provas</th><th class=\"n\">Itens no acervo</th></tr></thead><tbody id=\"rank\"></tbody></table></div>\n<p><b>Ficaram de fora.</b> Regimento Interno do Coren-PR (itens 106, 108–112) e processo ético (itens 114, 116–120): não estão na Lei 5.905. O processo ético entra no dia das resoluções.</p>\n<p><b>Literalidade.</b> Os itens reais copiam os arts. 5º e 11 da lei. As variações seguem a redação dos artigos indicados em cada resolução; confira o texto no Planalto (link na fonte).</p>\n<p><b>Gabaritos.</b> Anuidade: a competência é do Coren pela Lei 5.905; os tetos vêm da Lei 12.514/2011 (nota no item).</p>",
+ "key": "cofen-gaby-2026-11-27-lei5905-itil-v1",
+ "material": "pessoal/gaby/simulados/gerados/2026-11-27_lei5905-itil/caderno.html",
+ "pessoa": "gaby",
+ "cargo": "tic",
+ "eixo": "comp.leg.enfermagem",
+ "peso": 1,
+ "ancoragem_acervo": "coren_pr_2024_analista_ti #107 #113 #115; cro_sp_2025 #96 #97; crp_sp_2025 #105; coren_pr_2024 #91",
+ "respostas": "pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml",
+ "resp_dir": "pessoal/gaby/respostas/"
+}

@@ -33,7 +33,7 @@
 
 | Dia | Data | Tipo | Bloco | Revisão espaçada |
 |-----|------|------|-------|------------------|
-| Sex | 27/11 | Núcleos | **Lei 5.905/1973 + inscrição**: Sistema Cofen/Corens: natureza autárquica, composição, competências do Cofen e dos Corens, eleições, anuidades · 15 C/E reais do COREN-PR · fazer a inscrição (até 11/01) · P3 do dia (20 min, dentro do horário): incidente × problema × requisição (ITIL), 5–8 C/E | — |
+| Sex | 27/11 | Núcleos | **Lei 5.905/1973 + inscrição**: Sistema Cofen/Corens: natureza autárquica, composição, competências do Cofen e dos Corens, eleições, anuidades · 15 C/E reais do COREN-PR · fazer a inscrição (até 11/01) · P3 do dia (20 min, dentro do horário): incidente × problema × requisição (ITIL), 5–8 C/E · [material: Caderno: Lei 5.905 + ITIL](https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv) | — |
 | Sáb | 28/11 | Núcleos | **Decreto 94.406/1987 + Res. COFEN 507/2016**: Exercício da enfermagem (categorias, atribuições privativas) e fiscalização · 15 C/E · P3 do dia (20 min, dentro do horário): backup completo, incremental e diferencial, 5–8 C/E | — |
 | Dom | 29/11 | Núcleos | **Res. COFEN 726/2023 e 751/2024**: Leitura dirigida das duas resoluções do edital · 15 C/E calibrados · flashcards do Sistema Cofen/Corens · P3 do dia (20 min, dentro do horário): RAID 0, 1, 5, 6 e 10, 5–8 C/E | Lei 5.905 (D+2) |
 
