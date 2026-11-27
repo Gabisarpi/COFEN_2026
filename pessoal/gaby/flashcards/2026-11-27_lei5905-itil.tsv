@@ -1,0 +1,32 @@
+#separator:tab
+#html:false
+#tags column:3
+Cofen + Corens: natureza jurídica e vínculo (art. 1º)	Em conjunto, UMA autarquia, vinculada ao Ministério do Trabalho e Previdência Social (não ao da Saúde).	COFEN_tic lei5905 2026-11-27
+Quem tem jurisdição nacional?	Só o Cofen: todo o território nacional, sede na Capital da República; os Corens são subordinados a ele.	COFEN_tic lei5905 2026-11-27
+Quantos Corens e onde ficam?	Um em cada estado e território (sede na capital) e um no DF.	COFEN_tic lei5905 2026-11-27
+Quando o Cofen pode formar regiões com mais de uma unidade?	Quando a unidade tiver menos de 50 profissionais habilitados.	COFEN_tic lei5905 2026-11-27
+Composição do Cofen	9 efetivos + 9 suplentes, brasileiros, com diploma de enfermagem de nível superior.	COFEN_tic lei5905 2026-11-27
+Composição do Coren	5 a 21 membros + outros tantos suplentes; número sempre ímpar, fixado pelo Cofen; 3/5 enfermeiros e 2/5 das demais categorias.	COFEN_tic lei5905 2026-11-27
+Como é eleito o Cofen?	Por maioria de votos, em escrutínio secreto, na Assembleia dos Delegados Regionais.	COFEN_tic lei5905 2026-11-27
+Como é eleito o Coren?	Voto pessoal, secreto e obrigatório, em assembleia geral; chapas separadas para enfermeiros e demais categorias.	COFEN_tic lei5905 2026-11-27
+Quem não vota na eleição do Coren sem justa causa…	…paga multa no valor da anuidade.	COFEN_tic lei5905 2026-11-27
+Diretoria do Cofen	Presidente, vice-presidente, 1º e 2º secretários, 1º e 2º tesoureiros.	COFEN_tic lei5905 2026-11-27
+Diretoria do Coren	Presidente, secretário e tesoureiro; com mais de 12 membros pode criar vice, 2º secretário e 2º tesoureiro.	COFEN_tic lei5905 2026-11-27
+Quem elabora o Código de Deontologia de Enfermagem?	O Cofen, ouvidos os Corens.	COFEN_tic lei5905 2026-11-27
+Quem aprecia recurso contra decisão do Coren?	O Cofen, que também pode homologar, suprir ou anular atos dos Corens.	COFEN_tic lei5905 2026-11-27
+Carteira profissional: quem expede e onde vale?	O Coren expede; tem fé pública em todo o território nacional e vale como documento de identidade.	COFEN_tic lei5905 2026-11-27
+Quem fixa a anuidade (Lei 5.905)?	O Coren (art. 15). Tetos atuais: Lei 12.514/2011.	COFEN_tic lei5905 2026-11-27
+Prazo da prestação de contas do Coren ao Cofen	Até 28 de fevereiro de cada ano.	COFEN_tic lei5905 2026-11-27
+Partilha das receitas Cofen × Corens	Cofen: 1/4 das taxas de carteira, multas e anuidades; Corens: 3/4.	COFEN_tic lei5905 2026-11-27
+Mandato de conselheiro (Cofen e Coren)	Honorífico (sem remuneração), 3 anos, uma reeleição.	COFEN_tic lei5905 2026-11-27
+Frequência mínima de reuniões e perda de mandato	Pelo menos uma vez por mês; 5 faltas no ano sem licença prévia = perde o mandato.	COFEN_tic lei5905 2026-11-27
+Penalidades do art. 18, em ordem	Advertência verbal, multa, censura, suspensão do exercício profissional, cassação do direito ao exercício profissional.	COFEN_tic lei5905 2026-11-27
+Quem aplica cada pena?	I a IV (advertência a suspensão): Corens. V (cassação): Cofen, ouvido o Coren interessado.	COFEN_tic lei5905 2026-11-27
+Regime do pessoal dos conselhos	CLT.	COFEN_tic lei5905 2026-11-27
+Incidente (ITIL)	Interrupção não planejada ou redução da qualidade de um serviço. Objetivo: restaurar rápido. Sempre registrado.	COFEN_tic itil 2026-11-27
+Problema (ITIL 4)	A causa, ou causa potencial, de um ou mais incidentes.	COFEN_tic itil 2026-11-27
+Requisição de serviço	Pedido do usuário por algo previsto no serviço (acesso, informação, equipamento), sem falha. Não é incidente.	COFEN_tic itil 2026-11-27
+Gerenciamento de problemas reativo × proativo	Reativo: parte de incidentes ocorridos. Proativo: acha causas potenciais antes do incidente (pode começar sem incidente).	COFEN_tic itil 2026-11-27
+Solução de contorno (workaround)	Reduz ou elimina o impacto enquanto não há solução definitiva; não remove a causa; documentada no erro conhecido.	COFEN_tic itil 2026-11-27
+Erro conhecido	Problema já analisado e ainda não resolvido.	COFEN_tic itil 2026-11-27
+Central de serviços	Ponto único de contato; recebe incidentes e requisições e também é proativa (comunica mudanças, avisa indisponibilidades).	COFEN_tic itil 2026-11-27
