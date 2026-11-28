@@ -3,7 +3,8 @@ prova: "2027-02-28"
 notas: |
   Ledger da Gaby (COFEN 407 TIC). Preencher após correções.
   27/11 · Lei 5.905 + ITIL: 23/25 (líquido +21). Lei 16/18, ITIL 7/7. Os 2 erros foram com certeza.
-  28/11 · Teste-se da folha (Decreto 94.406 + Res. 507 + backup): 14/14.
+  28/11 · Caderno (Decreto 94.406 + Res. 507 + backup): 21/25 (líquido +17). Decreto 7/8, Res. 507 6/9, backup 8/8. Teste-se da folha: 14/14.
+  Dúvidas que acertou em 28/11: técnico executa tudo exceto o privativo (D2-4), abandono 30 dias (R1-4), comissão do PAD (R2-2).
   Dúvidas que acertou (consolidar): 9 + 9 do Cofen (L2-1), 5 faltas (L4-2), conceitos de incidente/problema (T1-1, T1-3, T1-4).
 entradas:
   - id: cofen-corens-autarquia-unica
@@ -39,3 +40,52 @@ entradas:
       - tipo: objetiva
         path: pessoal/gaby/respostas/2026-11-27_lei-5905_itil.yaml
         data: "2026-11-27"
+  - id: decreto-anotacao-prontuario-todo-pessoal
+    tag: comp.leg.enfermagem
+    tema: "Decreto 94.406, art. 14: deveres de TODO o pessoal de enfermagem (Código de Deontologia e anotação no prontuário)"
+    severidade: alta
+    ocorrencias: 1
+    primeira_data: "2026-11-28"
+    ultima_data: "2026-11-28"
+    status: aberto
+    erros_com_certeza: 1
+    detalhes:
+      - "Marcou C com certeza em '... sendo dever exclusivo do enfermeiro anotar no prontuário' (gabarito E): o art. 14 vale para todo o pessoal"
+      - "Âncora: no prontuário, quem fez anota (enfermeiro, técnico ou auxiliar)."
+    fontes:
+      - tipo: objetiva
+        path: pessoal/gaby/respostas/2026-11-28_decreto-94406_res-507_backup.yaml
+        data: "2026-11-28"
+  - id: res507-prazos-prescricao-pad
+    tag: comp.leg.enfermagem
+    tema: "Res. Cofen 507/2016: prescrição (5 anos / 2 anos / 180 dias) e prazos de sindicância (30) × PAD (60)"
+    severidade: media
+    ocorrencias: 2
+    primeira_data: "2026-11-28"
+    ultima_data: "2026-11-28"
+    status: aberto
+    erros_com_certeza: 0
+    detalhes:
+      - "R2-1 (dúvida): marcou E em 'prescreve em cinco anos (demissão) e em 180 dias (advertência)' (gabarito C)"
+      - "R2-4 (dúvida): marcou C em 'PAD em 30 dias, prorrogável' (gabarito E: PAD 60; 30 é da sindicância)"
+      - "Âncora: prescrição 5-2-meio ano (demissão, suspensão, advertência); sindicância é a metade do PAD (30 × 60)."
+    fontes:
+      - tipo: objetiva
+        path: pessoal/gaby/respostas/2026-11-28_decreto-94406_res-507_backup.yaml
+        data: "2026-11-28"
+  - id: res507-conversao-suspensao-multa
+    tag: comp.leg.enfermagem
+    tema: "Res. Cofen 507/2016: suspensão pode virar multa de 50% da remuneração, com o empregado em serviço"
+    severidade: media
+    ocorrencias: 1
+    primeira_data: "2026-11-28"
+    ultima_data: "2026-11-28"
+    status: aberto
+    erros_com_certeza: 0
+    detalhes:
+      - "R1-2 (dúvida): marcou E em 'convertida em multa de 50% da remuneração, permanecendo em serviço' (gabarito C)"
+      - "Âncora: suspensão que atrapalha o serviço vira multa de metade do salário, e o empregado continua trabalhando."
+    fontes:
+      - tipo: objetiva
+        path: pessoal/gaby/respostas/2026-11-28_decreto-94406_res-507_backup.yaml
+        data: "2026-11-28"

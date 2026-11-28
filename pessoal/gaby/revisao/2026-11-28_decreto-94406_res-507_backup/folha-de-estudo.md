@@ -147,11 +147,14 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 
 ## Meus erros do dia
 
-**Teste-se: 14/14 (sem erros).** Caderno: resultado ainda não lançado.
+**Caderno: 21/25 (líquido +17)** · Decreto 7/8 · Res. 507 6/9 · backup 8/8. **Teste-se: 14/14.**
 
 | Item/tema | Eu marquei | Certo | Âncora (1 frase) |
 |-----------|------------|-------|------------------|
-| — | — | — | Sem erros no Teste-se |
+| D1-3 · anotação no prontuário (art. 14) · **com certeza** | C | E | No prontuário, quem fez anota: enfermeiro, técnico ou auxiliar. |
+| R1-2 · suspensão convertida em multa de 50% (dúvida) | E | C | Suspensão que atrapalha o serviço vira multa de metade do salário, e o empregado continua trabalhando. |
+| R2-1 · prescrição 5 anos / 180 dias (dúvida) | E | C | Prescrição 5-2-meio ano: demissão, suspensão, advertência. |
+| R2-4 · PAD em 30 dias (dúvida) | C | E | Sindicância é a metade do PAD: 30 × 60. |
 
 ## Amanhã
 
