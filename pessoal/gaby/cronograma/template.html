@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <title>Cronograma Gaby · COFEN</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,7 +195,7 @@ textarea{width:100%;min-height:72px;font:14px/1.45 var(--body);padding:8px 10px;
   const fmtH = h => (Math.round(h * 10) / 10).toString().replace(".", ",");
   const faseDe = id => P.fases.find(f => {
     const a = isoDM(f.ini), b = isoDM(f.fim); return id >= a && id <= b; });
-  function isoDM(dm){ const [d,m] = dm.split("/"); return `2026-${m}-${d}`; }
+  function isoDM(dm){ const [d,m] = dm.split("/"); return `${Number(m) >= 7 ? 2026 : 2027}-${m}-${d}`; }
 
   // ---------- persistência ----------
   const timers = {};
