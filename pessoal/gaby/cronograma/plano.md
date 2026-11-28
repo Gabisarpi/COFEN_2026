@@ -14,6 +14,7 @@
 | 04/01 → 27/02 | 2 h | ~110 h |
 
 **Dia de 2 h:** 10 min de revisão espaçada · 40–50 min de teoria · 40 min de C/E · 20–30 min de correção e ledger.  
+**Leituras dirigidas:** 5 leituras curtas (15–20 min) na véspera das discursivas dos blocos que a CGU não cobriu: 12/12, 20/12, 05/01, 26/01 e 16/02. Peça `leitura dirigida` no dia.  
 **P3 todo dia:** nos dias sem tema do P3, entra um “P3 do dia” de 20 min (10 min nos simulados e na véspera), um tópico curto com 5–8 C/E, em rodízio por todos os 12 blocos.  
 **Perdeu um dia:** não dobre o seguinte; o tema vai para a próxima segunda (reforço) ou para um dia de revisão.  
 **Aproveitamento do CGU:** redes, Linux, Windows/AD, nuvem e virtualização já têm material; na fase 2 eles entram como revisão com itens Quadrix, não como teoria do zero.  
@@ -58,7 +59,7 @@
 | Qua | 09/12 | Núcleos | **Planejamento e controle de TIC**: PDTIC, indicadores (KPI/KGI), relatórios gerenciais, ITIL/COBIT no nível gerencial · 15 C/E (CREFITO-17, CREF-11) | LGPD (D+7), ITIL 4 (D+2) |
 | Qui | 10/12 | Núcleos | **Políticas, normas e auditoria de TIC**: PSI e normas internas, auditoria de TIC, controles internos e conformidade, SI nos processos · 15 C/E (bloco mais fraco do acervo) | COBIT / riscos (D+2) |
 | Sex | 11/12 | Núcleos | **Atendimento técnico estratégico**: Suporte ao Sistema Cofen/Corens, pareceres e notas técnicas, Ouvidoria, treinamentos · 15 C/E | Lei 14.133 (D+7), Gestão de TIC (D+2) |
-| Sáb | 12/12 | Bloco C/E | **Bloco C/E dos exclusivos do 407 (30 itens)**: Contratos, governança, gestão, auditoria e atendimento · reais do CREFITO-17, CREF-11 e CFN · correção e ledger | IN SGD 94/2022 (D+7), Auditoria de TIC (D+2) |
+| Sáb | 12/12 | Bloco C/E | **Bloco C/E dos exclusivos do 407 (30 itens)**: Contratos, governança, gestão, auditoria e atendimento · reais do CREFITO-17, CREF-11 e CFN · correção e ledger · Leitura dirigida (15–20 min, dentro do horário) para a discursiva de 13/12: COBIT 2019 e gestão de riscos de TIC (governança × gestão, objetivos, indicadores) | IN SGD 94/2022 (D+7), Auditoria de TIC (D+2) |
 | Dom | 13/12 | Discursiva | **Discursiva real: indicadores e riscos (CREFITO-17)**: A discursiva mais parecida com a do 407 · corrigir pelo padrão (CAC, OT, DLP) | Atendimento estratégico (D+2) |
 
 ## Semana 4 (14/12 → 20/12)
@@ -71,7 +72,7 @@
 | Qui | 17/12 | Núcleos | **Infraestrutura 1: servidores e gestão de ativos**: Operação de servidores Windows/Linux, AD, serviços de rede; gestão de ativos (inventário, CMDB, ciclo de vida) · 30 C/E reais | Auditoria de TIC (D+7) |
 | Sex | 18/12 | Núcleos | **Infraestrutura 2: implantação, migração e continuidade**: Implantação e migração de sistemas, integridade, backup (tipos, 3-2-1, RPO/RTO), continuidade · 30 C/E | Lei 5.905 (D+21), Atendimento estratégico (D+7), LP (D+2) |
 | Sáb | 19/12 | Núcleos | **Redes + LP**: 3 h: OSI/TCP-IP, IPv4/IPv6 e sub-redes, TCP×UDP, DNS/HTTP(S)/SMTP/FTP, VLAN, VPN, Wi-Fi · 30 C/E · 2 h: LP | Decreto 94.406 / Res. 507 (D+21), Servidores e ativos (D+2) |
-| Dom | 20/12 | Núcleos | **Segurança da informação**: CIDA, criptografia simétrica/assimétrica, hash, certificados e assinatura digital, ameaças e ataques, ISO 27001/27002 · 30 C/E | Res. 726 e 751 (D+21), Migração e backup (D+2) |
+| Dom | 20/12 | Núcleos | **Segurança da informação**: CIDA, criptografia simétrica/assimétrica, hash, certificados e assinatura digital, ameaças e ataques, ISO 27001/27002 · 30 C/E · Leitura dirigida (15–20 min, dentro do horário) para a discursiva de 21/12: cartilha de backup do CERT.br (tipos, frequência, teste de restauração) | Res. 726 e 751 (D+21), Migração e backup (D+2) |
 
 ## Semana 5 (21/12 → 27/12)
 
@@ -102,7 +103,7 @@
 | Dia | Data | Tipo | Bloco | Revisão espaçada |
 |-----|------|------|-------|------------------|
 | Seg | 04/01 | Reforço | **Correção do simulado 2**: Correção item a item, ledger, comparar com o simulado 1 · ajustar a fase 3 se preciso · P3 do dia (20 min, dentro do horário): controles preventivos, detectivos e corretivos, 5–8 C/E | Ética, LAI, anticorrupção (D+7) |
-| Ter | 05/01 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): ataques: phishing, DoS/DDoS, ransomware, MITM, 5–8 C/E | Const. + Adm. (D+7) |
+| Ter | 05/01 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): ataques: phishing, DoS/DDoS, ransomware, MITM, 5–8 C/E · Leitura dirigida (15–20 min, dentro do horário) para a discursiva de 06/01: ISO/IEC 27002:2022 e política de segurança da informação (controles, papéis) | Const. + Adm. (D+7) |
 | Qua | 06/01 | Discursiva | **Discursiva: CFO 2024: segurança, ITIL e riscos**: 20–30 linhas em até 1 h · corrigir pelo padrão (CAC, OT, DLP) e lançar no ledger | LP (D+21) |
 | Qui | 07/01 | Bloco C/E | **Bloco P3 — exclusivos: contratos + governança**: 30 itens C/E em 1h15 (reais primeiro) + correção | Servidores e ativos (D+21) |
 | Sex | 08/01 | P2 | **P2 — Sistema Cofen/Corens (rodada 2)**: Revisão rápida da lei + 25 C/E reais · P3 do dia (20 min, dentro do horário): DNS: registros A, AAAA, MX, CNAME e PTR, 5–8 C/E | Migração e backup (D+21) |
@@ -138,7 +139,7 @@
 | Dia | Data | Tipo | Bloco | Revisão espaçada |
 |-----|------|------|-------|------------------|
 | Seg | 25/01 | Reforço | **Reforço das lacunas do ledger**: Os 2–3 temas com mais erros abertos · teoria curta + 20 C/E reais · fechar ou manter lacuna · P3 do dia (20 min, dentro do horário): auditoria de TIC: planejamento, evidências e relatório, 5–8 C/E | — |
-| Ter | 26/01 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): pareceres e notas técnicas: estrutura, 5–8 C/E | — |
+| Ter | 26/01 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): pareceres e notas técnicas: estrutura, 5–8 C/E · Leitura dirigida (15–20 min, dentro do horário) para a discursiva de 27/01: IN SGD/ME nº 94/2022: fiscalização, papéis dos fiscais e níveis mínimos de serviço | — |
 | Qua | 27/01 | Discursiva | **Discursiva: inédita: fiscalização de contrato de TIC com SLA**: 20–30 linhas em até 1 h · corrigir pelo padrão (CAC, OT, DLP) e lançar no ledger | — |
 | Qui | 28/01 | Bloco C/E | **Bloco P3 — técnico: segurança + BD**: 30 itens C/E em 1h15 (reais primeiro) + correção | — |
 | Sex | 29/01 | P2 | **P2 — Lei 14.133 + Constitucional/Administrativo**: Revisão rápida da lei + 25 C/E reais · P3 do dia (20 min, dentro do horário): incidente × problema × requisição (ITIL), 5–8 C/E | — |
@@ -174,7 +175,7 @@
 | Dia | Data | Tipo | Bloco | Revisão espaçada |
 |-----|------|------|-------|------------------|
 | Seg | 15/02 | Simulado | **Simulado 5 · parte B: P3 + discursiva**: 50 itens de P3 (1h15) + discursiva (45 min) · correção no dia seguinte · P3 do dia (10 min, depois do simulado): flashcards de nuvem: IaaS, PaaS, SaaS e responsabilidade compartilhada | — |
-| Ter | 16/02 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): gestão de ativos e CMDB, 5–8 C/E | — |
+| Ter | 16/02 | P1 | **Língua Portuguesa**: 20–25 itens reais de LP + revisão da lista de erros de língua · P3 do dia (20 min, dentro do horário): gestão de ativos e CMDB, 5–8 C/E · Leitura dirigida (15–20 min, dentro do horário) para a discursiva de 17/02: ITIL 4: gerenciamento de mudança, liberação e implantação | — |
 | Qua | 17/02 | Discursiva | **Discursiva: inédita: migração de sistema e atendimento aos Corens**: 20–30 linhas em até 1 h · corrigir pelo padrão (CAC, OT, DLP) e lançar no ledger | — |
 | Qui | 18/02 | Bloco C/E | **Bloco P3 — P3 misto em modo prova**: 30 itens C/E em 1h15 (reais primeiro) + correção · P3 do dia (20 min, dentro do horário): mudança normal, padrão e emergencial, 5–8 C/E | — |
 | Sex | 19/02 | P2 | **P2 — P2 misto em modo prova**: Revisão rápida da lei + 25 C/E reais · P3 do dia (20 min, dentro do horário): COBIT: governança × gestão, 5–8 C/E | — |
@@ -217,4 +218,5 @@
 Ledger: `pessoal/gaby/cronograma/lacunas.yaml`. Depois de cada simulado: `diagnóstico de gaps` e `ajustar cronograma`.
 
 - **27/11:** plano criado com o foco só no COFEN (inscrição da CGU perdida). Horas informadas pela Gaby: 2 h/dia até 14/12, 5 h/dia de 15/12 a 03/01, 2 h/dia depois; todos os dias. Começo direto pelo cronograma, sem diagnóstico prévio: o simulado de 15/12 faz esse papel.
+- **27/11 (pedido):** leituras dirigidas na véspera de 5 discursivas (12/12, 20/12, 05/01, 26/01, 16/02), dentro do horário do dia.
 - **27/11 (pedido):** P3 todo dia. Os 59 dias sem tema do P3 ganharam um “P3 do dia” curto (20 min dentro do horário; 10 min nos simulados e na véspera), em rodízio de 34 tópicos pelos 12 blocos.
