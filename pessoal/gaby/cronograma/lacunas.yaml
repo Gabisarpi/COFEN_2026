@@ -1,5 +1,38 @@
-atualizado: "2026-11-26"
+atualizado: "2026-11-27"
 prova: "2027-02-28"
 notas: |
   Ledger da Gaby (COFEN 407 TIC). Preencher após correções.
-entradas: []
+  27/11 · Lei 5.905 + ITIL: 23/25 (líquido +21). Lei 16/18, ITIL 7/7. Os 2 erros foram com certeza.
+  Dúvidas que acertou (consolidar): 9 + 9 do Cofen (L2-1), 5 faltas (L4-2), conceitos de incidente/problema (T1-1, T1-3, T1-4).
+entradas:
+  - id: cofen-corens-autarquia-unica
+    tag: comp.leg.enfermagem
+    tema: "Cofen + Corens formam, em conjunto, UMA autarquia (art. 1º)"
+    severidade: alta
+    ocorrencias: 1
+    primeira_data: "2026-11-27"
+    ultima_data: "2026-11-27"
+    status: aberto
+    erros_com_certeza: 1
+    detalhes:
+      - "Marcou E com certeza em 'constituem, em seu conjunto, uma única autarquia' (gabarito C): a lei não cria uma autarquia por conselho"
+    fontes:
+      - tipo: objetiva
+        path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
+        data: "2026-11-27"
+  - id: penalidades-alcada-somente-cassacao
+    tag: comp.leg.enfermagem
+    tema: "Alçada das penalidades (art. 18): I a IV nos Corens, só a cassação no Cofen"
+    severidade: alta
+    ocorrencias: 1
+    primeira_data: "2026-11-27"
+    ultima_data: "2026-11-27"
+    status: aberto
+    erros_com_certeza: 1
+    detalhes:
+      - "Marcou E com certeza em 'somente a cassação é da alçada do Conselho Federal' (gabarito C): o 'somente' é verdadeiro; desconfiança de absoluto sem conferir a lista"
+      - "Acertou o par invertido (Coren cassa, ouvido o Cofen → E): sabe quem cassa, errou pela palavra 'somente'"
+    fontes:
+      - tipo: objetiva
+        path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
+        data: "2026-11-27"

@@ -1,0 +1,181 @@
+material: pessoal/gaby/simulados/gerados/2026-11-27_lei5905-itil/caderno.html
+pessoa: gaby
+cargo: tic
+data: "2026-11-27"  # exportado 28/11 (UTC); estudo de 27/11
+eixo: comp.leg.enfermagem
+itens:
+  - id: L1-1
+    origem: "COREN-PR 2024 · Analista de TI (402) · item 107"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "jurisdição e competência nacional · Ministério da Saúde"
+  - id: L1-2
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "inferior a cem"
+  - id: L1-3
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: C
+    confianca: certeza
+    resultado: erro
+    gatilho: "em seu conjunto, uma única autarquia"
+  - id: L1-4
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: certeza
+    resultado: acerto
+    gatilho: "subordinados ao Conselho Federal"
+  - id: L2-1
+    origem: "COREN-PR 2024 · Analista de TI (402) · item 115"
+    resposta: C
+    gabarito: C
+    confianca: duvida
+    resultado: acerto
+    gatilho: "nove membros efetivos · nível superior"
+  - id: L2-2
+    origem: "COREN-PR 2024 · Analista de TI (402) · item 113"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "todos eles ... portadores de diploma de curso de enfermagem de nível superior"
+  - id: L2-3
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: certeza
+    resultado: acerto
+    gatilho: "sempre ímpar · cabe ao Conselho Federal"
+  - id: L2-4
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: certeza
+    resultado: acerto
+    gatilho: "multa ... correspondente ao valor da anuidade"
+  - id: L2-5
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "voto pessoal, secreto e obrigatório de todos os profissionais inscritos"
+  - id: L3-1
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "Compete aos Conselhos Regionais · ouvido o Conselho Federal"
+  - id: L3-2
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "apenas na área de jurisdição do Conselho que a expediu"
+  - id: L3-3
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: certeza
+    resultado: acerto
+    gatilho: "em grau de recurso · homologar, suprir ou anular"
+  - id: L3-4
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: certeza
+    resultado: acerto
+    gatilho: "até o dia 28 de fevereiro"
+  - id: L3-5
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "Compete ao Conselho Federal"
+  - id: L4-1
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "remunerado"
+  - id: L4-2
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: duvida
+    resultado: acerto
+    gatilho: "cinco reuniões · sem licença prévia"
+  - id: L4-3
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: C
+    confianca: certeza
+    resultado: erro
+    gatilho: "somente a cassação ... é da alçada do Conselho Federal"
+  - id: L4-4
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "aplicada pelo Conselho Regional, ouvido o Conselho Federal"
+  - id: T1-1
+    origem: "COREN-PR 2024 · Analista de TI (402) · item 91"
+    resposta: C
+    gabarito: C
+    confianca: duvida
+    resultado: acerto
+    gatilho: "restaurar a operação normal do serviço o mais rapidamente possível"
+  - id: T1-2
+    origem: "CRO-SP 2025 · Analista de Suporte de TI (407) · item 97"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "sem a necessidade de registro formal"
+  - id: T1-3
+    origem: "variacao_inedita"
+    resposta: C
+    gabarito: C
+    confianca: duvida
+    resultado: acerto
+    gatilho: "causa, ou a causa potencial, de um ou mais incidentes"
+  - id: T1-4
+    origem: "CRO-SP 2025 · Analista de Suporte de TI (407) · item 96"
+    resposta: C
+    gabarito: C
+    confianca: duvida
+    resultado: acerto
+    gatilho: "sem a existência de incidentes registrados, como forma preventiva"
+  - id: T1-5
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "deve ser registrada como incidente"
+  - id: T1-6
+    origem: "CRP-SP 2025 · Especialista em Gestão de TIC (408) · item 105"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "apenas de forma reativa"
+  - id: T1-7
+    origem: "variacao_inedita"
+    resposta: E
+    gabarito: E
+    confianca: certeza
+    resultado: acerto
+    gatilho: "elimina a causa raiz"
