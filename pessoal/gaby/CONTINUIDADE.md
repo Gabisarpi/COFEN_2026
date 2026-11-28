@@ -36,6 +36,8 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 
 - **Regra (28/11, pedido da Gaby):** todo "material do dia" sai com a seção **Passo a passo do dia** na folha (ordem dos materiais e como inserir cada um em cada plataforma: NotebookLM, painel, caderno, Anki) e a mesma orientação resumida na resposta do chat. Modelo em `revisao/_MODELO.md`.
 
+- **Nomes (28/11):** um "nome do dia" igual em todas as pastas (`AAAA-MM-DD_tema_tema`); folha e gabarito em `revisao/<dia>/folha-de-estudo.*` e `gabarito-do-teste-se.*`; flashcards `<dia>_anki.tsv` e `<dia>_notebooklm.md`. Guia em `pessoal/gaby/README.md`.
+
 ## Pendências
 
 - [ ] Fazer a inscrição (26/11/2026 a 11/01/2027, taxa R$ 100).

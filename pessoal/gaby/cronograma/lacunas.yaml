@@ -19,7 +19,7 @@ entradas:
       - "Âncora: Cofen + Corens = uma autarquia só, em conjunto."
     fontes:
       - tipo: objetiva
-        path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
+        path: pessoal/gaby/respostas/2026-11-27_lei-5905_itil.yaml
         data: "2026-11-27"
   - id: penalidades-alcada-somente-cassacao
     tag: comp.leg.enfermagem
@@ -36,5 +36,5 @@ entradas:
       - "Âncora: antes de rejeitar o 'somente', confira a lista: só a cassação sobe para o Cofen."
     fontes:
       - tipo: objetiva
-        path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
+        path: pessoal/gaby/respostas/2026-11-27_lei-5905_itil.yaml
         data: "2026-11-27"

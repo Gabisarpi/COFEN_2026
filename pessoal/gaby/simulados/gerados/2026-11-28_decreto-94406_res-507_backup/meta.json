@@ -5,12 +5,12 @@
  "lede": "{N} itens em {NUC} núcleos: {REAIS} reais do acervo e {VAR} variações inéditas que mudam um detalhe e invertem o gabarito. A resolução de cada item só abre depois que você marca a resposta e a confiança.",
  "method_html": "<p><b>Edital.</b> Conhecimentos complementares do Cargo 407: Decreto nº 94.406/1987 (exercício da enfermagem) e Resolução Cofen nº 507/2016, que institui o <b>Código de Ética dos Empregados Públicos do Sistema Cofen/Corens</b> (o regime disciplinar de quem trabalha nos conselhos). No P3, bloco 3 (segurança da informação: backup e recuperação).</p>\n<p><b>Tamanho.</b> Caderno do dia (cronograma de 28/11: 2 h): 17 itens de legislação + 8 do P3 do dia.</p>\n<p><b>Calibração (perfil).</b> O acervo não tem nenhum item Quadrix sobre o Decreto 94.406 ou a Res. 507/2016, então os 17 itens de legislação são variações inéditas montadas sobre os artigos, com uma palavra trocada. No backup, 6 dos 8 itens são reais da Quadrix (CFN 2024, CFO 2024, CREFITO-17 2026, CREF-11 2026).</p>\n<div class=\"tbl\"><table><thead><tr><th>Núcleo</th><th>Edital</th><th class=\"n\">Provas</th><th class=\"n\">Itens no acervo</th></tr></thead><tbody id=\"rank\"></tbody></table></div>\n<p><b>Ficaram de fora.</b> Lei 7.498/1986 (regulamentada pelo decreto, mas não listada no edital) e o piso salarial da enfermagem (Lei 14.434/2022). No backup: comandos de ferramentas específicas (Bacula, pg_dump), que voltam no dia de banco de dados.</p>\n<p><b>Literalidade.</b> Decreto 94.406 conferido no Planalto; Res. 507/2016 conferida no site do Cofen (resumo do texto). Os números (30 dias, 50%, 20 dias em 6 meses, prazos de prescrição e de processo) vêm dessa leitura; confira no texto oficial antes de citá-los na discursiva.</p>",
  "key": "cofen-gaby-2026-11-28-dec94406-res507-backup-v1",
- "material": "pessoal/gaby/simulados/gerados/2026-11-28_dec94406-res507-backup/caderno.html",
+ "material": "pessoal/gaby/simulados/gerados/2026-11-28_decreto-94406_res-507_backup/caderno.html",
  "pessoa": "gaby",
  "cargo": "tic",
  "eixo": "comp.leg.enfermagem",
  "peso": 1,
  "ancoragem_acervo": "cfn_2024 #109 #110; cfo_2024 #85 #86; crefito17_2026 #89; cref11_2026 #88",
- "respostas": "pessoal/gaby/respostas/2026-11-28_dec94406-res507-backup.yaml",
+ "respostas": "pessoal/gaby/respostas/2026-11-28_decreto-94406_res-507_backup.yaml",
  "resp_dir": "pessoal/gaby/respostas/"
 }

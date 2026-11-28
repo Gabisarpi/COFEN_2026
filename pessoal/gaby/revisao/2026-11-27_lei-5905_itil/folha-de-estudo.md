@@ -1,10 +1,10 @@
 # Revisão — 27/11/2026 (sexta) — Lei 5.905/1973 + P3 do dia: incidente × problema × requisição (ITIL)
 
 **Tags:** `comp.leg.enfermagem` · `esp.tic.govti`  
-**PDF:** `pessoal/gaby/revisao/2026-11-27_lei5905-itil.pdf` (gabarito do "Teste-se": `2026-11-27_lei5905-itil_gabarito.pdf`)  
-**Áudio:** `pessoal/gaby/audio/notebooklm/2026-11-27_lei5905-itil.md`  
-**Flashcards:** `pessoal/gaby/flashcards/2026-11-27_lei5905-itil.tsv` (Anki/Quizlet) e `_notebooklm.md`  
-**Caderno C/E (25 itens):** `pessoal/gaby/simulados/gerados/2026-11-27_lei5905-itil/` · [abrir](https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv)  
+**PDF:** `pessoal/gaby/revisao/2026-11-27_lei-5905_itil/folha-de-estudo.pdf` (gabarito do "Teste-se": `gabarito-do-teste-se.pdf`)  
+**Áudio:** `pessoal/gaby/audio/notebooklm/2026-11-27_lei-5905_itil.md`  
+**Flashcards:** `pessoal/gaby/flashcards/2026-11-27_lei-5905_itil_anki.tsv` (Anki/Quizlet) e `_notebooklm.md`  
+**Caderno C/E (25 itens):** `pessoal/gaby/simulados/gerados/2026-11-27_lei-5905_itil/` · [abrir](https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv)  
 **Lei no Planalto:** <https://www.planalto.gov.br/ccivil_03/leis/l5905.htm> (leia os arts. 1º a 18 uma vez, de ponta a ponta)
 
 ## Roteiro do dia (2 h)
@@ -14,7 +14,7 @@
 | 0:00–0:40 | Ler as seções 1 a 4 e os quadros desta folha, com a lei aberta ao lado |
 | 0:40–1:20 | Caderno: núcleos L1 a L4 (18 itens), sem consultar |
 | 1:20–1:40 | **P3 do dia:** seção 5 + núcleo T1 do caderno (7 itens) |
-| 1:40–2:00 | "Teste-se" desta folha · conferir o gabarito separado · preencher "Meus erros do dia" · baixar o YAML do caderno |
+| 1:40–2:00 | "Teste-se" desta folha · conferir o `gabarito-do-teste-se.pdf` · preencher "Meus erros do dia" · baixar o YAML do caderno |
 | Extra | **Inscrição no COFEN** (até 11/01/2027) |
 
 Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.

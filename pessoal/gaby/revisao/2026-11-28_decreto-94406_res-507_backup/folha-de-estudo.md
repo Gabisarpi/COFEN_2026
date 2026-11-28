@@ -1,10 +1,10 @@
 # Revisão — 28/11/2026 (sábado) — Decreto 94.406/1987 + Res. Cofen 507/2016 + P3 do dia: backup completo, incremental e diferencial
 
 **Tags:** `comp.leg.enfermagem` · `esp.tic.seguranca`  
-**PDF:** `pessoal/gaby/revisao/2026-11-28_dec94406-res507-backup.pdf` (gabarito do "Teste-se": `2026-11-28_dec94406-res507-backup_gabarito.pdf`)  
-**Áudio:** `pessoal/gaby/audio/notebooklm/2026-11-28_dec94406-res507-backup.md`  
-**Flashcards:** `pessoal/gaby/flashcards/2026-11-28_dec94406-res507-backup.tsv` (Anki/Quizlet) e `_notebooklm.md`  
-**Caderno C/E (25 itens):** `pessoal/gaby/simulados/gerados/2026-11-28_dec94406-res507-backup/` · [abrir](https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e)  
+**PDF:** `pessoal/gaby/revisao/2026-11-28_decreto-94406_res-507_backup/folha-de-estudo.pdf` (gabarito do "Teste-se": `gabarito-do-teste-se.pdf`)  
+**Áudio:** `pessoal/gaby/audio/notebooklm/2026-11-28_decreto-94406_res-507_backup.md`  
+**Flashcards:** `pessoal/gaby/flashcards/2026-11-28_decreto-94406_res-507_backup_anki.tsv` (Anki/Quizlet) e `_notebooklm.md`  
+**Caderno C/E (25 itens):** `pessoal/gaby/simulados/gerados/2026-11-28_decreto-94406_res-507_backup/` · [abrir](https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e)  
 **Fontes oficiais:** Decreto 94.406 no Planalto: <https://www.planalto.gov.br/ccivil_03/decreto/1980-1989/d94406.htm> · Res. Cofen 507/2016: <https://cofen.gov.br/?p=37495>
 
 ## Roteiro do dia (2 h)
@@ -15,13 +15,13 @@
 | 0:10–0:45 | Ler as seções 1 a 3 e os quadros desta folha |
 | 0:45–1:25 | Caderno: núcleos D1, D2, R1 e R2 (17 itens), sem consultar |
 | 1:25–1:45 | **P3 do dia:** seção 4 + núcleo T1 do caderno (8 itens) |
-| 1:45–2:00 | "Teste-se" · conferir o gabarito separado · "Meus erros do dia" · baixar o YAML do caderno |
+| 1:45–2:00 | "Teste-se" · conferir o `gabarito-do-teste-se.pdf` · "Meus erros do dia" · baixar o YAML do caderno |
 
 Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 
 ## Passo a passo do dia (o que fazer, em ordem, e onde)
 
-**Antes (fora das 2 h, quando puder):** no **NotebookLM**, crie o notebook "Decreto 94.406 + Res. 507 + backup — 28/11", adicione a fonte `2026-11-28_dec94406-res507-backup.md` (pasta `audio/notebooklm/`) e gere os áudios em **Studio → Resumo em áudio → Personalizar**, colando o Prompt A e depois o Prompt B. Ouça no deslocamento ou na academia: é reforço, não substitui os passos abaixo.
+**Antes (fora das 2 h, quando puder):** no **NotebookLM**, crie o notebook "Decreto 94.406 + Res. 507 + backup — 28/11", adicione a fonte `2026-11-28_decreto-94406_res-507_backup.md` (pasta `audio/notebooklm/`) e gere os áudios em **Studio → Resumo em áudio → Personalizar**, colando o Prompt A e depois o Prompt B. Ouça no deslocamento ou na academia: é reforço, não substitui os passos abaixo.
 
 | # | Passo | Onde | Como |
 |---|-------|------|------|
@@ -29,11 +29,11 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 | 2 | **Ler a folha** (seções do tema) | Este PDF | Leitura ativa: sublinhe o que é número, prazo ou "quem faz o quê" |
 | 3 | **Caderno: tema principal** | [Painel](https://claude.ai/artifact/8dVvHQNixZauPtCZm7Ta1a) → card de hoje → link do caderno | Marque C, E ou branco **e** a confiança; leia a resolução de cada item logo depois |
 | 4 | **P3 do dia** | Este PDF (seção do P3) + núcleo do P3 no caderno | Mesmo procedimento do passo 3 |
-| 5 | **Teste-se** | Fim deste PDF + `_gabarito.pdf` | Responda num papel, sem olhar a folha; depois confira |
+| 5 | **Teste-se** | Fim deste PDF + `gabarito-do-teste-se.pdf` | Responda num papel, sem olhar a folha; depois confira |
 | 6 | **Baixar o resultado do caderno** | Caderno → botão **Baixar arquivo** | Sai `…yaml.txt` em Downloads; **não precisa renomear**: me diga "salve meu resultado" que eu busco e lanço no controle de lacunas |
 | 7 | **Âncoras dos erros** | Painel → card de hoje → campo de nota | Uma frase por erro; ou me mande no chat |
 | 8 | **Marcar o dia como feito** | Painel → card de hoje → **Feito** | Corrija as horas se precisar |
-| 9 | **Importar os flashcards de hoje** (para amanhã) | Anki: *Arquivo → Importar* `2026-11-28_dec94406-res507-backup.tsv` · NotebookLM: fonte `2026-11-28_dec94406-res507-backup_notebooklm.md` → Studio → Flashcards → Personalizar (prompt no topo do arquivo) | Só importar; a revisão é amanhã no passo 1 |
+| 9 | **Importar os flashcards de hoje** (para amanhã) | Anki: *Arquivo → Importar* `2026-11-28_decreto-94406_res-507_backup_anki.tsv` · NotebookLM: fonte `2026-11-28_decreto-94406_res-507_backup_notebooklm.md` → Studio → Flashcards → Personalizar (prompt no topo do arquivo) | Só importar; a revisão é amanhã no passo 1 |
 
 
 **Mapa do dia:** a Lei 5.905 (ontem) **cria os conselhos**. O Decreto 94.406 diz **quem faz o quê na enfermagem**. A Res. Cofen 507/2016 é o **código disciplinar de quem trabalha no conselho**, ou seja, de você depois da posse.

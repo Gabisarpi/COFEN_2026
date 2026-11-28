@@ -1,9 +1,9 @@
 # Revisão — {{DATA}} ({{DIA_SEMANA}}) — {{TEMA}} + P3 do dia: {{TEMA_P3}}
 
 **Tags:** {{TAGS}}  
-**PDF:** `pessoal/gaby/revisao/{{ARQUIVO}}.pdf` (gabarito do "Teste-se": `{{ARQUIVO}}_gabarito.pdf`)  
+**PDF:** `pessoal/gaby/revisao/{{ARQUIVO}}/folha-de-estudo.pdf` (gabarito do "Teste-se": `gabarito-do-teste-se.pdf`, na mesma pasta)  
 **Áudio:** `pessoal/gaby/audio/notebooklm/{{ARQUIVO}}.md`  
-**Flashcards:** `pessoal/gaby/flashcards/{{ARQUIVO}}.tsv` (Anki/Quizlet) e `_notebooklm.md`  
+**Flashcards:** `pessoal/gaby/flashcards/{{ARQUIVO}}_anki.tsv` (Anki/Quizlet) e `{{ARQUIVO}}_notebooklm.md`  
 **Caderno C/E ({{N_ITENS}} itens):** `pessoal/gaby/simulados/gerados/{{ARQUIVO}}/` · [abrir]({{LINK_CADERNO}})  
 **Fonte oficial:** {{LINK_FONTE}}
 
@@ -29,11 +29,11 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 | 2 | **Ler a folha** (seções do tema) | Este PDF | Leitura ativa: sublinhe o que é número, prazo ou "quem faz o quê" |
 | 3 | **Caderno: tema principal** | [Painel](https://claude.ai/artifact/8dVvHQNixZauPtCZm7Ta1a) → card de hoje → link do caderno | Marque C, E ou branco **e** a confiança; leia a resolução de cada item logo depois |
 | 4 | **P3 do dia** | Este PDF (seção do P3) + núcleo do P3 no caderno | Mesmo procedimento do passo 3 |
-| 5 | **Teste-se** | Fim deste PDF + `_gabarito.pdf` | Responda num papel, sem olhar a folha; depois confira |
+| 5 | **Teste-se** | Fim deste PDF + `gabarito-do-teste-se.pdf` | Responda num papel, sem olhar a folha; depois confira |
 | 6 | **Baixar o resultado do caderno** | Caderno → botão **Baixar arquivo** | Sai `…yaml.txt` em Downloads; **não precisa renomear**: me diga "salve meu resultado" que eu busco e lanço no controle de lacunas |
 | 7 | **Âncoras dos erros** | Painel → card de hoje → campo de nota | Uma frase por erro; ou me mande no chat |
 | 8 | **Marcar o dia como feito** | Painel → card de hoje → **Feito** | Corrija as horas se precisar |
-| 9 | **Importar os flashcards de hoje** (para amanhã) | Anki: *Arquivo → Importar* `{{ARQUIVO}}.tsv` · NotebookLM: fonte `{{ARQUIVO}}_notebooklm.md` → Studio → Flashcards → Personalizar (prompt no topo do arquivo) | Só importar; a revisão é amanhã no passo 1 |
+| 9 | **Importar os flashcards de hoje** (para amanhã) | Anki: *Arquivo → Importar* `{{ARQUIVO}}_anki.tsv` · NotebookLM: fonte `{{ARQUIVO}}_notebooklm.md` → Studio → Flashcards → Personalizar (prompt no topo do arquivo) | Só importar; a revisão é amanhã no passo 1 |
 
 
 ## 1. {{SECAO_1}}
@@ -76,7 +76,7 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 | 2 | |
 | 3 | |
 
-<!-- O gabarito NUNCA entra nesta folha: vai em {{ARQUIVO}}_gabarito.md (colunas # | C/E | Por quê) e no PDF correspondente. -->
+<!-- O gabarito NUNCA entra nesta folha: vai em revisao/{{ARQUIVO}}/gabarito-do-teste-se.md (colunas # | C/E | Por quê) e no PDF correspondente. -->
 
 ## Meus erros do dia
 
@@ -90,9 +90,11 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 
 <!--
 Material do dia completo (formato fixo, ver CONTINUIDADE.md):
-1. esta folha .md + .pdf (python3 tools/md_html.py <md> → wkhtmltopdf; sem listas aninhadas, que não renderizam)
-2. {{ARQUIVO}}_gabarito.md + .pdf
+Nome do dia ({{ARQUIVO}}): AAAA-MM-DD_tema-1_tema-2, minúsculas, hífen dentro do tema, sublinhado entre temas (ex.: 2026-11-28_decreto-94406_res-507_backup).
+1. revisao/{{ARQUIVO}}/folha-de-estudo.md + .pdf (python3 tools/md_html.py <md> → wkhtmltopdf; sem listas aninhadas, que não renderizam)
+2. revisao/{{ARQUIVO}}/gabarito-do-teste-se.md + .pdf
 3. caderno C/E em simulados/gerados/{{ARQUIVO}}/ (skill cofen-material-nucleos) + link em MATERIAIS do plano.py
 4. fonte de áudio em audio/notebooklm/{{ARQUIVO}}.md (a partir de audio/notebooklm/_MODELO.md)
-5. flashcards {{ARQUIVO}}.tsv + {{ARQUIVO}}_notebooklm.md
+5. flashcards/{{ARQUIVO}}_anki.tsv + flashcards/{{ARQUIVO}}_notebooklm.md
+6. respostas/{{ARQUIVO}}.yaml (resultado do caderno, quando a pessoa enviar)
 -->
