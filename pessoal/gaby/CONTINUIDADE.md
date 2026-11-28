@@ -34,6 +34,8 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 
 - **28/11 pronto (gerado em 27/11):** caderno https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e, folha + gabarito, áudio e flashcards de Decreto 94.406 + Res. 507/2016 + backup. Res. 507/2016 = Código de Ética dos Empregados Públicos (não fiscalização); 726/2023 = Regimento Interno do Cofen; 751/2024 = organograma.
 
+- **Regra (28/11, pedido da Gaby):** todo "material do dia" sai com a seção **Passo a passo do dia** na folha (ordem dos materiais e como inserir cada um em cada plataforma: NotebookLM, painel, caderno, Anki) e a mesma orientação resumida na resposta do chat. Modelo em `revisao/_MODELO.md`.
+
 ## Pendências
 
 - [ ] Fazer a inscrição (26/11/2026 a 11/01/2027, taxa R$ 100).
