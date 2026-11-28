@@ -35,8 +35,8 @@
 | Dia | Data | Tipo | Bloco | Revisão espaçada |
 |-----|------|------|-------|------------------|
 | Sex | 27/11 | Núcleos | **Lei 5.905/1973 + inscrição**: Sistema Cofen/Corens: natureza autárquica, composição, competências do Cofen e dos Corens, eleições, anuidades · 15 C/E reais do COREN-PR · fazer a inscrição (até 11/01) · P3 do dia (20 min, dentro do horário): incidente × problema × requisição (ITIL), 5–8 C/E · [material: Caderno: Lei 5.905 + ITIL](https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv) | — |
-| Sáb | 28/11 | Núcleos | **Decreto 94.406/1987 + Res. COFEN 507/2016**: Exercício da enfermagem (categorias, atribuições privativas) e fiscalização · 15 C/E · P3 do dia (20 min, dentro do horário): backup completo, incremental e diferencial, 5–8 C/E | — |
-| Dom | 29/11 | Núcleos | **Res. COFEN 726/2023 e 751/2024**: Leitura dirigida das duas resoluções do edital · 15 C/E calibrados · flashcards do Sistema Cofen/Corens · P3 do dia (20 min, dentro do horário): RAID 0, 1, 5, 6 e 10, 5–8 C/E | Lei 5.905 (D+2) |
+| Sáb | 28/11 | Núcleos | **Decreto 94.406/1987 + Res. COFEN 507/2016**: Decreto: quem exerce, supervisão, inscrição, privativas do enfermeiro × equipe · Res. 507: Código de Ética dos Empregados Públicos do Sistema Cofen/Corens (penas, prazos, PAD) · 15 C/E · P3 do dia (20 min, dentro do horário): backup completo, incremental e diferencial, 5–8 C/E · [material: Caderno: Decreto 94.406 + Res. 507 + backup](https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e) | — |
+| Dom | 29/11 | Núcleos | **Res. COFEN 726/2023 (Regimento Interno) e 751/2024 (organograma)**: Regimento Interno do Cofen (Res. 726/2023) e organograma do Cofen (Res. 751/2024) · 15 C/E calibrados · flashcards do Sistema Cofen/Corens · P3 do dia (20 min, dentro do horário): RAID 0, 1, 5, 6 e 10, 5–8 C/E | Lei 5.905 (D+2) |
 
 ## Semana 2 (30/11 → 06/12)
 
@@ -218,5 +218,6 @@
 Ledger: `pessoal/gaby/cronograma/lacunas.yaml`. Depois de cada simulado: `diagnóstico de gaps` e `ajustar cronograma`.
 
 - **27/11:** plano criado com o foco só no COFEN (inscrição da CGU perdida). Horas informadas pela Gaby: 2 h/dia até 14/12, 5 h/dia de 15/12 a 03/01, 2 h/dia depois; todos os dias. Começo direto pelo cronograma, sem diagnóstico prévio: o simulado de 15/12 faz esse papel.
+- **27/11:** corrigida a descrição de 28/11 e 29/11: a Res. COFEN 507/2016 é o Código de Ética dos Empregados Públicos do Sistema Cofen/Corens (não fiscalização); a 726/2023 é o Regimento Interno do Cofen e a 751/2024, o organograma.
 - **27/11 (pedido):** leituras dirigidas na véspera de 5 discursivas (12/12, 20/12, 05/01, 26/01, 16/02), dentro do horário do dia.
 - **27/11 (pedido):** P3 todo dia. Os 59 dias sem tema do P3 ganharam um “P3 do dia” curto (20 min dentro do horário; 10 min nos simulados e na véspera), em rodízio de 34 tópicos pelos 12 blocos.

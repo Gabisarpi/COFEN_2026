@@ -22,8 +22,8 @@ FASES = [
 # curto: nome na revisão espaçada (só dias com conteúdo novo)
 DIAS = [
  ('27/11', 'nuc', 'Lei 5.905/1973 + inscrição', 'Sistema Cofen/Corens: natureza autárquica, composição, competências do Cofen e dos Corens, eleições, anuidades · 15 C/E reais do COREN-PR · fazer a inscrição (até 11/01) · P3 do dia (20 min, dentro do horário): incidente × problema × requisição (ITIL), 5–8 C/E', 'comp.leg.enfermagem esp.tic.govti', 'Lei 5.905'),
- ('28/11', 'nuc', 'Decreto 94.406/1987 + Res. COFEN 507/2016', 'Exercício da enfermagem (categorias, atribuições privativas) e fiscalização · 15 C/E · P3 do dia (20 min, dentro do horário): backup completo, incremental e diferencial, 5–8 C/E', 'comp.leg.enfermagem esp.tic.seguranca', 'Decreto 94.406 / Res. 507'),
- ('29/11', 'nuc', 'Res. COFEN 726/2023 e 751/2024', 'Leitura dirigida das duas resoluções do edital · 15 C/E calibrados · flashcards do Sistema Cofen/Corens · P3 do dia (20 min, dentro do horário): RAID 0, 1, 5, 6 e 10, 5–8 C/E', 'comp.leg.enfermagem esp.tic.infra', 'Res. 726 e 751'),
+ ('28/11', 'nuc', 'Decreto 94.406/1987 + Res. COFEN 507/2016', 'Decreto: quem exerce, supervisão, inscrição, privativas do enfermeiro × equipe · Res. 507: Código de Ética dos Empregados Públicos do Sistema Cofen/Corens (penas, prazos, PAD) · 15 C/E · P3 do dia (20 min, dentro do horário): backup completo, incremental e diferencial, 5–8 C/E', 'comp.leg.enfermagem esp.tic.seguranca', 'Decreto 94.406 / Res. 507'),
+ ('29/11', 'nuc', 'Res. COFEN 726/2023 (Regimento Interno) e 751/2024 (organograma)', 'Regimento Interno do Cofen (Res. 726/2023) e organograma do Cofen (Res. 751/2024) · 15 C/E calibrados · flashcards do Sistema Cofen/Corens · P3 do dia (20 min, dentro do horário): RAID 0, 1, 5, 6 e 10, 5–8 C/E', 'comp.leg.enfermagem esp.tic.infra', 'Res. 726 e 751'),
  ('30/11', 'p2', 'Improbidade (Lei 8.429 + 14.230)', 'Dolo, tipos (arts. 9º, 10 e 11), sanções, prescrição, acordo de não persecução · 20 C/E reais · P3 do dia (20 min, dentro do horário): portas e protocolos mais cobrados, 5–8 C/E', 'comp.leg.improbidade esp.tic.redes', 'Improbidade'),
  ('01/12', 'p2', 'Processo administrativo (Lei 9.784)', 'Princípios, competência e delegação, impedimento/suspeição, prazos, recursos, anulação × revogação · 20 C/E reais · P3 do dia (20 min, dentro do horário): sub-redes IPv4 e CIDR, 5–8 C/E', 'comp.leg.processo esp.tic.redes', 'Lei 9.784'),
  ('02/12', 'p2', 'LGPD (Lei 13.709)', 'Bases legais, dados sensíveis, direitos do titular, controlador × operador × encarregado, ANPD, poder público · 20 C/E · P3 do dia (20 min, dentro do horário): criptografia simétrica × assimétrica e hash, 5–8 C/E', 'comp.leg.lgpd esp.tic.seguranca', 'LGPD'),
@@ -119,6 +119,7 @@ DIAS = [
 
 MATERIAIS = {
  "27/11": [("Caderno: Lei 5.905 + ITIL", "https://claude.ai/artifact/RetWtNnJGjQ38PHtHMaTkv")],
+ "28/11": [("Caderno: Decreto 94.406 + Res. 507 + backup", "https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e")],
 }
 
 FERIADOS = {
@@ -184,6 +185,7 @@ MD_RODAPE = [
  "## Ajustes", "",
  "Ledger: `pessoal/gaby/cronograma/lacunas.yaml`. Depois de cada simulado: `diagnóstico de gaps` e `ajustar cronograma`.", "",
  "- **27/11:** plano criado com o foco só no COFEN (inscrição da CGU perdida). Horas informadas pela Gaby: 2 h/dia até 14/12, 5 h/dia de 15/12 a 03/01, 2 h/dia depois; todos os dias. Começo direto pelo cronograma, sem diagnóstico prévio: o simulado de 15/12 faz esse papel.",
+ "- **27/11:** corrigida a descrição de 28/11 e 29/11: a Res. COFEN 507/2016 é o Código de Ética dos Empregados Públicos do Sistema Cofen/Corens (não fiscalização); a 726/2023 é o Regimento Interno do Cofen e a 751/2024, o organograma.",
  "- **27/11 (pedido):** leituras dirigidas na véspera de 5 discursivas (12/12, 20/12, 05/01, 26/01, 16/02), dentro do horário do dia.",
  "- **27/11 (pedido):** P3 todo dia. Os 59 dias sem tema do P3 ganharam um “P3 do dia” curto (20 min dentro do horário; 10 min nos simulados e na véspera), em rodízio de 34 tópicos pelos 12 blocos.",
 ]

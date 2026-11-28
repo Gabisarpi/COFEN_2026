@@ -32,6 +32,8 @@ Prova: **28/02/2027, tarde** · Banca: Quadrix C/E · `$P = pessoal/gaby/` · `$
 - **Painel do cronograma publicado (27/11):** https://claude.ai/artifact/8dVvHQNixZauPtCZm7Ta1a (slug `3dc8916f-32b7-45af-80ea-cb344aa5a235`). As marcações (feito/horas/notas) ficam no banco do artifact, coleção `dias/<AAAA-MM-DD>`: ler com `db_list` antes de ajustar o plano. Ao regerar `cronograma.html`, republicar no MESMO slug (o banco é preservado).
 - **Cronograma (27/11):** `cronograma/plano.py` → `plano.md` + `cronograma.html`, de 27/11 a 27/02, todos os dias: 2 h até 14/12, 5 h de 15/12 a 03/01, 2 h depois (~245 h). Fase 1: P2 e exclusivos do 407; fase 2: simulado diagnóstico em 15/12 e todo o P3 técnico + P1; fase 3: rotação semanal com simulados em dois dias.
 
+- **28/11 pronto (gerado em 27/11):** caderno https://claude.ai/artifact/98xoFMHYPV8ixkQ2rMkU7e, folha + gabarito, áudio e flashcards de Decreto 94.406 + Res. 507/2016 + backup. Res. 507/2016 = Código de Ética dos Empregados Públicos (não fiscalização); 726/2023 = Regimento Interno do Cofen; 751/2024 = organograma.
+
 ## Pendências
 
 - [ ] Fazer a inscrição (26/11/2026 a 11/01/2027, taxa R$ 100).

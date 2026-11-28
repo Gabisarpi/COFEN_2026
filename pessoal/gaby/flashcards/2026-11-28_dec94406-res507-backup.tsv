@@ -1,0 +1,30 @@
+#separator:tab
+#html:false
+#tags column:3
+Decreto 94.406/1987: o que regulamenta?	A Lei 7.498/1986, do exercício da enfermagem.	COFEN_tic decreto94406 2026-11-28
+Quem pode exercer a enfermagem (art. 1º)?	Enfermeiro, Técnico, Auxiliar e Parteiro, respeitado o grau de habilitação, e só se inscrito no Coren da região.	COFEN_tic decreto94406 2026-11-28
+Técnico e Auxiliar podem atuar sem enfermeiro?	Não: somente sob supervisão, orientação e direção de Enfermeiro (art. 13).	COFEN_tic decreto94406 2026-11-28
+Deveres de todo o pessoal de enfermagem (art. 14)	Cumprir e fazer cumprir o Código de Deontologia e, quando for o caso, anotar no prontuário as atividades de assistência.	COFEN_tic decreto94406 2026-11-28
+Inscrição no Coren na administração pública (art. 15)	Condição essencial para cargos, funções e contratação de pessoal de enfermagem de todos os graus.	COFEN_tic decreto94406 2026-11-28
+Privativo do enfermeiro: consulta e prescrição	Consulta de enfermagem e prescrição da ASSISTÊNCIA de enfermagem (art. 8º, I).	COFEN_tic decreto94406 2026-11-28
+Prescrição de medicamentos pelo enfermeiro	Só os de programas de saúde pública e rotina aprovada, como integrante da equipe (art. 8º, II); não é privativa.	COFEN_tic decreto94406 2026-11-28
+Cuidados a paciente grave com risco de vida	Privativos do enfermeiro, assim como os de maior complexidade técnica.	COFEN_tic decreto94406 2026-11-28
+Consultoria, auditoria e parecer sobre enfermagem	Privativos do enfermeiro.	COFEN_tic decreto94406 2026-11-28
+Campo do técnico de enfermagem (art. 10)	Assiste o enfermeiro e executa a assistência, exceto o privativo do enfermeiro e o das obstetrizes.	COFEN_tic decreto94406 2026-11-28
+Parteiro em instituição de saúde	Atua sob supervisão de Enfermeiro Obstetra.	COFEN_tic decreto94406 2026-11-28
+Res. Cofen 507/2016 institui…	…o Código de Ética dos Empregados Públicos do Sistema Cofen/Corens.	COFEN_tic res507 2026-11-28
+Penas do empregado do conselho (Res. 507)	Advertência, suspensão, demissão e destituição de cargo ou função comissionada.	COFEN_tic res507 2026-11-28
+Penas do profissional (Lei 5.905)	Advertência verbal, multa, censura, suspensão do exercício e cassação.	COFEN_tic res507 2026-11-28
+Suspensão do empregado: limite e conversão	Até 30 dias, sem salário; pode virar multa de 50% da remuneração, com o empregado trabalhando.	COFEN_tic res507 2026-11-28
+Abandono × inassiduidade	Abandono: mais de 30 dias seguidos. Inassiduidade: 20 dias interpolados em 6 meses. Ambos: demissão.	COFEN_tic res507 2026-11-28
+Presentes em razão do cargo	Proibidos em qualquer valor; motivo de demissão.	COFEN_tic res507 2026-11-28
+Prescrição da ação disciplinar	5 anos demissão/destituição; 2 anos suspensão; 180 dias advertência.	COFEN_tic res507 2026-11-28
+Cancelamento do registro da pena	Advertência: 3 anos. Suspensão: 5 anos. Sem nova infração.	COFEN_tic res507 2026-11-28
+Prazos: sindicância × PAD	Sindicância 30 dias (+30). PAD 60 dias (+60).	COFEN_tic res507 2026-11-28
+Comissão do PAD	Três empregados efetivos, designados pela autoridade competente, que indica o presidente.	COFEN_tic res507 2026-11-28
+Backup completo	Copia tudo; restaura com um conjunto só; mais lento e maior.	COFEN_tic backup 2026-11-28
+Backup incremental	Copia o que mudou desde o ÚLTIMO BACKUP; restaura com o completo + TODOS os incrementais.	COFEN_tic backup 2026-11-28
+Backup diferencial	Copia o que mudou desde o último COMPLETO; restaura com o completo + o ÚLTIMO diferencial.	COFEN_tic backup 2026-11-28
+Regra 3-2-1	3 cópias, 2 tipos de mídia, 1 fora do local (offsite).	COFEN_tic backup 2026-11-28
+Replicação substitui backup?	Não: replica também dado apagado ou cifrado; só backup com histórico volta a um ponto anterior.	COFEN_tic backup 2026-11-28
+Fita é obsoleta?	Não: segue em uso para arquivamento longo e cópia offline contra ransomware.	COFEN_tic backup 2026-11-28

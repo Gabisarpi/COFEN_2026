@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>28/11 · Decreto 94.406/1987 + Res. Cofen 507/2016 + backup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: folha de respostas Quadrix — coluna única de itens com bolhas C/E, barra de placar fixa no topo, resumo e calibração no fim */
+:root{
+  --bg:#F1F4F7; --surface:#FFFFFF; --sunk:#E7ECF1; --ink:#15202B; --muted:#596675; --line:#D3DBE3;
+  --accent:#2346C8; --accent-soft:#E3E9FB;
+  --ok:#1D7546; --ok-soft:#E1F2E8; --bad:#B0302B; --bad-soft:#F9E3E1; --warn:#8F5E00; --warn-soft:#FBF0D9;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F141A; --surface:#161D26; --sunk:#1C2530; --ink:#E3E8EE; --muted:#97A3B0; --line:#2B3642;
+  --accent:#93A8FF; --accent-soft:#1F2A4D;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; --warn:#E3B354; --warn-soft:#352A12;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F141A; --surface:#161D26; --sunk:#1C2530; --ink:#E3E8EE; --muted:#97A3B0; --line:#2B3642;
+  --accent:#93A8FF; --accent-soft:#1F2A4D;
+  --ok:#62C690; --ok-soft:#173225; --bad:#F2817A; --bad-soft:#3A1E1D; --warn:#E3B354; --warn-soft:#352A12;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-.01em;line-height:1.1}
+h2{font-size:24px;font-weight:700;line-height:1.2}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.92em}
+.label{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* topo */
+header.intro{display:grid;gap:14px;padding-block:36px 24px}
+header.intro .lede{color:var(--muted);max-width:62ch}
+.howto{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.howto div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px}
+.howto b{display:block;font-family:var(--f-display);font-size:13px;margin-bottom:2px}
+
+/* barra de placar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .in{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.stat{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.stat strong{font-family:var(--f-display);font-size:20px}
+.prog{flex:1 1 140px;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;min-width:100px}
+.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{background:transparent;border:0;padding:6px 10px;font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.btn{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:13px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface);font-weight:600}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* método */
+details.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-block:20px 0}
+details.box>summary{padding:14px 16px;font-family:var(--f-display);font-weight:700;cursor:pointer}
+details.box>.body{padding:0 16px 16px;display:grid;gap:12px;font-size:15px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-display);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.n{text-align:right}
+
+/* núcleo */
+section.nuc{margin-top:44px;display:grid;gap:14px}
+.nuc-head{display:grid;gap:6px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.nuc-head .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--sunk);color:var(--muted)}
+.chip.real{background:var(--accent-soft);color:var(--accent)}
+.chip.var{background:var(--warn-soft);color:var(--warn)}
+
+/* item */
+article.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:grid;gap:14px;min-width:0}
+article.item.c-ok{box-shadow:inset 4px 0 0 var(--ok)}
+article.item.c-bad{box-shadow:inset 4px 0 0 var(--bad)}
+article.item.c-blank{box-shadow:inset 4px 0 0 var(--muted)}
+.item-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.item-top .num{font-family:var(--f-mono);font-weight:600;color:var(--ink)}
+.cmd{font-size:15px;line-height:1.5;color:var(--muted);margin:0}
+.code-box{border:1px solid var(--line);border-radius:8px;background:var(--sunk);overflow:hidden}
+.code-box>summary{list-style:none;cursor:pointer;padding:8px 12px;font:600 13px/1.3 var(--f-display);color:var(--accent);display:flex;align-items:center;gap:8px;user-select:none}
+.code-box>summary::-webkit-details-marker{display:none}
+.code-box>summary::before{content:"▸";font-size:11px;transition:transform .15s}
+.code-box[open]>summary::before{transform:rotate(90deg)}
+.code-box>summary .lang{font:600 11px/1 var(--f-mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.code{margin:0;padding:0 12px 12px;overflow-x:auto;font:13px/1.45 var(--f-mono);color:var(--ink);white-space:pre;border:0;background:transparent;border-radius:0}
+.code code{font:inherit;background:none;padding:0}
+.stmt{font-size:17px;line-height:1.6}
+.sheet{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+.bubbles{display:flex;gap:8px;align-items:center}
+.bub{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:transparent;font-family:var(--f-display);font-weight:800;font-size:17px;display:grid;place-items:center}
+.bub[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.bub.blank{width:auto;border-radius:22px;padding:0 14px;font-size:13px;font-weight:700}
+.conf{display:flex;gap:6px;flex-wrap:wrap}
+.conf button{border:1px solid var(--line);background:transparent;border-radius:6px;padding:6px 10px;font-size:13px}
+.conf button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.conf[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.verdict{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-weight:600}
+.verdict .tag{padding:3px 10px;border-radius:6px;font-family:var(--f-display);font-size:14px}
+.tag.ok{background:var(--ok-soft);color:var(--ok)} .tag.bad{background:var(--bad-soft);color:var(--bad)} .tag.blank{background:var(--sunk);color:var(--muted)}
+.res{display:grid;gap:10px;border-top:1px dashed var(--line);padding-top:12px;font-size:15px}
+.res .row{display:grid;grid-template-columns:118px 1fr;gap:4px 12px}
+.res .row>span:first-child{font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.res .row>*{min-width:0}
+mark{background:var(--warn-soft);color:var(--ink);padding:0 2px;border-radius:2px}
+/* "Decide o item": verde se acertou, vermelho se errou, neutro se em branco */
+mark.gat{padding:1px 4px;border-radius:3px;font-weight:600}
+mark.gat.ok{background:var(--ok-soft);color:var(--ok);box-shadow:inset 0 0 0 1px var(--ok)}
+mark.gat.bad{background:var(--bad-soft);color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad)}
+mark.gat.blank{background:var(--sunk);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+/* Interface opcional: manter o modelo e suavizar somente o destaque decisivo. */
+:root[data-interface="numerica"] .bub{font-size:13px}
+:root[data-interface="numerica"] mark.gat.ok{
+  background:var(--ok-soft);background:color-mix(in srgb,var(--ok) 12%,var(--surface));
+  color:var(--ok);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ok) 30%,var(--line))}
+:root[data-interface="numerica"] mark.gat.bad{
+  background:var(--bad-soft);background:color-mix(in srgb,var(--bad) 12%,var(--surface));
+  color:var(--bad);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--bad) 30%,var(--line))}
+.res ol.passos{margin:0;padding-left:20px;display:grid;gap:4px}
+.res .ex{background:var(--sunk);border-radius:6px;padding:8px 10px}
+/* resolução detalhada (opção individual resolucao-detalhada): termos do item e conceito vizinho */
+dl.termos{margin:0;display:grid;gap:6px}
+dl.termos dt{font-weight:700}
+dl.termos dd{margin:0 0 4px;color:var(--ink)}
+.res .viz{background:var(--sunk);border-radius:6px;padding:8px 10px}
+#glossario dl.termos{grid-template-columns:minmax(0,1fr)}
+.res .lembre{background:var(--accent-soft);color:var(--ink);border-radius:6px;padding:8px 10px;font-weight:600}
+details.aula{background:var(--accent-soft);border-radius:8px;margin:6px 0 4px}
+details.aula>summary{padding:12px 14px;cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--accent)}
+details.aula>div{padding:0 14px 14px;display:grid;gap:10px;font-size:15px;line-height:1.6}
+details.aula table{border-collapse:collapse;font-size:14px;width:100%}
+details.aula th,details.aula td{border:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}
+details.aula .hint{font-size:13px;color:var(--muted);font-weight:400}
+.note{background:var(--warn-soft);color:var(--ink);border-radius:6px;padding:8px 10px;font-size:14px}
+.quote{border-left:3px solid var(--accent);padding-left:10px;font-style:italic;color:var(--ink)}
+@media (max-width:520px){.res .row{grid-template-columns:1fr}}
+
+/* cartão do núcleo */
+details.card{background:var(--sunk);border-radius:8px}
+details.card>summary{padding:12px 14px;cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:15px}
+details.card>div{padding:0 14px 14px;display:grid;gap:8px;font-size:15px}
+details.card ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* revisão: filtros, núcleos e refação */
+section.review{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-top:20px;display:grid;gap:12px;scroll-margin-top:64px}
+.review .row2{display:grid;gap:6px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 11px;font-size:13px;display:inline-flex;gap:6px;align-items:baseline}
+.pill b{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--muted)}
+.pill[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.pill[aria-pressed="true"] b{color:var(--surface)}
+.pill.hot{border-color:var(--bad)}
+.pill:disabled{opacity:.4;cursor:not-allowed}
+.review .act{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:14px;color:var(--muted)}
+.chip.try{background:var(--accent-soft);color:var(--accent)}
+.before{font-size:14px;font-weight:400;color:var(--muted)}
+.flat-head{margin-top:36px;display:grid;gap:4px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.flat-head p{font-size:14px;color:var(--muted)}
+section.flat{display:grid;gap:14px;margin-top:14px}
+
+/* resumo */
+section.sum{margin-top:56px;display:grid;gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cell{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px}
+.cell strong{font-family:var(--f-display);font-size:26px;display:block;font-variant-numeric:tabular-nums}
+.cell span{font-size:13px;color:var(--muted)}
+.cell.warn{border-color:var(--bad)}
+textarea{width:100%;min-height:140px;font-family:var(--f-mono);font-size:12px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px}
+.toast{font-size:13px;color:var(--ok);font-weight:600}
+/* Teclado: item ativo e quadro de atalhos */
+.item.kb-active{outline:2px solid var(--accent);outline-offset:4px;border-radius:8px}
+.kb-help{position:fixed;right:16px;bottom:16px;z-index:50;max-width:min(360px,calc(100vw - 32px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:0 8px 28px rgba(0,0,0,.25);font-size:14px}
+.kb-help h3{margin:0 0 8px;font-size:15px}
+.kb-help table{border-collapse:collapse;width:100%}
+.kb-help td{padding:3px 6px;vertical-align:top;border:0}
+kbd{font:600 12px/1 var(--f-mono);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:2px 5px;background:var(--sunk)}
+/* Modo prova (meta.modo = "prova"): correção, mini-aulas e cartões só depois de "Entregar prova" */
+.prova-note{display:grid;gap:8px;margin-top:20px}
+.prova-note .act{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.prova-note[hidden],section.review[hidden]{display:none}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="bar" role="region" aria-label="Placar">
+  <div class="in">
+    <div class="stat"><strong id="s-done">0</strong><span>/ <span id="s-total">0</span> corrigidos</span></div>
+    <div class="prog" aria-hidden="true"><i id="s-prog"></i></div>
+    <div class="stat"><span>Líquido (±1)</span><strong id="s-net">0</strong><span id="s-max" style="margin-left:4px"></span></div>
+    <button type="button" class="btn primary" id="entregar" hidden>Entregar prova</button>
+    <div class="seg" role="group" aria-label="Ordem dos itens">
+      <button id="m-block" aria-pressed="true">Por núcleo</button>
+      <button id="m-mix" aria-pressed="false">Intercalado</button>
+    </div>
+    <button type="button" class="btn" id="m-code" aria-pressed="true" title="Mostrar ou ocultar trechos de código">Código</button>
+    <a class="btn" href="#revisar" id="f-ind">Revisar</a>
+    <a class="btn" href="#resumo">Resumo</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="intro">
+    <div class="label">COFEN 2026 · Cargo 407 Analista de TIC · Material do dia 28/11</div>
+    <h1>Decreto 94.406/1987 e Res. Cofen 507/2016 e, no P3 do dia, backup completo, incremental e diferencial</h1>
+    <p class="lede">25 itens em 5 núcleos: 6 reais do acervo e 19 variações inéditas que mudam um detalhe e invertem o gabarito. A resolução de cada item só abre depois que você marca a resposta e a confiança.</p>
+    <div class="howto">
+      <div id="howto-choice"><b>1. Marque</b>C, E ou "deixaria em branco", como na folha.</div>
+      <div id="howto-confidence"><b>2. Diga a confiança</b>Certeza ou dúvida. Acerto na dúvida ainda é lacuna.</div>
+      <div id="howto-grade"><b>3. Corrija</b>Veja a palavra que decide o item, o conceito e como a banca inverte.</div>
+      <div><b>4. Exporte</b>No fim, baixe (ou copie) o resultado para <span class="mono">pessoal/gaby/respostas/</span>.</div>
+      <div><b>Teclado</b><kbd>?</kbd> mostra os atalhos: <kbd>↓</kbd>/<kbd>↑</kbd> navegam, <kbd>1</kbd>–<kbd>4</kbd> e <kbd>0</kbd> respondem, <kbd>Enter</kbd> confirma.</div>
+      <div><b>Código</b>Botão <b>Código</b> no topo mostra ou oculta todos os trechos. Em cada item, o cabeçalho do bloco abre/fecha só aquele trecho.</div>
+    </div>
+  </header>
+
+  <details class="box">
+    <summary>Como estes núcleos foram escolhidos e validados</summary>
+    <div class="body">
+<p><b>Edital.</b> Conhecimentos complementares do Cargo 407: Decreto nº 94.406/1987 (exercício da enfermagem) e Resolução Cofen nº 507/2016, que institui o <b>Código de Ética dos Empregados Públicos do Sistema Cofen/Corens</b> (o regime disciplinar de quem trabalha nos conselhos). No P3, bloco 3 (segurança da informação: backup e recuperação).</p>
+<p><b>Tamanho.</b> Caderno do dia (cronograma de 28/11: 2 h): 17 itens de legislação + 8 do P3 do dia.</p>
+<p><b>Calibração (perfil).</b> O acervo não tem nenhum item Quadrix sobre o Decreto 94.406 ou a Res. 507/2016, então os 17 itens de legislação são variações inéditas montadas sobre os artigos, com uma palavra trocada. No backup, 6 dos 8 itens são reais da Quadrix (CFN 2024, CFO 2024, CREFITO-17 2026, CREF-11 2026).</p>
+<div class="tbl"><table><thead><tr><th>Núcleo</th><th>Edital</th><th class="n">Provas</th><th class="n">Itens no acervo</th></tr></thead><tbody id="rank"></tbody></table></div>
+<p><b>Ficaram de fora.</b> Lei 7.498/1986 (regulamentada pelo decreto, mas não listada no edital) e o piso salarial da enfermagem (Lei 14.434/2022). No backup: comandos de ferramentas específicas (Bacula, pg_dump), que voltam no dia de banco de dados.</p>
+<p><b>Literalidade.</b> Decreto 94.406 conferido no Planalto; Res. 507/2016 conferida no site do Cofen (resumo do texto). Os números (30 dias, 50%, 20 dias em 6 meses, prazos de prescrição e de processo) vêm dessa leitura; confira no texto oficial antes de citá-los na discursiva.</p>
+    </div>
+  </details>
+
+  <section class="review" id="revisar" aria-labelledby="rev-t">
+    <div class="label" id="rev-t">Revisar</div>
+    <div class="row2">
+      <span style="font-size:14px;color:var(--muted)">Mostrar, pelo resultado da última tentativa:</span>
+      <div class="pills" id="f-pills" role="group" aria-label="Filtro por resultado"></div>
+    </div>
+    <div class="row2">
+      <span style="font-size:14px;color:var(--muted)">Núcleos (nenhum marcado = todos):</span>
+      <div class="pills" id="n-pills" role="group" aria-label="Filtro por núcleo"></div>
+    </div>
+    <div class="act" id="redo-box" hidden>
+      <button class="btn primary" id="redo">Refazer estes itens</button>
+      <span id="redo-txt">Os itens voltam sem resposta e sem resolução. A tentativa anterior fica guardada e entra no resumo.</span>
+      <span class="toast" id="redo-toast" hidden></span>
+    </div>
+  </section>
+
+  <section class="note prova-note" id="prova-note" hidden aria-live="polite"></section>
+
+  <main id="items"></main>
+
+  <section class="sum" id="glossario" hidden>
+    <div class="label">Glossário</div>
+    <h2>Termos dos itens que você já corrigiu</h2>
+    <p style="font-size:14px;color:var(--muted)">Cresce conforme você corrige: termos de itens ainda não respondidos não aparecem, para não entregar a resposta.</p>
+    <dl class="termos" id="glos-list"></dl>
+  </section>
+
+  <section class="sum" id="resumo">
+    <div class="label">Resumo da sessão</div>
+    <h2>Desempenho e calibração</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Núcleo</th><th class="n">Certos</th><th class="n">Errados</th><th class="n">Branco</th><th class="n">Líquido</th></tr></thead>
+      <tbody id="sum-body"></tbody>
+    </table></div>
+    <div>
+      <h3 style="margin-bottom:8px">Calibração da confiança</h3>
+      <div class="grid2">
+        <div class="cell"><strong id="k-ss">0</strong><span>Certeza e acertou: domínio</span></div>
+        <div class="cell warn"><strong id="k-se">0</strong><span>Certeza e errou: conceito errado fixado, revisar primeiro</span></div>
+        <div class="cell"><strong id="k-ds">0</strong><span>Dúvida e acertou: sorte ou intuição, ainda é lacuna</span></div>
+        <div class="cell"><strong id="k-de">0</strong><span>Dúvida e errou: lacuna conhecida</span></div>
+      </div>
+    </div>
+    <div id="redo-sum" hidden>
+      <h3 style="margin-bottom:8px">Refação</h3>
+      <div class="grid2">
+        <div class="cell"><strong id="r-up">0</strong><span>Errou ou deixou em branco antes e agora acertou</span></div>
+        <div class="cell warn"><strong id="r-still">0</strong><span>Continua errando ou em branco: revisar a resolução de novo</span></div>
+        <div class="cell"><strong id="r-keep">0</strong><span>Acertou antes e de novo (confirma o domínio se foi com certeza)</span></div>
+        <div class="cell warn"><strong id="r-down">0</strong><span>Acertou antes e agora errou: o acerto anterior era sorte</span></div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">Desempenho e calibração contam só a primeira tentativa de cada item, que é a medida honesta. As refações aparecem à parte.</p>
+    <p id="advice" class="note">Corrija alguns itens para ver a recomendação sobre chutar ou deixar em branco.</p>
+    <div style="display:grid;gap:8px">
+      <h3>Exportar resultado</h3>
+      <p style="font-size:14px;color:var(--muted)">Salve em <span class="mono">pessoal/gaby/respostas/2026-11-28_dec94406-res507-backup.yaml</span>. O download sai com <span class="mono">.txt</span> no fim (o navegador não aceita <span class="mono">.yaml</span>): tire na janela de salvar ou deixe que o Claude renomeia. A skill de diagnóstico de gaps usa esse arquivo para preencher <span class="mono">lacunas.yaml</span>.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button class="btn primary" id="dl" hidden>Baixar arquivo</button>
+        <button class="btn primary" id="copy">Copiar resultado</button>
+        <button class="btn" id="reset">Recomeçar do zero</button>
+        <span class="toast" id="toast" hidden></span>
+      </div>
+      <div id="confirm" class="note" hidden>Isso apaga todas as respostas desta página. <button class="btn" id="reset-yes">Apagar respostas</button> <button class="btn" id="reset-no">Cancelar</button></div>
+      <textarea id="yaml" readonly aria-label="Resultado em YAML"></textarea>
+    </div>
+  </section>
+</div>
+
+<script>
+const DEC="<a href=\"https://www.planalto.gov.br/ccivil_03/decreto/1980-1989/d94406.htm\">Decreto nº 94.406/1987 (Planalto)</a>";
+const R507="<a href=\"https://cofen.gov.br/?p=37495\">Resolução Cofen nº 507/2016 (Cofen)</a>";
+const BKP="Cartilha de Segurança para Internet (CERT.br), fascículo Backup; boas práticas de backup e recuperação";
+const NUC = [
+ {id:"D1", t:"Decreto 94.406: quem pode exercer, supervisão e inscrição (arts. 1º, 13, 14 e 15)", ed:"Complementares · Decreto 94.406/1987", provas:0, itens:0,
+  card:["Enfermagem é privativa de Enfermeiro, Técnico, Auxiliar e Parteiro, e só com inscrição no Coren da região.","Técnico e Auxiliar: SOMENTE sob supervisão, orientação e direção de Enfermeiro (art. 13).","Na administração pública, a prova de inscrição no Coren é condição essencial para cargo, função ou contratação de enfermagem."],
+  inv:"Dispensam a supervisão do enfermeiro, restringem ao enfermeiro deveres que são de todos ou tiram a inscrição como requisito.",
+  aula:"<p>O <b>Decreto 94.406/1987</b> regulamenta a <b>Lei 7.498/1986</b>, a lei do exercício da enfermagem. A Lei 5.905, que você estudou ontem, cria os conselhos; a Lei 7.498 e este decreto dizem <b>quem pode fazer o quê</b> na enfermagem. Pense na lei como a regra do jogo e no decreto como o manual que detalha cada posição.</p><ul><li><b>Quem exerce (art. 1º):</b> Enfermeiro, Técnico de Enfermagem, Auxiliar de Enfermagem e Parteiro, respeitado o grau de habilitação de cada um, e só o profissional <b>inscrito no Coren</b> da respectiva região.</li><li><b>Supervisão (art. 13):</b> as atividades do Técnico (art. 10) e do Auxiliar (art. 11) <b>somente</b> podem ser exercidas sob supervisão, orientação e direção de Enfermeiro.</li><li><b>Deveres de todo o pessoal (art. 14):</b> cumprir e fazer cumprir o Código de Deontologia e, quando for o caso, anotar no prontuário do paciente as atividades de assistência de enfermagem.</li><li><b>Administração pública (art. 15):</b> a prova de inscrição no Coren é condição essencial para provimento de cargos e funções e para contratação de pessoal de enfermagem de todos os graus.</li></ul><p><b>Onde a banca pega:</b> criar exceção à supervisão do enfermeiro; dizer que só o enfermeiro tem deveres do art. 14; tirar a inscrição como exigência nos órgãos públicos.</p>"},
+ {id:"D2", t:"Decreto 94.406: privativo do enfermeiro × atividade da equipe (arts. 8º e 10)", ed:"Complementares · Decreto 94.406/1987", provas:0, itens:0,
+  card:["Privativo do enfermeiro (art. 8º, I): direção e chefia de enfermagem, planejamento dos serviços, consultoria/auditoria/parecer, consulta, prescrição da assistência, cuidados a pacientes graves com risco de vida e de maior complexidade técnica.","Como membro da equipe de saúde (art. 8º, II), NÃO privativo: prescrição de medicamentos de programas de saúde pública e rotina aprovada, controle de infecção hospitalar, educação continuada etc.","Técnico (art. 10): assiste o enfermeiro e executa a assistência, exceto o que é privativo do enfermeiro e das obstetrizes."],
+  inv:"Puxam para 'privativo' o que é atividade de equipe (prescrição de medicamentos de programa) ou deixam o técnico fazer o que é privativo.",
+  aula:"<p>O art. 8º divide as tarefas do enfermeiro em <b>duas listas</b>, e quase toda pegadinha nasce da troca entre elas.</p><table><thead><tr><th>I · Privativamente (só o enfermeiro)</th><th>II · Como integrante da equipe de saúde</th></tr></thead><tbody><tr><td>Direção do órgão de enfermagem; chefia de serviço e de unidade</td><td>Participar do planejamento e da avaliação da programação de saúde</td></tr><tr><td>Planejamento, organização, coordenação, execução e avaliação dos serviços de enfermagem</td><td><b>Prescrição de medicamentos</b> previstos em programas de saúde pública e em rotina aprovada pela instituição</td></tr><tr><td>Consultoria, auditoria e parecer sobre matéria de enfermagem</td><td>Prevenção e controle de infecção hospitalar</td></tr><tr><td><b>Consulta de enfermagem</b> e <b>prescrição da assistência de enfermagem</b></td><td>Assistência à gestante, parturiente, puérpera e recém-nascido</td></tr><tr><td>Cuidados diretos a <b>pacientes graves com risco de vida</b> e cuidados de <b>maior complexidade técnica</b></td><td>Educação sanitária, treinamento e educação continuada; bancas de concurso</td></tr></tbody></table><p><b>Prescrever a assistência de enfermagem</b> (o plano de cuidados) é privativo; <b>prescrever medicamentos</b> só existe dentro de programa de saúde pública ou rotina aprovada, e como membro da equipe. O <b>técnico</b> (art. 10) assiste o enfermeiro e executa a assistência de enfermagem, <b>exceto</b> as privativas do enfermeiro e as das obstetrizes e enfermeiras obstétricas (art. 9º).</p><p><b>Onde a banca pega:</b> mover um item de uma coluna para a outra.</p>"},
+ {id:"R1", t:"Res. Cofen 507/2016: penalidades do empregado público (arts. 2º a 5º)", ed:"Complementares · Res. Cofen 507/2016 (Código de Ética dos Empregados Públicos)", provas:0, itens:0,
+  card:["Penalidades: advertência, suspensão, demissão e destituição de cargo ou função comissionada (não há 'censura').","Suspensão: até 30 dias, sem remuneração; pode virar multa de 50% da remuneração, com o empregado em serviço.","Demissão: inclui abandono (mais de 30 dias seguidos), faltas interpoladas (20 dias em 6 meses) e aceitar presentes de QUALQUER valor."],
+  inv:"Trocam 30 por 90 ou 60 dias, inventam limite de valor para presentes ou incluem 'censura' (que é pena do profissional na Lei 5.905, não do empregado).",
+  aula:"<p>Cuidado com a confusão: a Lei 5.905 tem as penas do <b>profissional de enfermagem</b> (advertência verbal, multa, censura, suspensão, cassação). A <b>Res. Cofen 507/2016</b> é outra coisa: é o <b>Código de Ética dos Empregados Públicos do Sistema Cofen/Corens</b>, as regras disciplinares de quem <b>trabalha</b> no conselho, ou seja, de você depois da posse. É o equivalente ao regime disciplinar da Lei 8.112 para os empregados (CLT) dos conselhos.</p><table><thead><tr><th>Pena</th><th>Exemplos de quando cabe</th></tr></thead><tbody><tr><td><b>Advertência</b> (por escrito)</td><td>Ausentar-se sem autorização; recusar fé a documento público; delegar a terceiros as próprias atribuições</td></tr><tr><td><b>Suspensão</b> (até 30 dias)</td><td>Retirar documento sem autorização; atuar como intermediário em repartição; manter parente até o 3º grau sob sua chefia imediata. Sem salário no período; pode ser convertida em <b>multa de 50%</b> da remuneração, com o empregado trabalhando</td></tr><tr><td><b>Demissão</b></td><td>Valer-se do cargo para proveito pessoal; <b>abandono</b> (mais de 30 dias consecutivos); <b>inassiduidade</b> (20 dias interpolados em 6 meses); aceitar propina ou <b>presentes de qualquer valor</b> em razão das atribuições; acumulação ilícita</td></tr><tr><td><b>Destituição</b></td><td>De cargo ou função comissionada</td></tr></tbody></table><p><b>Onde a banca pega:</b> números (30 dias, 50%, 20 dias em 6 meses), a lista das penas e a ausência de qualquer valor mínimo para presente.</p>"},
+ {id:"R2", t:"Res. Cofen 507/2016: prescrição, registros e processo disciplinar", ed:"Complementares · Res. Cofen 507/2016", provas:0, itens:0,
+  card:["Prescrição: 5 anos (demissão/destituição), 2 anos (suspensão), 180 dias (advertência), contados de quando o fato se tornou conhecido.","Cancelamento do registro: advertência após 3 anos, suspensão após 5 anos, sem nova infração.","Sindicância: 30 dias (+30). PAD: comissão de 3 empregados efetivos; conclusão em 60 dias (+60). Afastamento preventivo: até 60 dias (+60)."],
+  inv:"Trocam os prazos de sindicância e PAD entre si ou invertem 3 e 5 anos no cancelamento dos registros.",
+  aula:"<p>Esta parte é uma <b>tabela de prazos</b>, e a banca troca um número pelo outro.</p><table><thead><tr><th>O quê</th><th>Prazo</th></tr></thead><tbody><tr><td>Prescrição da ação disciplinar</td><td><b>5 anos</b> demissão e destituição · <b>2 anos</b> suspensão · <b>180 dias</b> advertência (conta de quando o fato ficou conhecido; sindicância ou PAD interrompem)</td></tr><tr><td>Cancelamento do registro da pena</td><td><b>3 anos</b> advertência · <b>5 anos</b> suspensão, se não houver nova infração (sem efeito retroativo)</td></tr><tr><td>Sindicância</td><td><b>30 dias</b>, prorrogáveis por igual período</td></tr><tr><td>Afastamento preventivo</td><td>até <b>60 dias</b>, prorrogáveis por igual período</td></tr><tr><td>Conclusão do PAD</td><td><b>60 dias</b>, prorrogáveis por igual período</td></tr><tr><td>Defesa escrita</td><td><b>10 dias</b> (um acusado) · <b>20 dias</b> comuns (dois ou mais)</td></tr><tr><td>Julgamento</td><td><b>30 dias</b> do recebimento do processo</td></tr></tbody></table><p><b>Quem conduz o PAD:</b> comissão de <b>três empregados efetivos</b>, designados pela autoridade competente, que indica o presidente; o presidente designa o secretário. Não pode participar cônjuge ou parente do acusado até o 3º grau.</p><p><b>Gancho:</b> \"sindicância é a metade do PAD\" (30 × 60) e \"advertência some antes\" (3 × 5 anos).</p>"},
+ {id:"T1", t:"P3 do dia — backup completo, incremental e diferencial", ed:"Específicos 3 · Segurança da informação (backup e recuperação)", provas:4, itens:6,
+  card:["Completo: copia tudo; restaura com 1 conjunto; mais lento e maior.","Incremental: só o que mudou desde o ÚLTIMO BACKUP de qualquer tipo; backup rápido e pequeno, restauração mais longa (completo + TODOS os incrementais).","Diferencial: o que mudou desde o último COMPLETO; cresce a cada dia; restauração com completo + o ÚLTIMO diferencial."],
+  inv:"Trocam a base do incremental e do diferencial, dizem que incremental restaura mais rápido ou que replicação substitui backup.",
+  aula:"<p>Imagine que você fotografa sua mesa de trabalho para poder remontá-la. No domingo, tira a foto da mesa inteira (<b>completo</b>). Nos outros dias, há dois jeitos de economizar:</p><table><thead><tr><th></th><th>Completo</th><th>Incremental</th><th>Diferencial</th></tr></thead><tbody><tr><td>O que copia</td><td>Tudo</td><td>O que mudou desde o <b>último backup</b> (de qualquer tipo)</td><td>O que mudou desde o <b>último completo</b></td></tr><tr><td>Tamanho e tempo de cada execução</td><td>Maior e mais lento</td><td>Menor e mais rápido</td><td>Cresce a cada dia até o próximo completo</td></tr><tr><td>Para restaurar na sexta</td><td>Só o último completo</td><td>Completo de domingo + <b>todos</b> os incrementais de segunda a sexta</td><td>Completo de domingo + <b>só o diferencial</b> de sexta</td></tr></tbody></table><p>Resumo: o incremental <b>economiza no backup</b> e cobra na restauração; o diferencial é o meio-termo. Outras regras: <b>3-2-1</b> = 3 cópias, 2 tipos de mídia, 1 fora do local (offsite). <b>Replicação</b> e espelhamento copiam também o erro e o arquivo cifrado por ransomware, por isso não substituem backup com histórico. <b>Fita</b> continua em uso em ambientes corporativos para arquivamento e cópia offline.</p><p><b>Onde a banca pega:</b> a base de comparação de cada tipo e o que é preciso para restaurar.</p>"},
+];
+const ITENS = [
+{n:"D1", src:"Variação inédita", real:0, gab:"C",
+ txt:"O exercício da atividade de enfermagem é privativo de enfermeiro, técnico de enfermagem, auxiliar de enfermagem e parteiro e só será permitido ao profissional inscrito no Conselho Regional de Enfermagem da respectiva região.",
+ gat:"só será permitido ao profissional inscrito no Conselho Regional",
+ exp:"O art. 1º do decreto lista as quatro categorias que podem exercer a enfermagem, respeitado o grau de habilitação de cada uma, e condiciona o exercício à inscrição no Coren da região. É a ligação entre o decreto e a Lei 5.905: quem inscreve e fiscaliza é o Coren. Por isso o item é C.",
+ lembre:"Diploma sem inscrição no Coren não habilita ninguém a trabalhar.",
+ peg:"C de literalidade (reprodução do art. 1º).",
+ inv:"'... e poderá ser exercido, em caráter provisório, por profissional ainda não inscrito no Conselho Regional, desde que diplomado.' (E)",
+ fonte:DEC+", art. 1º."},
+{n:"D1", src:"Variação inédita", real:0, gab:"E",
+ txt:"As atividades do técnico e do auxiliar de enfermagem podem ser exercidas sem a supervisão do enfermeiro quando estiverem previstas em rotina aprovada pela instituição de saúde.",
+ gat:"sem a supervisão do enfermeiro quando estiverem previstas em rotina",
+ exp:"O art. 13 é taxativo: as atividades do técnico (art. 10) e do auxiliar (art. 11) somente podem ser exercidas sob supervisão, orientação e direção de enfermeiro. Não existe exceção por rotina institucional. A palavra 'rotina aprovada' foi tirada de outro ponto do decreto (prescrição de medicamentos, art. 8º, II) para dar aparência de legalidade. Por isso o item é E.",
+ lembre:"Técnico e auxiliar: sempre com enfermeiro supervisionando.",
+ peg:"Exceção inventada + termo emprestado de outro artigo.",
+ inv:"'As atividades do técnico e do auxiliar de enfermagem somente poderão ser exercidas sob supervisão, orientação e direção de enfermeiro.' (C)",
+ fonte:DEC+", art. 13."},
+{n:"D1", src:"Variação inédita", real:0, gab:"E",
+ txt:"Incumbe a todo o pessoal de enfermagem cumprir e fazer cumprir o Código de Deontologia da Enfermagem, sendo dever exclusivo do enfermeiro anotar no prontuário do paciente as atividades da assistência de enfermagem.",
+ gat:"dever exclusivo do enfermeiro",
+ exp:"O art. 14 atribui os dois deveres a todo o pessoal de enfermagem: cumprir e fazer cumprir o Código de Deontologia e, quando for o caso, anotar no prontuário as atividades de assistência, para fins estatísticos. O técnico e o auxiliar também anotam o que fizeram. O 'exclusivo do enfermeiro' torna o item falso. Por isso o item é E.",
+ ex:"A técnica que aplica a medicação das 14h registra no prontuário a aplicação, o horário e a via.",
+ peg:"Meia-verdade + restrição inventada ('exclusivo').",
+ inv:"'Incumbe a todo o pessoal de enfermagem, quando for o caso, anotar no prontuário do paciente as atividades da assistência de enfermagem.' (C)",
+ fonte:DEC+", art. 14."},
+{n:"D1", src:"Variação inédita", real:0, gab:"C",
+ txt:"Na administração pública direta e indireta, a prova de inscrição no Conselho Regional de Enfermagem é condição essencial para o provimento de cargos e funções e para a contratação de pessoal de enfermagem de todos os graus.",
+ gat:"condição essencial ... de todos os graus",
+ exp:"O art. 15 manda os órgãos públicos de todas as esferas exigirem a prova de inscrição no Coren para nomear ou contratar qualquer profissional de enfermagem, do auxiliar ao enfermeiro. É a regra que obriga, por exemplo, um hospital municipal a conferir a inscrição antes da posse. Por isso o item é C.",
+ peg:"C com termo forte ('todos os graus'), que parece exagero mas é da norma.",
+ inv:"'... a prova de inscrição no Conselho Regional de Enfermagem é exigida apenas para o provimento de cargos de enfermeiro.' (E)",
+ fonte:DEC+", art. 15."},
+{n:"D2", src:"Variação inédita", real:0, gab:"C",
+ txt:"Incumbem privativamente ao enfermeiro a consulta de enfermagem e a prescrição da assistência de enfermagem.",
+ gat:"privativamente · consulta de enfermagem · prescrição da assistência",
+ exp:"As duas atividades estão no art. 8º, I, a lista do que só o enfermeiro faz (alíneas e e f). A prescrição da assistência de enfermagem é o plano de cuidados do paciente, que o técnico e o auxiliar executam sob supervisão. Por isso o item é C.",
+ lembre:"Consulta e prescrição da ASSISTÊNCIA: só enfermeiro.",
+ peg:"C de literalidade.",
+ inv:"'A consulta de enfermagem e a prescrição da assistência de enfermagem podem ser delegadas ao técnico de enfermagem.' (E)",
+ fonte:DEC+", art. 8º, I, e e f."},
+{n:"D2", src:"Variação inédita", real:0, gab:"E",
+ txt:"A prescrição de medicamentos previamente estabelecidos em programas de saúde pública e em rotina aprovada pela instituição de saúde é atividade privativa do enfermeiro.",
+ gat:"é atividade privativa do enfermeiro",
+ exp:"O decreto põe essa prescrição no art. 8º, II, c, a lista do que o enfermeiro faz como integrante da equipe de saúde, e não na lista do que é privativo (art. 8º, I). Ela também depende de programa de saúde pública ou de rotina aprovada, não é livre. Privativa é a prescrição da assistência de enfermagem. Por isso o item é E.",
+ lembre:"Prescrever ASSISTÊNCIA = privativo. Prescrever MEDICAMENTO de programa = atividade de equipe.",
+ peg:"Troca de conceito vizinho (lista I × lista II do art. 8º).",
+ inv:"'Como integrante da equipe de saúde, cabe ao enfermeiro a prescrição de medicamentos previamente estabelecidos em programas de saúde pública e em rotina aprovada pela instituição.' (C)",
+ fonte:DEC+", art. 8º, I, f, e II, c."},
+{n:"D2", src:"Variação inédita", real:0, gab:"E",
+ txt:"Os cuidados diretos de enfermagem a pacientes graves com risco de vida podem ser prestados pelo técnico de enfermagem, sendo privativos do enfermeiro apenas os cuidados de maior complexidade técnica.",
+ gat:"podem ser prestados pelo técnico · apenas os cuidados de maior complexidade",
+ exp:"O art. 8º, I traz as duas atividades como privativas do enfermeiro: cuidados diretos a pacientes graves com risco de vida (alínea g) e cuidados de maior complexidade técnica (alínea h). Nos pacientes graves, o técnico assiste o enfermeiro (art. 10, I), mas não assume o cuidado direto sozinho. Por isso o item é E.",
+ peg:"Meia-verdade + absolutização ('apenas').",
+ inv:"'São privativos do enfermeiro os cuidados diretos a pacientes graves com risco de vida e os cuidados de maior complexidade técnica.' (C)",
+ fonte:DEC+", arts. 8º, I, g e h, e 10."},
+{n:"D2", src:"Variação inédita", real:0, gab:"C",
+ txt:"Cabe ao técnico de enfermagem executar atividades de assistência de enfermagem, excetuadas as privativas do enfermeiro e as atribuídas às obstetrizes e enfermeiras obstétricas.",
+ gat:"excetuadas as privativas do enfermeiro",
+ exp:"O art. 10, II define o campo do técnico por exclusão: ele executa a assistência de enfermagem, menos o que é privativo do enfermeiro (art. 8º, I) e o que é das obstetrizes e enfermeiras obstétricas (art. 9º, como parto normal e episiotomia). Sempre sob supervisão do enfermeiro (art. 13). Por isso o item é C.",
+ peg:"C de leitura atenta (regra por exclusão).",
+ inv:"'Cabe ao técnico de enfermagem executar todas as atividades de assistência de enfermagem, inclusive a prescrição da assistência.' (E)",
+ fonte:DEC+", arts. 9º e 10."},
+{n:"R1", src:"Variação inédita", real:0, gab:"C",
+ txt:"São penalidades disciplinares previstas no Código de Ética dos Empregados Públicos do Sistema Cofen/Conselhos Regionais de Enfermagem a advertência, a suspensão, a demissão e a destituição de cargo ou função comissionada.",
+ gat:"advertência, a suspensão, a demissão e a destituição",
+ exp:"O art. 2º do código anexo à Res. Cofen 507/2016 lista essas quatro penas para os empregados públicos dos conselhos. Não confunda com as penas do profissional de enfermagem na Lei 5.905 (advertência verbal, multa, censura, suspensão do exercício e cassação), que valem para quem exerce a profissão, não para quem trabalha no conselho. Por isso o item é C.",
+ lembre:"Empregado do conselho: advertência, suspensão, demissão, destituição. Censura e cassação são do profissional.",
+ peg:"C de lista; a armadilha é misturar com a lista da Lei 5.905.",
+ inv:"'... a advertência verbal, a multa, a censura, a suspensão e a cassação.' (E)",
+ fonte:R507+", anexo, art. 2º."},
+{n:"R1", src:"Variação inédita", real:0, gab:"C",
+ txt:"Havendo conveniência para o serviço, a penalidade de suspensão poderá ser convertida em multa de cinquenta por cento da remuneração, ficando o empregado obrigado a permanecer em serviço.",
+ gat:"multa de cinquenta por cento · permanecer em serviço",
+ exp:"Na suspensão, o empregado fica sem remuneração no período. Quando o afastamento prejudicaria o serviço, o código permite converter a suspensão em multa de 50% da remuneração, e o empregado continua trabalhando (art. 4º). É uma pena que pune no bolso sem desfalcar a equipe. Por isso o item é C.",
+ ex:"Um analista de TI suspenso por 10 dias durante a migração de um sistema pode ter a pena convertida: trabalha os 10 dias e recebe metade da remuneração desse período.",
+ peg:"C de detalhe numérico.",
+ inv:"'... convertida em multa de cem por cento da remuneração, ficando o empregado dispensado do serviço.' (E)",
+ fonte:R507+", anexo, art. 4º."},
+{n:"R1", src:"Variação inédita", real:0, gab:"E",
+ txt:"A suspensão aplicada ao empregado público do Sistema Cofen/Conselhos Regionais de Enfermagem poderá ser de até noventa dias.",
+ gat:"até noventa dias",
+ exp:"No código de ética dos empregados do Sistema Cofen/Corens, a suspensão vai até 30 dias (art. 4º). O número 90 vem da Lei 8.112, dos servidores estatutários da União, e é exatamente essa a confusão que a banca explora com quem estudou a lei federal. Por isso o item é E.",
+ lembre:"Conselho: suspensão até 30 dias (não 90, que é da 8.112).",
+ peg:"Detalhe numérico importado de outra norma.",
+ inv:"'A suspensão aplicada ao empregado público do Sistema Cofen/Conselhos Regionais de Enfermagem poderá ser de até trinta dias.' (C)",
+ fonte:R507+", anexo, art. 4º."},
+{n:"R1", src:"Variação inédita", real:0, gab:"E",
+ txt:"O abandono de emprego, punível com demissão, configura-se pela ausência do empregado ao serviço por mais de sessenta dias consecutivos.",
+ gat:"mais de sessenta dias consecutivos",
+ exp:"O código fixa o abandono em mais de 30 dias consecutivos de ausência e, como hipótese separada, a inassiduidade habitual em 20 dias de falta interpolados no período de seis meses (art. 5º). Os dois casos levam à demissão. O número 60 está errado. Por isso o item é E.",
+ lembre:"30 seguidos = abandono; 20 picados em 6 meses = inassiduidade.",
+ peg:"Detalhe numérico.",
+ inv:"'... configura-se pela ausência do empregado ao serviço por mais de trinta dias consecutivos.' (C)",
+ fonte:R507+", anexo, art. 5º."},
+{n:"R1", src:"Variação inédita", real:0, gab:"E",
+ txt:"O Código de Ética dos Empregados Públicos do Sistema Cofen/Conselhos Regionais tolera o recebimento de presentes de pequeno valor oferecidos em razão das atribuições do empregado, desde que não ultrapassem cem reais.",
+ gat:"tolera ... presentes de pequeno valor",
+ exp:"O código pune com demissão quem aceita ou promete aceitar propinas ou presentes de qualquer valor, bem como empréstimos pessoais ou vantagem de qualquer espécie, em razão das atribuições (art. 5º). Não existe valor mínimo tolerado. O limite de cem reais foi inventado (outras normas federais têm regras de brinde, mas este código não). Por isso o item é E.",
+ lembre:"Presente por causa do cargo: qualquer valor é proibido.",
+ peg:"Exceção inventada (valor mínimo).",
+ inv:"'O Código de Ética dos Empregados Públicos do Sistema Cofen/Conselhos Regionais pune com demissão o recebimento de presentes de qualquer valor em razão das atribuições.' (C)",
+ fonte:R507+", anexo, art. 5º."},
+{n:"R2", src:"Variação inédita", real:0, gab:"C",
+ txt:"A ação disciplinar prescreve em cinco anos quanto às infrações puníveis com demissão e em cento e oitenta dias quanto às puníveis com advertência.",
+ gat:"cinco anos · cento e oitenta dias",
+ exp:"O art. 10 do código fixa três prazos de prescrição: 5 anos para demissão e destituição, 2 anos para suspensão e 180 dias para advertência, contados da data em que o fato se tornou conhecido. A abertura de sindicância ou de PAD interrompe a contagem. O item traz os dois extremos corretamente. Por isso o item é C.",
+ passo:"Demissão/destituição → 5 anos | Suspensão → 2 anos | Advertência → 180 dias | Início: quando o fato se torna conhecido | Sindicância ou PAD interrompem",
+ peg:"C de detalhe numérico.",
+ inv:"'... em dois anos quanto às infrações puníveis com advertência.' (E)",
+ fonte:R507+", anexo, art. 10."},
+{n:"R2", src:"Variação inédita", real:0, gab:"C",
+ txt:"O processo administrativo disciplinar será conduzido por comissão composta de três empregados efetivos, designados pela autoridade competente, que indicará, entre eles, o seu presidente.",
+ gat:"três empregados efetivos · autoridade competente indicará o presidente",
+ exp:"O art. 19 do código manda o PAD ser conduzido por três empregados efetivos (concursados), designados pela autoridade competente, que também indica quem preside. O presidente, por sua vez, designa o secretário. Cônjuge e parentes do acusado até o 3º grau não podem participar. Por isso o item é C.",
+ peg:"C de composição (a banca troca 'efetivos' por 'em comissão' ou 'três conselheiros').",
+ inv:"'... conduzido por comissão composta de três empregados ocupantes de cargo em comissão, que elegerão entre si o presidente.' (E)",
+ fonte:R507+", anexo, art. 19."},
+{n:"R2", src:"Variação inédita", real:0, gab:"E",
+ txt:"O registro da penalidade de advertência será cancelado após o decurso de cinco anos de efetivo exercício, se o empregado não houver praticado nova infração disciplinar.",
+ gat:"advertência ... cinco anos",
+ exp:"O código cancela o registro da advertência após 3 anos e o da suspensão após 5 anos, se não houver nova infração (art. 9º). A pena mais leve some antes. O item aplicou à advertência o prazo da suspensão. Por isso o item é E.",
+ lembre:"Advertência some em 3; suspensão em 5.",
+ peg:"Troca de números entre penas vizinhas.",
+ inv:"'O registro da penalidade de advertência será cancelado após o decurso de três anos de efetivo exercício, se o empregado não houver praticado nova infração.' (C)",
+ fonte:R507+", anexo, art. 9º."},
+{n:"R2", src:"Variação inédita", real:0, gab:"E",
+ txt:"O prazo para a conclusão do processo administrativo disciplinar é de trinta dias, prorrogável por igual período.",
+ gat:"trinta dias",
+ exp:"O código dá 60 dias, prorrogáveis por igual período, para a conclusão do PAD (art. 26). Trinta dias, prorrogáveis por mais trinta, é o prazo da sindicância (art. 16), o procedimento mais simples. O item trocou um pelo outro. Por isso o item é E.",
+ lembre:"Sindicância é a metade do PAD: 30 × 60.",
+ peg:"Troca de prazos entre procedimentos vizinhos.",
+ inv:"'O prazo para a conclusão da sindicância é de trinta dias, prorrogável por igual período.' (C)",
+ fonte:R507+", anexo, arts. 16 e 26."},
+{n:"T1", src:"CFN 2024 · PAE TI Suporte Técnico (407) · item 109", real:1, gab:"C",
+ txt:"A estratégia de backup 3-2-1 recomenda manter três cópias dos dados, em dois tipos diferentes de mídia de armazenamento, com, pelo menos, uma cópia offsite.",
+ gat:"três cópias · dois tipos diferentes de mídia · uma cópia offsite",
+ exp:"A regra 3-2-1 é a recomendação clássica de backup: 3 cópias dos dados (a original e mais duas), em 2 tipos diferentes de mídia (disco e fita, ou disco e nuvem) e pelo menos 1 fora do local (offsite). Cada número protege contra um risco: falha de cópia, falha de mídia e desastre no prédio. Por isso o item é C.",
+ ex:"Base do sistema de inscrições: produção no servidor, cópia diária no NAS do conselho e cópia semanal em nuvem de outra região.",
+ lembre:"3 cópias, 2 mídias, 1 fora.",
+ peg:"C de definição.",
+ inv:"'A estratégia 3-2-1 recomenda manter três cópias dos dados na mesma mídia, sendo duas delas offsite.' (E)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+{n:"T1", src:"Variação inédita", real:0, gab:"C",
+ txt:"No backup diferencial, cada execução copia os dados alterados desde o último backup completo, de modo que a restauração exige apenas o último backup completo e o último diferencial.",
+ gat:"desde o último backup completo · último completo e o último diferencial",
+ exp:"O diferencial sempre compara com o último completo. Por isso, o diferencial de sexta já contém tudo o que mudou de segunda a sexta, e para restaurar basta o completo mais esse último diferencial. O preço é que o diferencial cresce a cada dia até o próximo completo. Por isso o item é C.",
+ passo:"Domingo: completo | Segunda: diferencial (mudanças de seg) | Terça: diferencial (mudanças de seg + ter) | ... | Sexta: diferencial (seg a sex) | Restaurar sexta: completo de domingo + diferencial de sexta",
+ lembre:"Diferencial: base = último completo. Restaura com 2 conjuntos.",
+ peg:"C de mecanismo.",
+ inv:"'... de modo que a restauração exige o último backup completo e todos os diferenciais realizados depois dele.' (E)",
+ par:"T1-3",
+ fonte:BKP+"."},
+{n:"T1", src:"Variação inédita", real:0, gab:"E",
+ txt:"No backup incremental, a restauração exige apenas o último backup completo e o incremental mais recente, pois cada incremental acumula todas as alterações desde o último completo.",
+ gat:"apenas o último backup completo e o incremental mais recente",
+ exp:"O incremental compara com o último backup de qualquer tipo, então cada um guarda só as mudanças daquele dia. Para restaurar, é preciso o último completo e todos os incrementais feitos depois, na ordem. Quem acumula desde o último completo é o diferencial. O item descreveu o diferencial e chamou de incremental. Por isso o item é E.",
+ passo:"Domingo: completo | Segunda: incremental (mudanças de seg) | Terça: incremental (só ter) | ... | Restaurar sexta: completo + incrementais de seg, ter, qua, qui e sex, nessa ordem",
+ lembre:"Incremental: base = último backup. Restaura com TODOS.",
+ peg:"Troca de conceito vizinho (incremental × diferencial).",
+ inv:"'No backup incremental, a restauração exige o último backup completo e todos os incrementais realizados depois dele, na ordem.' (C)",
+ fonte:BKP+"."},
+{n:"T1", src:"CFO 2024 · Analista de Infraestrutura (401) · item 85", real:1, gab:"E",
+ txt:"Os backups completos diários são sempre a melhor solução para qualquer ambiente de banco de dados.",
+ gat:"sempre a melhor solução para qualquer ambiente",
+ exp:"O backup completo é o mais simples de restaurar, mas o mais lento e o que mais ocupa espaço. Em bases grandes, um completo por dia pode não caber na janela de backup nem no armazenamento, e por isso se combinam completos semanais com incrementais ou diferenciais. A escolha depende do volume, da janela e do RPO/RTO. 'Sempre' e 'qualquer' tornam o item falso. Por isso o item é E.",
+ peg:"Absolutização ('sempre', 'qualquer').",
+ inv:"'Backups completos diários simplificam a restauração, mas podem ser inviáveis em bases volumosas, pelo tempo e pelo espaço que consomem.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+{n:"T1", src:"CFO 2024 · Analista de Infraestrutura (401) · item 86", real:1, gab:"C",
+ txt:"Os backups incrementais e diferenciais são estratégias eficazes para reduzir o tempo de backup e o uso de armazenamento, mas aumentam a complexidade da restauração.",
+ gat:"reduzir o tempo de backup ... mas aumentam a complexidade da restauração",
+ exp:"Os dois copiam só parte dos dados, então cada execução é mais rápida e ocupa menos espaço que um completo. Em troca, a restauração deixa de ser de um conjunto só: exige o completo mais um diferencial ou mais vários incrementais. É a troca clássica entre custo do backup e custo da restauração. Por isso o item é C.",
+ peg:"C com 'mas' (meia-verdade que é inteira): as duas metades estão certas.",
+ inv:"'... e, além disso, simplificam a restauração em relação ao backup completo.' (E)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+{n:"T1", src:"CREFITO-17 2026 · Analista de TI (402) · item 89", real:1, gab:"E",
+ txt:"O backup incremental tende a ampliar o volume total armazenado e a simplificar o processo de restauração, razão pela qual costuma ser preferido quando a prioridade é a recuperação mais célere dos dados.",
+ gat:"ampliar o volume · simplificar o processo de restauração",
+ exp:"O incremental faz o contrário das duas coisas: reduz o volume (copia só o que mudou desde o último backup) e torna a restauração mais longa, porque exige o completo e todos os incrementais. Quando a prioridade é restaurar rápido, o indicado é o completo ou o diferencial. Por isso o item é E.",
+ peg:"Inversão das propriedades + conclusão falsa ('razão pela qual').",
+ inv:"'O backup incremental reduz o volume de cada execução, mas torna a restauração mais demorada, por exigir o completo e todos os incrementais posteriores.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+{n:"T1", src:"CFN 2024 · PAE TI Suporte Técnico (407) · item 110", real:1, gab:"E",
+ txt:"Backups em fita são obsoletos, e não devem ser recomendados em ambientes corporativos devido à sua baixa velocidade, durabilidade e confiabilidade.",
+ gat:"obsoletos · não devem ser recomendados",
+ exp:"A fita (como LTO) continua em uso em ambientes corporativos para arquivamento de longo prazo e cópia offline: tem custo baixo por terabyte, boa durabilidade quando bem armazenada e, por ficar desconectada, protege contra ransomware (o 'air gap'). Ela é mais lenta para restaurar, mas não é obsoleta nem pouco durável. Por isso o item é E.",
+ peg:"Generalização com absoluto ('não devem ser recomendados').",
+ inv:"'A fita ainda é usada em ambientes corporativos para arquivamento de longo prazo e cópia offline, embora a restauração seja mais lenta que em disco.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+{n:"T1", src:"CREF-11 2026 · Analista de Suporte em TI (402) · item 88", real:1, gab:"E",
+ txt:"Em estratégias de recuperação de desastres (DR), a replicação síncrona de armazenamento entre o site principal e o site secundário elimina a necessidade de backups tradicionais com base em retenção histórica, pois garante que o RPO (recovery point objective) seja reduzido a zero e blinda o ambiente contra ataques de ransomware por meio do espelhamento instantâneo de blocos.",
+ gat:"elimina a necessidade de backups · blinda o ambiente contra ataques de ransomware",
+ exp:"A replicação síncrona copia cada gravação para o site secundário no mesmo instante, o que reduz a perda de dados numa falha física (RPO perto de zero). Mas ela replica tudo, inclusive o arquivo apagado por engano e o arquivo cifrado pelo ransomware. Só o backup com retenção histórica permite voltar a um ponto anterior ao problema. Por isso o item é E.",
+ lembre:"Replicação protege do desastre; backup protege do erro e do ataque.",
+ peg:"Justificativa falsa ('pois ... blinda') + absolutização ('elimina').",
+ inv:"'A replicação síncrona reduz o RPO em falhas físicas, mas não substitui backups com retenção histórica, pois também replica dados corrompidos ou cifrados.' (C)",
+ fonte:"Gabarito definitivo da Quadrix; "+BKP+"."},
+];
+
+ITENS.forEach((it,i)=>{ const k=ITENS.slice(0,i+1).filter(x=>x.n===it.n).length; it.id=it.n+"-"+k; });
+
+const KEY="cofen-gaby-2026-11-28-dec94406-res507-backup-v1";
+const PESO=1;
+const INTERFACE="classica";
+// MODO "prova" (meta.modo): sem correção item a item; correção, mini-aulas e cartões abrem só em "Entregar prova".
+// INICIO (meta.numero_inicial): número do primeiro item na folha, para a numeração contínua do simulado (P2 41, P3 81).
+const MODO="estudo";
+const INICIO=1;
+document.documentElement.dataset.interface=INTERFACE;
+if(INTERFACE==="numerica"){
+  document.getElementById("howto-choice").innerHTML=`<b>1. Escolha</b>${PESO}++ = C com certeza · ${PESO}+ = C com dúvida · ${PESO}-- = E com certeza · ${PESO}- = E com dúvida · 0 = branco.`;
+  document.getElementById("howto-confidence").innerHTML=MODO==="prova"?"<b>2. Revise</b>Até a entrega, você pode mudar a seleção quantas vezes quiser."
+    :"<b>2. Confirme</b>O botão &gt;&gt;&gt; confirma e abre a correção. Antes disso, você pode mudar a seleção.";
+}
+if(MODO==="prova") document.getElementById("howto-grade").innerHTML="<b>3. Entregue</b>Responda tudo e clique em <b>Entregar prova</b>, no topo. Só então abrem a correção, as mini-aulas e os cartões; itens sem resposta contam como branco.";
+// S.a[id] = {r, c, done, prev:[{r,c}]}: tentativa atual + anteriores (refação). S.f = filtro, S.nucs = núcleos marcados,
+// S.snap = ids da lista filtrada, congelada até a pessoa trocar o filtro (senão o item some ao ser corrigido).
+let S={a:{},mode:"block",f:"all",nucs:[],snap:null,showCode:false};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+if(S.showCode===undefined) S.showCode=false;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+// modo prova ainda não entregue (S.entregue fica salvo com as respostas)
+const provaAtiva=()=>MODO==="prova"&&!S.entregue;
+// número fixo de cada item na ordem "por núcleo", a partir de INICIO (usado no modo prova)
+const NUM={};
+(()=>{let k=INICIO-1; NUC.forEach(n=>ITENS.filter(i=>i.n===n.id).forEach(i=>{NUM[i.id]=++k;}));})();
+function applyCodeVisibility(){
+  const b=$("#m-code"); if(!b) return;
+  b.setAttribute("aria-pressed",String(!!S.showCode));
+  b.textContent=S.showCode?"Código: expandido":"Código: recolhido";
+  document.querySelectorAll("details.code-box").forEach(d=>{d.open=!!S.showCode;});
+}
+
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const nucOf=id=>NUC.find(n=>n.id===id);
+const pts=ok=>ok?PESO:-PESO;
+
+// tentativas corrigidas, da primeira à última
+function att(id){const st=S.a[id]||{}; const a=(st.prev||[]).slice(); if(st.done) a.push({r:st.r,c:st.c}); return a;}
+function cat(it,t){ if(!t) return "n"; if(t.r==="B") return "b"; const ok=t.r===it.gab; return ok?(t.c==="s"?"ss":"ds"):(t.c==="s"?"se":"de"); }
+const lastCat=it=>{const a=att(it.id); return cat(it,a[a.length-1]);};
+const res=(it,t)=>t.r==="B"?"branco":(t.r===it.gab?"acerto":"erro");
+const FILTROS=[["all","Todos"],["rev","Para revisar"],["se","Errei com certeza"],["de","Errei na dúvida"],["ds","Acertei na dúvida"],["b","Em branco"],["n","Não respondidos"]];
+const PRI={se:0,de:1,ds:2,b:3,ss:4,n:5};
+const inNuc=it=>!S.nucs.length||S.nucs.includes(it.n);
+const naFiltro=(it,f)=>f==="all"||(f==="rev"?["se","de","ds","b"].includes(lastCat(it)):lastCat(it)===f);
+
+function rankTable(){
+  $("#rank").innerHTML=NUC.map(n=>`<tr><td><b>${n.id}</b> ${n.t}</td><td>${n.ed}</td><td class="n">${n.provas}</td><td class="n">${n.itens}</td></tr>`).join("");
+}
+
+function codeBox(code, lang){
+  if(!code) return "";
+  const open=S.showCode?" open":"";
+  const lab=lang?` <span class="lang">${esc(lang)}</span>`:"";
+  return `<details class="code-box"${open}><summary>Trecho de código${lab}</summary><pre class="code"><code>${esc(code)}</code></pre></details>`;
+}
+// Código sempre no item (próprio ou herdado do núcleo), para o toggle existir antes de marcar C/E.
+// No modo "por núcleo", o cmd compartilhado fica só no cabeçalho do núcleo (sharedCmd).
+function itemCtx(it, opts={}){
+  const n=nucOf(it.n)||{};
+  let h="";
+  if(it.cmd) h+=`<p class="cmd">${esc(it.cmd)}</p>`;
+  else if(!opts.sharedCmd && n.cmd) h+=`<p class="cmd">${esc(n.cmd)}</p>`;
+  h+=codeBox(it.code||n.code||"", it.lang||n.lang||"");
+  return h;
+}
+function nucCtx(n){
+  if(!n.cmd) return "";
+  return `<div class="nuc-ctx" style="display:grid;gap:10px;margin:4px 0 8px"><p class="cmd">${esc(n.cmd)}</p></div>`;
+}
+function itemHTML(it,idx,opts={}){
+  const st=S.a[it.id]||{};
+  const done=!!st.done;
+  const prev=st.prev||[];
+  const cls=done?(st.r==="B"?"c-blank":(st.r===it.gab?"c-ok":"c-bad")):"";
+  const pr=(v)=>st.r===v?"true":"false";
+  const cf=(v)=>st.c===v?"true":"false";
+  const canGrade=st.r&&(st.r==="B"||st.c);
+  const sharedCmd=!!opts.sharedCmd;
+  let verdict="",res_="";
+  if(done){
+    const t=st.r==="B"?`<span class="tag blank">Em branco · 0</span>`:(st.r===it.gab?`<span class="tag ok">Acertou · +${PESO}</span>`:`<span class="tag bad">Errou · −${PESO}</span>`);
+    // a tentativa anterior só aparece depois de corrigir a atual, para não entregar o gabarito
+    const antes=prev.length?`<span class="before">Antes: ${prev.map(p=>({acerto:"acertou",erro:"errou",branco:"em branco"})[res(it,p)]+(p.c?` (${p.c==="s"?"certeza":"dúvida"})`:"")).join(" → ")}</span>`:"";
+    verdict=`<div class="verdict">${t}<span>Gabarito: <b>${it.gab==="C"?"Certo":"Errado"}</b></span>${st.c?`<span class="chip">${st.c==="s"?"com certeza":"na dúvida"}</span>`:""}${antes}</div>`;
+    res_=`<div class="res">
+      <div class="row"><span>Decide o item</span><div><mark class="gat ${st.r==="B"?"blank":(st.r===it.gab?"ok":"bad")}">${it.gat}</mark></div></div>
+      ${it.termos?`<div class="row"><span>O que é</span><div>${termosHTML(it.termos)}</div></div>`:""}
+      <div class="row"><span>Conceito</span><div>${it.exp}</div></div>
+      ${it.viz?`<div class="row"><span>Vizinho</span><div class="viz">${it.viz}</div></div>`:""}
+      ${it.passo?`<div class="row"><span>Passo a passo</span><div><ol class="passos">${it.passo.split(" | ").map(x=>`<li>${x}</li>`).join("")}</ol></div></div>`:""}
+      ${it.ex?`<div class="row"><span>Exemplo</span><div class="ex">${it.ex}</div></div>`:""}
+      ${it.quote?`<div class="row"><span>Texto do provedor</span><div class="quote">${it.quote}</div></div>`:""}
+      <div class="row"><span>Pegadinha</span><div>${it.peg}</div></div>
+      <div class="row"><span>Como inverte</span><div>${it.inv}</div></div>
+      ${it.lembre?`<div class="row"><span>Para lembrar</span><div class="lembre">${it.lembre}</div></div>`:""}
+      ${parHTML(it)}
+      ${it.nota?`<div class="note"><b>Atenção ao gabarito.</b> ${it.nota}</div>`:""}
+      <div class="row"><span>Fonte</span><div style="font-size:14px">${it.fonte}</div></div>
+    </div>`;
+  }
+  const tent=prev.length?`<span class="chip try">${prev.length+1}ª tentativa</span>`:"";
+  const ctx=itemCtx(it,{sharedCmd});
+  return `<article class="item ${cls}" id="it-${it.id}" data-shared-cmd="${sharedCmd?"1":"0"}">
+    <div class="item-top"><span class="num">${idx}</span><span class="chip">${it.n}</span><span class="chip ${it.real?"real":"var"}">${it.real?"Real":"Variação"}</span>${tent}<span>${it.real?it.src:it.src.replace("Variação inédita","Inédita")}</span></div>
+    ${ctx}
+    <p class="stmt">${esc(it.txt)}</p>
+    ${done?verdict:`<div class="sheet">
+      ${INTERFACE==="numerica"?`<div class="bubbles" role="group" aria-label="Resposta e confiança">
+        <button class="bub" data-id="${it.id}" data-r="C" data-c="s" aria-pressed="${st.r==="C"&&st.c==="s"}" aria-label="Certo, com certeza" title="Certo, com certeza">${PESO}++</button>
+        <button class="bub" data-id="${it.id}" data-r="C" data-c="d" aria-pressed="${st.r==="C"&&st.c==="d"}" aria-label="Certo, com dúvida" title="Certo, com dúvida">${PESO}+</button>
+        <button class="bub" data-id="${it.id}" data-r="E" data-c="s" aria-pressed="${st.r==="E"&&st.c==="s"}" aria-label="Errado, com certeza" title="Errado, com certeza">${PESO}--</button>
+        <button class="bub" data-id="${it.id}" data-r="E" data-c="d" aria-pressed="${st.r==="E"&&st.c==="d"}" aria-label="Errado, com dúvida" title="Errado, com dúvida">${PESO}-</button>
+        <button class="bub" data-id="${it.id}" data-r="B" aria-pressed="${pr("B")}" aria-label="Deixaria em branco" title="Deixaria em branco">0</button>
+      </div>
+      ${provaAtiva()?"":`<button class="btn primary" data-grade="${it.id}" aria-label="Confirmar resposta e abrir correção" title="Confirmar resposta e abrir correção" ${canGrade?"":"disabled"}>&gt;&gt;&gt;</button>`}`:`
+      <div class="bubbles" role="group" aria-label="Resposta">
+        <button class="bub" data-id="${it.id}" data-r="C" aria-pressed="${pr("C")}" aria-label="Certo">C</button>
+        <button class="bub" data-id="${it.id}" data-r="E" aria-pressed="${pr("E")}" aria-label="Errado">E</button>
+        <button class="bub blank" data-id="${it.id}" data-r="B" aria-pressed="${pr("B")}">Em branco</button>
+      </div>
+      <div class="conf" role="group" aria-label="Confiança" aria-disabled="${st.r==="B"?"true":"false"}">
+        <button data-id="${it.id}" data-c="s" aria-pressed="${cf("s")}">Tenho certeza</button>
+        <button data-id="${it.id}" data-c="d" aria-pressed="${cf("d")}">Estou em dúvida</button>
+      </div>
+      ${provaAtiva()?"":`<button class="btn primary" data-grade="${it.id}" ${canGrade?"":"disabled"}>Corrigir</button>`}`}
+    </div>`}
+    ${res_}
+  </article>`;
+}
+
+// Par mínimo: só aparece quando os DOIS itens já foram corrigidos, para não entregar o gabarito do outro.
+const parOf=it=>it.par||(ITENS.find(x=>x.par===it.id)||{}).id;
+function parHTML(it){
+  const pid=parOf(it); if(!pid) return "";
+  const o=ITENS.find(x=>x.id===pid); const so=S.a[pid];
+  if(!o||!so||!so.done) return "";
+  return `<div class="row"><span>Par mínimo</span><div>Item ${o.id} (${o.gab==="C"?"Certo":"Errado"}): “${esc(o.txt)}” · muda <mark>${o.gat}</mark></div></div>`;
+}
+
+function aulaHTML(n,dica){
+  if(!n.aula||provaAtiva()) return "";
+  return `<details class="aula"><summary>Entenda o assunto · ${n.id}${dica?` <span class="hint">(se ainda não estudou o tema, leia antes; se já estudou, responda primeiro para medir)</span>`:""}</summary><div>${n.aula}</div></details>`;
+}
+function cardHTML(n,comAula=true){
+  if(provaAtiva()) return "";
+  return `${comAula?aulaHTML(n,false):""}<details class="card"><summary>Cartão de revisão · ${n.id}</summary><div>
+    <ul>${n.card.map(c=>`<li>${c}</li>`).join("")}</ul>
+    <p><b>Como a banca inverte:</b> ${n.inv}</p></div></details>`;
+}
+
+function shuffled(){
+  // intercala por núcleo com ordem fixa (semente), para que a ordem não mude a cada visita
+  let seed=7; const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;
+  const a=ITENS.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+// lista filtrada, em ordem de prioridade: errou com certeza, errou na dúvida, acertou na dúvida, branco
+function snapshot(){
+  if(S.f==="all"){S.snap=null;return;}
+  S.snap=ITENS.filter(it=>inNuc(it)&&naFiltro(it,S.f))
+    .sort((a,b)=>PRI[lastCat(a)]-PRI[lastCat(b)]||ITENS.indexOf(a)-ITENS.indexOf(b)).map(it=>it.id);
+}
+
+function render(){
+  if(provaAtiva()){S.mode="block";S.f="all";S.snap=null;S.nucs=[];}
+  const box=$("#items"); let h=""; let k=0;
+  if(S.f!=="all"&&S.snap){
+    const lista=S.snap.map(id=>ITENS.find(x=>x.id===id)).filter(Boolean);
+    const nome=FILTROS.find(f=>f[0]===S.f)[1];
+    h+=`<div class="flat-head"><div class="label">Revisão${S.nucs.length?" · "+S.nucs.join(", "):""}</div><h2>${nome}: ${lista.length} ${lista.length===1?"item":"itens"}</h2>
+      <p>${S.f==="rev"?"Ordem: primeiro os erros com certeza, depois os erros na dúvida, os acertos na dúvida e os brancos.":"Na ordem do material."} A lista fica fixa enquanto você revisa; clique de novo no filtro para atualizá-la.</p></div><section class="flat">`;
+    if(!lista.length) h+=`<p class="note">Nenhum item neste filtro.</p>`;
+    lista.forEach(it=>{k++;h+=itemHTML(it,k);});
+    const ns=NUC.filter(n=>lista.some(it=>it.n===n.id));
+    if(ns.length) h+=`<h3 style="margin-top:12px">Cartões de revisão</h3>`+ns.map(n=>cardHTML(n)).join("");
+    h+=`</section>`;
+  }else if(S.mode==="block"){
+    NUC.filter(n=>!S.nucs.length||S.nucs.includes(n.id)).forEach(n=>{
+      const sharedCmd=!!n.cmd;
+      h+=`<section class="nuc" id="${n.id}"><div class="nuc-head"><div class="label">${n.id} · edital ${n.ed}</div><h2>${n.t}</h2>
+        <div class="meta"><span>Aparece em <b>${n.provas}</b> provas</span><span><b>${n.itens}</b> itens no acervo</span></div></div>${aulaHTML(n,true)}${nucCtx(n)}`;
+      ITENS.filter(i=>i.n===n.id).forEach(it=>{k++;h+=itemHTML(it,MODO==="prova"?NUM[it.id]:k,{sharedCmd});});
+      h+=cardHTML(n,false)+`</section>`;
+    });
+  }else{
+    h+=`<section class="nuc"><div class="nuc-head"><div class="label">Modo intercalado</div><h2>Todos os núcleos misturados</h2>
+      <div class="meta"><span>Como na prova: o assunto muda a cada item. Use depois de passar uma vez por núcleo.</span></div></div>`;
+    shuffled().filter(inNuc).forEach(it=>{k++;h+=itemHTML(it,k);});
+    h+=`<h3 style="margin-top:12px">Cartões de revisão</h3>`+NUC.filter(n=>!S.nucs.length||S.nucs.includes(n.id)).map(n=>cardHTML(n)).join("")+`</section>`;
+  }
+  box.innerHTML=h;
+  const flat=S.f!=="all";
+  $("#m-block").setAttribute("aria-pressed",!flat&&S.mode==="block");
+  $("#m-mix").setAttribute("aria-pressed",!flat&&S.mode==="mix");
+  applyCodeVisibility();
+  stats();
+}
+
+function pills(){
+  const cnt={}; FILTROS.forEach(f=>cnt[f[0]]=ITENS.filter(it=>inNuc(it)&&naFiltro(it,f[0])).length);
+  $("#f-pills").innerHTML=FILTROS.map(([v,l])=>`<button class="pill${(v==="se"&&cnt.se)?" hot":""}" data-f="${v}" aria-pressed="${S.f===v}">${l} <b>${cnt[v]}</b></button>`).join("");
+  $("#n-pills").innerHTML=NUC.map(n=>{const e=ITENS.filter(it=>it.n===n.id&&["se","de"].includes(lastCat(it))).length;
+    return `<button class="pill" data-nuc="${n.id}" aria-pressed="${S.nucs.includes(n.id)}" title="${n.t.replace(/"/g,"&quot;")}">${n.id}${e?` <b>${e} erro${e>1?"s":""}</b>`:""}</button>`;}).join("");
+  const vis=S.snap||[]; const refaz=vis.filter(id=>S.a[id]&&S.a[id].done).length;
+  $("#redo-box").hidden=S.f==="all";
+  $("#redo").disabled=!refaz;
+  $("#redo").textContent=refaz?`Refazer ${refaz} ${refaz===1?"item":"itens"}`:"Nada para refazer";
+  const ind=$("#f-ind"); ind.textContent=S.f==="all"&&!S.nucs.length?"Revisar":`Filtro: ${FILTROS.find(f=>f[0]===S.f)[1]}${S.nucs.length?" · "+S.nucs.join(", "):""}`;
+}
+
+function termosHTML(t){
+  return `<dl class="termos">${String(t).split(" || ").map(x=>{const p=x.split(" :: ");return `<dt>${p[0]}</dt><dd>${p.slice(1).join(" :: ")}</dd>`;}).join("")}</dl>`;
+}
+function glossario(){
+  const box=document.getElementById("glossario"); if(!box) return;
+  const vistos=new Map();
+  ITENS.forEach(it=>{ if(!it.termos||!(S.a[it.id]&&S.a[it.id].done)) return;
+    String(it.termos).split(" || ").forEach(x=>{const p=x.split(" :: "); const k=p[0].replace(/<[^>]+>/g,"").trim().toLowerCase(); if(!vistos.has(k)) vistos.set(k,[p[0],p.slice(1).join(" :: ")]);});
+  });
+  const arr=[...vistos.values()].sort((a,b)=>a[0].replace(/<[^>]+>/g,"").localeCompare(b[0].replace(/<[^>]+>/g,""),"pt"));
+  box.hidden=!arr.length;
+  document.getElementById("glos-list").innerHTML=arr.map(([t,d])=>`<dt>${t}</dt><dd>${d}</dd>`).join("");
+}
+function stats(){glossario();
+  // desempenho e calibração: só a PRIMEIRA tentativa de cada item
+  let done=0,net=0; const per={}; const cal={ss:0,se:0,ds:0,de:0}; const rf={up:0,still:0,keep:0,down:0};
+  NUC.forEach(n=>per[n.id]={c:0,e:0,b:0});
+  ITENS.forEach(it=>{const a=att(it.id); if(!a.length) return; done++;
+    const f=a[0];
+    if(f.r==="B") per[it.n].b++;
+    else{const ok=f.r===it.gab; net+=pts(ok); per[it.n][ok?"c":"e"]++; cal[(f.c==="s"?"s":"d")+(ok?"s":"e")]++;}
+    if(a.length>1){const r0=res(it,a[0])==="acerto", r1=res(it,a[a.length-1])==="acerto";
+      rf[r0?(r1?"keep":"down"):(r1?"up":"still")]++;}
+  });
+  const max=ITENS.length*PESO;
+  $("#s-done").textContent=done; $("#s-total").textContent=ITENS.length; $("#s-net").textContent=(net>0?"+":"")+net;
+  $("#s-max").textContent=`/ ${max}`;
+  $("#s-prog").style.width=(done/ITENS.length*100)+"%";
+  $("#sum-body").innerHTML=NUC.map(n=>{const p=per[n.id];const l=(p.c-p.e)*PESO;return `<tr><td><b>${n.id}</b> ${n.t}</td><td class="n">${p.c}</td><td class="n">${p.e}</td><td class="n">${p.b}</td><td class="n"><b>${l>0?"+":""}${l}</b></td></tr>`}).join("");
+  $("#k-ss").textContent=cal.ss; $("#k-se").textContent=cal.se; $("#k-ds").textContent=cal.ds; $("#k-de").textContent=cal.de;
+  const nr=rf.up+rf.still+rf.keep+rf.down; $("#redo-sum").hidden=!nr;
+  $("#r-up").textContent=rf.up; $("#r-still").textContent=rf.still; $("#r-keep").textContent=rf.keep; $("#r-down").textContent=rf.down;
+  const dt=cal.ds+cal.de;
+  let adv;
+  if(done<8) adv="Corrija pelo menos 8 itens para a recomendação sobre chutar ou deixar em branco.";
+  else if(dt<4) adv=`Poucos itens respondidos na dúvida (${dt}) para medir. Continue registrando a confiança.`;
+  else{const p=cal.ds/dt; const pct=Math.round(p*100);
+    adv=p>0.5?`Na dúvida você acertou ${pct}% (${cal.ds} de ${dt}). Acima de 50%, responder ainda dá saldo positivo, porque cada erro anula um acerto. Mesmo assim, revise esses núcleos.`
+      :`Na dúvida você acertou ${pct}% (${cal.ds} de ${dt}). Com 50% ou menos, chutar dá saldo zero ou negativo: nesses núcleos, deixe em branco até revisar.`;}
+  if(cal.se>0) adv+=` Você errou ${cal.se} item(ns) com certeza: são conceitos fixados errado, o ponto mais caro na prova. Revise esses primeiro (filtro "Errei com certeza").`;
+  $("#advice").textContent=adv;
+  $("#yaml").value=yaml();
+  pills();
+  provaUI();
+}
+
+function yaml(){
+  const d=new Date().toISOString().slice(0,10);
+  const conf=t=>t.r==="B"?"na":(t.c==="s"?"certeza":"duvida");
+  let y=`material: pessoal/gaby/simulados/gerados/2026-11-28_dec94406-res507-backup/caderno.html\npessoa: gaby\ncargo: tic\ndata: "${d}"\neixo: comp.leg.enfermagem\nitens:\n`;
+  ITENS.forEach(it=>{const a=att(it.id); if(!a.length) return; const f=a[0];
+    y+=`  - id: ${it.id}\n    origem: "${it.real?it.src:"variacao_inedita"}"\n    resposta: ${f.r}\n    gabarito: ${it.gab}\n    confianca: ${conf(f)}\n    resultado: ${res(it,f)}\n    gatilho: "${it.gat.replace(/"/g,"'")}"\n`;
+    if(a.length>1){y+=`    refacao:\n`; a.slice(1).forEach(t=>{y+=`      - {resposta: ${t.r}, confianca: ${conf(t)}, resultado: ${res(it,t)}}\n`;});}
+  });
+  return y;
+}
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.id==="entregar"){provaConfirm(true);return;}
+  if(b.id==="entregar-sim"){entregar();return;}
+  if(b.id==="entregar-nao"){provaConfirm(false);return;}
+  if(b.dataset.r){const id=b.dataset.id; S.a[id]=S.a[id]||{}; S.a[id].r=b.dataset.r; if(b.dataset.r==="B") delete S.a[id].c; else if(INTERFACE==="numerica"&&b.dataset.c) S.a[id].c=b.dataset.c; save(); rerenderItem(id);}
+  else if(b.dataset.c){const id=b.dataset.id; S.a[id]=S.a[id]||{}; S.a[id].c=b.dataset.c; save(); rerenderItem(id);}
+  else if(b.dataset.grade){const id=b.dataset.grade; S.a[id].done=true; save(); rerenderItem(id);
+    const pid=parOf(ITENS.find(x=>x.id===id)); if(pid&&S.a[pid]&&S.a[pid].done) rerenderItem(pid);
+    stats();}
+  else if(b.dataset.f){S.f=b.dataset.f; snapshot(); save(); render(); $("#items").scrollIntoView({block:"start"});}
+  else if(b.dataset.nuc){const n=b.dataset.nuc; S.nucs=S.nucs.includes(n)?S.nucs.filter(x=>x!==n):S.nucs.concat(n); snapshot(); save(); render();}
+});
+function rerenderItem(id){
+  const el=document.getElementById("it-"+id); if(!el) return;
+  const it=ITENS.find(x=>x.id===id);
+  const idx=el.querySelector(".num").textContent;
+  const sharedCmd=el.dataset.sharedCmd==="1";
+  el.outerHTML=itemHTML(it,idx,{sharedCmd});
+  applyCodeVisibility();
+  provaUI();
+}
+$("#m-block").onclick=()=>{S.mode="block";S.f="all";S.snap=null;save();render();};
+$("#m-mix").onclick=()=>{S.mode="mix";S.f="all";S.snap=null;save();render();};
+$("#m-code").onclick=()=>{
+  S.showCode=!S.showCode; save();
+  applyCodeVisibility();
+};
+$("#redo").onclick=()=>{
+  let n=0;
+  (S.snap||[]).forEach(id=>{const st=S.a[id]; if(!st||!st.done) return;
+    S.a[id]={prev:(st.prev||[]).concat({r:st.r,c:st.c})}; n++;});
+  save(); render();
+  const t=$("#redo-toast"); t.textContent=`${n} ${n===1?"item pronto":"itens prontos"} para refazer.`; t.hidden=false; setTimeout(()=>t.hidden=true,3000);
+  $("#items").scrollIntoView({block:"start"});
+};
+$("#copy").onclick=()=>{
+  const t=$("#yaml").value; const toast=$("#toast");
+  navigator.clipboard.writeText(t).then(()=>{toast.textContent="Resultado copiado.";toast.hidden=false;setTimeout(()=>toast.hidden=true,2500);})
+  .catch(()=>{const ta=$("#yaml");ta.focus();ta.select();toast.textContent="Texto selecionado: use Ctrl+C.";toast.hidden=false;});
+};
+// Baixar arquivo: só no artifact publicado com capabilities {downloads:true}; aberto do disco, o botão fica oculto.
+(async()=>{
+  try{
+    if(!window.claude||!claude.use) return;
+    const dl=await claude.use("downloads"); if(!dl) return;
+    const arq="pessoal/gaby/respostas/2026-11-28_dec94406-res507-backup.yaml".split("/").pop()+".txt";
+    const b=$("#dl"); b.hidden=false;
+    b.onclick=async()=>{
+      const toast=$("#toast"); b.disabled=true;
+      try{ await dl.save({filename:arq,data:yaml()}); toast.textContent="Arquivo pronto: "+arq; }
+      catch(e){ const c=e&&e.code;
+        toast.textContent=c==="declined"?"Download cancelado.":c==="rate_limited"?"Já há uma confirmação aberta.":"Download indisponível aqui: use Copiar resultado.";
+        if(c!=="declined"&&c!=="rate_limited") b.hidden=true; }
+      b.disabled=false; toast.hidden=false; setTimeout(()=>toast.hidden=true,3500);
+    };
+  }catch(e){}
+})();
+$("#reset").onclick=()=>{$("#confirm").hidden=false;};
+$("#reset-no").onclick=()=>{$("#confirm").hidden=true;};
+$("#reset-yes").onclick=()=>{S.a={};S.f="all";S.snap=null;S.entregue=false;PROVA_CONF=false;save();$("#confirm").hidden=true;render();};
+
+// ===== Modo prova =====
+// Antes da entrega: sem botão de corrigir, sem mini-aula e sem cartão; filtros e modo intercalado fechados.
+// "Entregar prova" confirma tudo de uma vez: sem resposta = branco; C/E sem confiança (interface clássica) = dúvida.
+let PROVA_CONF=false;
+function provaUI(){
+  const note=$("#prova-note"), btn=$("#entregar"); if(!note||!btn) return;
+  const ativa=provaAtiva();
+  $("#revisar").hidden=ativa; $("#f-ind").hidden=ativa; $("#m-mix").disabled=ativa;
+  if(MODO!=="prova"){note.hidden=true; btn.hidden=true; return;}
+  const tot=ITENS.length, resp=ITENS.filter(it=>S.a[it.id]&&S.a[it.id].r).length;
+  btn.hidden=!ativa; btn.textContent=`Entregar prova (${resp}/${tot})`;
+  note.hidden=false;
+  if(!ativa){
+    note.innerHTML=`<p><b>Prova entregue.</b> A correção, as mini-aulas e os cartões estão abertos. Placar, calibração e export usam as respostas da entrega; refações aparecem à parte.</p>`;
+    return;
+  }
+  let h=`<p><b>Modo prova.</b> Itens ${INICIO} a ${INICIO+tot-1}. Respondidos: <b>${resp}</b> de ${tot}. A correção, as mini-aulas e os cartões só abrem depois da entrega; até lá, dá para mudar qualquer resposta.</p>`;
+  if(PROVA_CONF){
+    const vazio=tot-resp;
+    const semConf=ITENS.filter(it=>{const st=S.a[it.id]; return st&&st.r&&st.r!=="B"&&!st.c;}).length;
+    h+=`<p>Entregar agora? ${vazio?`<b>${vazio}</b> ${vazio===1?"item sem resposta conta":"itens sem resposta contam"} como branco. `:""}${semConf?`<b>${semConf}</b> ${semConf===1?"item sem confiança marcada fica registrado":"itens sem confiança marcada ficam registrados"} como dúvida. `:""}Depois da entrega, as respostas não mudam.</p>
+      <div class="act"><button class="btn primary" id="entregar-sim">Confirmar entrega</button><button class="btn" id="entregar-nao">Continuar respondendo</button></div>`;
+  }
+  note.innerHTML=h;
+}
+function provaConfirm(on){
+  PROVA_CONF=on; provaUI();
+  if(on) $("#prova-note").scrollIntoView({block:"center"});
+}
+function entregar(){
+  ITENS.forEach(it=>{
+    const st=S.a[it.id]=S.a[it.id]||{}; if(st.done) return;
+    if(!st.r){st.r="B"; delete st.c;}
+    else if(st.r!=="B"&&!st.c) st.c="d";
+    st.done=true;
+  });
+  S.entregue=true; PROVA_CONF=false; save(); render();
+  $("#prova-note").scrollIntoView({block:"start"});
+}
+
+// ===== Teclado =====
+// ↓/j ↑/k: item seguinte/anterior · 1 2 3 4: C certeza, C dúvida, E certeza, E dúvida · 0: branco
+// Enter: confirma e abre a correção, sem sair do item · n: próximo não respondido · ?: atalhos · Esc: fecha o quadro.
+// Não age em campos de texto, com Ctrl/Alt/Meta, nem em item já corrigido (respostas não mudam depois de confirmar).
+let KB=null;
+const kbItems=()=>[...document.querySelectorAll("article.item")];
+const kbId=el=>el.id.slice(3);
+function kbMark(scroll){
+  document.querySelectorAll("article.item.kb-active").forEach(el=>el.classList.remove("kb-active"));
+  if(!KB) return; const el=document.getElementById("it-"+KB); if(!el){KB=null;return;}
+  el.classList.add("kb-active");
+  if(scroll){const rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({block:"center",behavior:rm?"auto":"smooth"});}
+}
+function kbGo(el){ if(!el) return; KB=kbId(el); kbMark(true); }
+function kbStep(d){
+  const l=kbItems(); if(!l.length) return;
+  const i=l.findIndex(el=>kbId(el)===KB);
+  kbGo(i<0?l[d>0?0:l.length-1]:l[Math.min(l.length-1,Math.max(0,i+d))]);
+}
+function kbNextOpen(){
+  const l=kbItems(); if(!l.length) return;
+  const i=Math.max(-1,l.findIndex(el=>kbId(el)===KB));
+  const ord=l.slice(i+1).concat(l.slice(0,i+1));
+  // no modo prova, "não respondido" = ainda sem marcação (nada fica corrigido antes da entrega)
+  const el=ord.find(el=>{const st=S.a[kbId(el)]; return provaAtiva()?!(st&&st.r):!(st&&st.done);});
+  if(el) kbGo(el);
+}
+function kbHelp(show){
+  let box=document.getElementById("kb-help");
+  if(!box){
+    box=document.createElement("div"); box.id="kb-help"; box.className="kb-help"; box.hidden=true;
+    box.setAttribute("role","dialog"); box.setAttribute("aria-label","Atalhos de teclado");
+    const r1=INTERFACE==="numerica"?[`${PESO}++`,`${PESO}+`,`${PESO}--`,`${PESO}-`]:["C com certeza","C com dúvida","E com certeza","E com dúvida"];
+    box.innerHTML=`<h3>Atalhos de teclado</h3><table>
+      <tr><td><kbd>↓</kbd> <kbd>j</kbd></td><td>próximo item</td></tr>
+      <tr><td><kbd>↑</kbd> <kbd>k</kbd></td><td>item anterior</td></tr>
+      <tr><td><kbd>1</kbd></td><td>${r1[0]}</td></tr><tr><td><kbd>2</kbd></td><td>${r1[1]}</td></tr>
+      <tr><td><kbd>3</kbd></td><td>${r1[2]}</td></tr><tr><td><kbd>4</kbd></td><td>${r1[3]}</td></tr>
+      <tr><td><kbd>0</kbd></td><td>em branco</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>confirmar e abrir a correção (o item continua ativo)</td></tr>
+      <tr><td><kbd>n</kbd></td><td>ir ao próximo não respondido</td></tr>
+      <tr><td><kbd>?</kbd> <kbd>Esc</kbd></td><td>mostrar/ocultar este quadro</td></tr></table>`;
+    document.body.appendChild(box);
+  }
+  box.hidden=show===undefined?!box.hidden:!show;
+}
+const KB_R={"1":["C","s"],"2":["C","d"],"3":["E","s"],"4":["E","d"],"0":["B",null]};
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey||e.altKey||e.metaKey||e.isComposing) return;
+  const t=e.target, tag=(t.tagName||"").toLowerCase();
+  if(tag==="input"||tag==="textarea"||tag==="select"||t.isContentEditable) return;
+  const k=e.key;
+  if(k==="?"){e.preventDefault(); kbHelp(); return;}
+  if(k==="Escape"){const b=document.getElementById("kb-help"); if(b&&!b.hidden){e.preventDefault(); kbHelp(false);} return;}
+  if(k==="ArrowDown"||k==="j"){e.preventDefault(); kbStep(1); return;}
+  if(k==="ArrowUp"||k==="k"){e.preventDefault(); kbStep(-1); return;}
+  if(k==="n"){e.preventDefault(); kbNextOpen(); return;}
+  if(KB_R[k]){
+    if(!KB||!document.getElementById("it-"+KB)) return;
+    const st=S.a[KB]=S.a[KB]||{}; if(st.done) return;
+    e.preventDefault();
+    const [r,c]=KB_R[k]; st.r=r; if(c) st.c=c; else delete st.c;
+    save(); rerenderItem(KB); kbMark(false); return;
+  }
+  if(k==="Enter"){
+    // Enter num botão ou link focado mantém o comportamento nativo (clicar nele)
+    if(tag==="button"||tag==="a"||tag==="summary") return;
+    if(!KB) return; const el=document.getElementById("it-"+KB); if(!el) return;
+    const g=el.querySelector("button[data-grade]");
+    if(!g||g.disabled) return;
+    e.preventDefault(); g.click(); kbMark(false);
+    const rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const a=document.getElementById("it-"+KB); if(a) a.scrollIntoView({block:"start",behavior:rm?"auto":"smooth"});
+  }
+});
+// clique dentro de um item o torna ativo; depois de qualquer clique, refaz o destaque (o item pode ter sido redesenhado)
+document.addEventListener("click",e=>{
+  const el=e.target.closest&&e.target.closest("article.item"); if(el) KB=kbId(el);
+  setTimeout(()=>kbMark(false),0);
+});
+
+if(S.f!=="all"&&!S.snap) snapshot();
+rankTable(); render();
+</script>
