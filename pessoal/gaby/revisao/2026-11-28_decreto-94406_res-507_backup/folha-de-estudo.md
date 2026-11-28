@@ -147,9 +147,11 @@ Na dúvida real, deixe em branco: na Quadrix, cada erro anula um acerto.
 
 ## Meus erros do dia
 
+**Teste-se: 14/14 (sem erros).** Caderno: resultado ainda não lançado.
+
 | Item/tema | Eu marquei | Certo | Âncora (1 frase) |
 |-----------|------------|-------|------------------|
-| | | | |
+| — | — | — | Sem erros no Teste-se |
 
 ## Amanhã
 
