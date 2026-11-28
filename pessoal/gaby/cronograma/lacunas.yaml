@@ -16,6 +16,7 @@ entradas:
     erros_com_certeza: 1
     detalhes:
       - "Marcou E com certeza em 'constituem, em seu conjunto, uma única autarquia' (gabarito C): a lei não cria uma autarquia por conselho"
+      - "Âncora: Cofen + Corens = uma autarquia só, em conjunto."
     fontes:
       - tipo: objetiva
         path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
@@ -32,6 +33,7 @@ entradas:
     detalhes:
       - "Marcou E com certeza em 'somente a cassação é da alçada do Conselho Federal' (gabarito C): o 'somente' é verdadeiro; desconfiança de absoluto sem conferir a lista"
       - "Acertou o par invertido (Coren cassa, ouvido o Cofen → E): sabe quem cassa, errou pela palavra 'somente'"
+      - "Âncora: antes de rejeitar o 'somente', confira a lista: só a cassação sobe para o Cofen."
     fontes:
       - tipo: objetiva
         path: pessoal/gaby/respostas/2026-11-27_lei5905-itil.yaml
